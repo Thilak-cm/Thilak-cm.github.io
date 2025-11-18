@@ -317,10 +317,89 @@ function hideResumeOverlay() {
     document.body.style.overflow = '';
 }
 
+// Image Carousel functionality
+let currentImageIndex = 0;
+let carouselInterval;
+let carouselImages, carouselPrevBtn, carouselNextBtn;
+const AUTO_SWITCH_INTERVAL = 5000; // 5 seconds
+
+function showImage(index) {
+    if (!carouselImages || carouselImages.length === 0) return;
+    carouselImages.forEach((img, i) => {
+        if (i === index) {
+            img.classList.add('active');
+        } else {
+            img.classList.remove('active');
+        }
+    });
+}
+
+function nextImage() {
+    if (!carouselImages || carouselImages.length === 0) return;
+    currentImageIndex = (currentImageIndex + 1) % carouselImages.length;
+    showImage(currentImageIndex);
+}
+
+function prevImage() {
+    if (!carouselImages || carouselImages.length === 0) return;
+    currentImageIndex = (currentImageIndex - 1 + carouselImages.length) % carouselImages.length;
+    showImage(currentImageIndex);
+}
+
+function startCarousel() {
+    stopCarousel();
+    if (carouselImages && carouselImages.length > 1) {
+        carouselInterval = setInterval(nextImage, AUTO_SWITCH_INTERVAL);
+    }
+}
+
+function stopCarousel() {
+    if (carouselInterval) {
+        clearInterval(carouselInterval);
+        carouselInterval = null;
+    }
+}
+
+function initCarousel() {
+    carouselImages = document.querySelectorAll('.carousel-image');
+    carouselPrevBtn = document.getElementById('carousel-prev');
+    carouselNextBtn = document.getElementById('carousel-next');
+    
+    if (!carouselImages || carouselImages.length === 0) return;
+    
+    showImage(0);
+    
+    if (carouselPrevBtn) {
+        carouselPrevBtn.addEventListener('click', () => {
+            prevImage();
+            stopCarousel();
+            startCarousel();
+        });
+    }
+    
+    if (carouselNextBtn) {
+        carouselNextBtn.addEventListener('click', () => {
+            nextImage();
+            stopCarousel();
+            startCarousel();
+        });
+    }
+    
+    // Pause on hover
+    const carousel = document.querySelector('.image-carousel');
+    if (carousel) {
+        carousel.addEventListener('mouseenter', stopCarousel);
+        carousel.addEventListener('mouseleave', startCarousel);
+    }
+    
+    startCarousel();
+}
+
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
     initOverlay();
     initResumeOverlay();
+    initCarousel();
     renderProjects();
     
     // Check footer visibility on scroll
