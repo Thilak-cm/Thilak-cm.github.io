@@ -68,26 +68,51 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Projects data structure (you can modify this later)
+// Projects data structure
 const projectsData = [
-    // Projects will be added here dynamically
-    // Example structure:
-    // {
-    //     title: "Project Title",
-    //     description: "Project description",
-    //     tags: ["Python", "TensorFlow", "NLP"],
-    //     image: "path/to/image.jpg",
-    //     projectLink: "https://...",
-    //     githubLink: "https://github.com/..."
-    // }
+    {
+        title: "Montessori AI SaaS Platform",
+        description: "A full SaaS platform used daily by ~100 teachers across multiple schools, logging ~2,000 student observations/month. Features agentic workflows via MCP, RAG pipeline over foundational Montessori texts, and automated student insight synthesis.",
+        tags: ["React", "Vite", "Firebase", "Firestore", "MCP", "RAG", "GPT"],
+        projectLink: null,
+        githubLink: null
+    },
+    {
+        title: "Financial Compliance & TDS Reconciliation",
+        description: "A system to reconcile TDS/GST data between client books and government records. Built embedding-based matching workflows, RAG-style ledger investigation helpers, and data cleaning pipelines. Turned hours of manual matching into minutes.",
+        tags: ["FastAPI", "AWS Bedrock", "S3", "Python", "Vector Search"],
+        projectLink: null,
+        githubLink: null
+    },
+    {
+        title: "Demand Forecasting Transformer",
+        description: "A transformer-based sequence model that takes 12 hours of time/weather features and predicts the next 12 hours of demand per zone. Features custom dataloaders, multi-step forecasting with sliding windows, and ClearML experiment tracking.",
+        tags: ["PyTorch", "Transformers", "ClearML", "AWS EC2"],
+        projectLink: null,
+        githubLink: null
+    },
+    {
+        title: "GPT-2 From Scratch",
+        description: "Rebuilt a 128M-parameter GPT-2 model from scratch to learn the internals. Implemented tokenizer → embedding → attention stack → LM head, KV-cache optimization, training stability techniques, and positional encoding design tradeoffs.",
+        tags: ["PyTorch", "CUDA", "Transformers"],
+        projectLink: null,
+        githubLink: null
+    },
+    {
+        title: "Agentic Trading Pattern System",
+        description: "A CLI-based system that extracts daily metrics, maps them to next-day timeframes, and outputs actionable trade plans (direction, entry/exit, TP/SL). Features streaming minute-level data processing and rule-based + ML hybrid signals.",
+        tags: ["Python", "pandas", "ML", "Trading"],
+        projectLink: null,
+        githubLink: null
+    }
 ];
 
-// Function to render projects (will be used when you add project data)
+// Function to render projects
 function renderProjects() {
     const projectsGrid = document.getElementById('projects-grid');
     
     if (projectsData.length === 0) {
-        // Keep the placeholder card
+        projectsGrid.innerHTML = '<p style="text-align: center; color: var(--text-secondary);">No projects to display yet.</p>';
         return;
     }
     
@@ -96,7 +121,7 @@ function renderProjects() {
             <div class="project-image">
                 ${project.image 
                     ? `<img src="${project.image}" alt="${project.title}" style="width: 100%; height: 100%; object-fit: cover;">`
-                    : '<div class="placeholder-image">Project Image</div>'
+                    : '<div class="placeholder-image">' + project.title.charAt(0) + '</div>'
                 }
             </div>
             <div class="project-content">
@@ -105,10 +130,12 @@ function renderProjects() {
                 <div class="project-tags">
                     ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
                 </div>
+                ${(project.projectLink || project.githubLink) ? `
                 <div class="project-links">
-                    ${project.projectLink ? `<a href="${project.projectLink}" class="project-link" target="_blank">View Project</a>` : ''}
-                    ${project.githubLink ? `<a href="${project.githubLink}" class="project-link" target="_blank">GitHub</a>` : ''}
+                    ${project.projectLink ? `<a href="${project.projectLink}" class="project-link" target="_blank" rel="noopener noreferrer">View Project</a>` : ''}
+                    ${project.githubLink ? `<a href="${project.githubLink}" class="project-link" target="_blank" rel="noopener noreferrer">GitHub</a>` : ''}
                 </div>
+                ` : ''}
             </div>
         </div>
     `).join('');

@@ -162,6 +162,44 @@ body {
     font-size: 1.25rem;
     color: var(--text-secondary);
     margin-bottom: 2rem;
+    line-height: 1.7;
+}
+
+.hero-specializations {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: rgba(99, 102, 241, 0.05);
+    border-radius: 0.75rem;
+    border-left: 4px solid var(--primary-color);
+}
+
+.specialization-title {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.specialization-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.specialization-list li {
+    color: var(--text-secondary);
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    line-height: 1.6;
+}
+
+.specialization-list li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-weight: 600;
 }
 
 .hero-buttons {
@@ -300,8 +338,44 @@ section {
 
 .about-text p {
     color: var(--text-secondary);
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     line-height: 1.8;
+}
+
+.ownership-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+    padding-left: 1.5rem;
+}
+
+.ownership-list li {
+    color: var(--text-secondary);
+    padding: 0.5rem 0;
+    position: relative;
+    line-height: 1.8;
+}
+
+.ownership-list li::before {
+    content: "•";
+    position: absolute;
+    left: -1.5rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.skills-section {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px solid var(--border-color);
+}
+
+.skills-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
 }
 
 .skills-grid {
@@ -553,6 +627,15 @@ section {
 
     .hero-buttons {
         justify-content: center;
+    }
+
+    .hero-specializations {
+        margin: 1.5rem 0;
+        padding: 1rem;
+    }
+
+    .specialization-list li {
+        font-size: 0.9rem;
     }
 }
 
