@@ -59,7 +59,7 @@ const observer = new IntersectionObserver((entries) => {
 
 // Observe elements for animation
 document.addEventListener('DOMContentLoaded', () => {
-    const animateElements = document.querySelectorAll('.skill-item, .about-content');
+    const animateElements = document.querySelectorAll('.about-content');
     animateElements.forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(20px)';
@@ -250,9 +250,54 @@ function checkFooterVisibility() {
     }
 }
 
+// Resume overlay functionality
+let resumeOverlay, resumeCloseBtn, resumeBtn;
+
+function initResumeOverlay() {
+    resumeOverlay = document.getElementById('resume-overlay');
+    resumeCloseBtn = document.getElementById('resume-close');
+    resumeBtn = document.getElementById('resume-btn');
+    
+    if (resumeBtn) {
+        resumeBtn.addEventListener('click', showResumeOverlay);
+    }
+    
+    if (resumeCloseBtn) {
+        resumeCloseBtn.addEventListener('click', hideResumeOverlay);
+    }
+    
+    if (resumeOverlay) {
+        resumeOverlay.addEventListener('click', (e) => {
+            if (e.target === resumeOverlay) {
+                hideResumeOverlay();
+            }
+        });
+    }
+    
+    // Close resume overlay on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && resumeOverlay && resumeOverlay.classList.contains('active')) {
+            hideResumeOverlay();
+        }
+    });
+}
+
+function showResumeOverlay() {
+    if (!resumeOverlay) return;
+    resumeOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function hideResumeOverlay() {
+    if (!resumeOverlay) return;
+    resumeOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
     initOverlay();
+    initResumeOverlay();
     renderProjects();
     
     // Check footer visibility on scroll

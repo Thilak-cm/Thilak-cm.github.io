@@ -40,6 +40,7 @@
             <p class="hero-subtitle">AI Engineer and product-focused builder who thrives in zero-to-one environments. I take ideas from scratch to production—designing architecture, writing code, validating with users, and iterating quickly. My work spans ed-tech, financial reconciliation, ASR, forecasting, and trading systems. I specialize in agent workflows (MCP, LangChain), RAG systems, LLM integrations, and full-stack AI-native applications.</p>
             <div class="hero-buttons">
                 <a href="#projects" class="btn btn-primary">View Projects</a>
+                <button class="btn btn-secondary" id="resume-btn">View Resume</button>
             </div>
             <div class="hero-contact">
                 <span class="hero-contact-text">Get in touch:</span>
@@ -97,47 +98,6 @@
                         <li>and ensures everything works in production</li>
                     </ul>
                     <p>I gravitate toward fast-moving teams solving messy real-world problems with intelligent automation.</p>
-                    <div class="skills-section">
-                        <h3 class="skills-title">Skills & Technologies</h3>
-                        <div class="skills-grid">
-                            <div class="skill-item">
-                                <span class="skill-icon">🤖</span>
-                                <span class="skill-name">Transformers</span>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-icon">🔍</span>
-                                <span class="skill-name">RAG Systems</span>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-icon">🧠</span>
-                                <span class="skill-name">LLM Agents</span>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-icon">⚛️</span>
-                                <span class="skill-name">React</span>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-icon">🔥</span>
-                                <span class="skill-name">Firebase</span>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-icon">☁️</span>
-                                <span class="skill-name">AWS</span>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-icon">🐍</span>
-                                <span class="skill-name">Python</span>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-icon">⚡</span>
-                                <span class="skill-name">PyTorch</span>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-icon">🚀</span>
-                                <span class="skill-name">FastAPI</span>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -173,6 +133,22 @@
         <div class="project-overlay-content">
             <button class="project-overlay-close" id="overlay-close">&times;</button>
             <div id="overlay-content"></div>
+        </div>
+    </div>
+
+    <!-- Resume Overlay Modal -->
+    <div id="resume-overlay" class="resume-overlay">
+        <div class="resume-overlay-content">
+            <div class="resume-overlay-header">
+                <h2 class="resume-overlay-title">Resume</h2>
+                <div class="resume-overlay-actions">
+                    <a href="resume_Thilak_ML_v2.pdf" download="Thilak_Mohan_Resume.pdf" class="btn btn-primary resume-download-btn">Download PDF</a>
+                    <button class="resume-overlay-close" id="resume-close">&times;</button>
+                </div>
+            </div>
+            <div class="resume-preview">
+                <iframe src="resume_Thilak_ML_v2.pdf" frameborder="0" class="resume-iframe"></iframe>
+            </div>
         </div>
     </div>
 
