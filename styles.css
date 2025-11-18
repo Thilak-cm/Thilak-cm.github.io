@@ -482,6 +482,17 @@ section {
     color: var(--text-secondary);
 }
 
+.contact-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.contact-link:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
 /* Footer */
 .footer {
     background: var(--bg-dark);
