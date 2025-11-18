@@ -72,61 +72,71 @@ document.addEventListener('DOMContentLoaded', () => {
 const projectsData = [
     {
         title: "Montessori AI SaaS Platform",
-        date: "Jan 2024",
+        date: "July 2025 - Current",
         summary: "Full SaaS platform with agentic workflows and RAG pipeline for Montessori education.",
         description: "A full SaaS platform used daily by ~100 teachers across multiple schools, logging ~2,000 student observations/month. Features agentic workflows via MCP, RAG pipeline over foundational Montessori texts, and automated student insight synthesis.",
         tags: ["React", "Vite", "Firebase", "Firestore", "MCP", "RAG", "GPT"],
         projectLink: null,
         githubLink: null,
-        badge: null
+        badge: "Freelance"
     },
     {
         title: "Financial Compliance & TDS Reconciliation",
-        date: "Dec 2023",
+        date: "Aug 2025 - Nov 2025",
         summary: "Embedding-based matching system for TDS/GST reconciliation with RAG-style investigation helpers.",
         description: "A system to reconcile TDS/GST data between client books and government records. Built embedding-based matching workflows, RAG-style ledger investigation helpers, and data cleaning pipelines. Turned hours of manual matching into minutes.",
         tags: ["FastAPI", "AWS Bedrock", "S3", "Python", "Vector Search"],
         projectLink: null,
         githubLink: null,
-        badge: null
+        badge: "Freelance"
     },
     {
         title: "Demand Forecasting Transformer",
-        date: "Nov 2023",
+        date: "Jan 2025 - May 2025",
         summary: "Transformer-based sequence model for 12-hour demand forecasting with multi-step prediction.",
         description: "A transformer-based sequence model that takes 12 hours of time/weather features and predicts the next 12 hours of demand per zone. Features custom dataloaders, multi-step forecasting with sliding windows, and ClearML experiment tracking.",
         tags: ["PyTorch", "Transformers", "ClearML", "AWS EC2"],
         projectLink: null,
         githubLink: null,
-        badge: null
+        badge: "Course Project",
+        instructor: {
+            name: "Samet Ayhan",
+            link: "https://scholar.google.com/citations?user=cPnpZ8IAAAAJ&hl=en"
+        }
     },
     {
         title: "GPT-2 From Scratch",
-        date: "Oct 2023",
+        date: "Aug 2024 - Dec 2024",
         summary: "Rebuilt 128M-parameter GPT-2 from scratch to learn transformer internals and optimization techniques.",
         description: "Rebuilt a 128M-parameter GPT-2 model from scratch to learn the internals. Implemented tokenizer → embedding → attention stack → LM head, KV-cache optimization, training stability techniques, and positional encoding design tradeoffs.",
         tags: ["PyTorch", "CUDA", "Transformers"],
-        projectLink: null,
+        projectLink: "https://848k-project-gpt2.streamlit.app/",
         githubLink: null,
-        badge: null
+        badge: "Course Project",
+        instructor: {
+            name: "Jia Bin Huang",
+            link: "https://scholar.google.com/citations?user=pp848fYAAAAJ&hl=en"
+        },
+        disclaimer: "⚠️ Note: Due to memory constraints (each .pth file is ~500MB), installing multiple models can crash the app. A reboot will have to be done. We are working on a fix for this as you read this."
     },
     {
         title: "Agentic Trading Pattern System",
-        date: "Sep 2023",
+        date: "Sep 2023 - Dec 2023",
         summary: "CLI system for extracting metrics and generating actionable trade plans with ML hybrid signals.",
         description: "A CLI-based system that extracts daily metrics, maps them to next-day timeframes, and outputs actionable trade plans (direction, entry/exit, TP/SL). Features streaming minute-level data processing and rule-based + ML hybrid signals.",
         tags: ["Python", "pandas", "ML", "Trading"],
         projectLink: null,
         githubLink: null,
-        badge: "Internship"
+        badge: "Internship",
+        company: "CDUS Trading LLC"
     },
     {
         title: "Flight Delay Prediction",
-        date: "TBD",
-        summary: "Coming soon...",
-        description: "Details coming soon.",
+        date: "Sep 2023 - Dec 2023",
+        summary: "Flight delay analysis and prediction system using machine learning models.",
+        description: "A comprehensive system for analyzing and predicting flight delays using various machine learning approaches. Features data analysis, model training, and interactive visualizations.",
         tags: [],
-        projectLink: null,
+        projectLink: "https://flight-delay-analysis-and-prediction-ds602project.streamlit.app/",
         githubLink: null,
         badge: null
     }
@@ -144,9 +154,9 @@ function renderProjects() {
     projectsTimeline.innerHTML = projectsData.map((project, index) => `
         <div class="projects-timeline-item" data-project-index="${index}">
             <div class="timeline-card">
+                ${project.badge ? `<span class="timeline-badge">${project.badge}</span>` : ''}
                 <div class="timeline-date">${project.date}</div>
                 <div class="timeline-title">${project.title}</div>
-                ${project.badge ? `<span class="timeline-badge">${project.badge}</span>` : ''}
                 <div class="timeline-summary">${project.summary}</div>
             </div>
         </div>
@@ -201,10 +211,23 @@ function initOverlay() {
 function showProjectOverlay(project) {
     if (!overlayContent || !projectOverlay) return;
     
+    let instructorInfo = '';
+    if (project.instructor) {
+        instructorInfo = `<div class="overlay-instructor">Course Project under <a href="${project.instructor.link}" target="_blank" rel="noopener noreferrer" class="instructor-link">${project.instructor.name}</a></div>`;
+    }
+    
+    let companyInfo = '';
+    if (project.company) {
+        companyInfo = `<div class="overlay-company">${project.badge} at ${project.company}</div>`;
+    }
+    
     overlayContent.innerHTML = `
         <h2 class="overlay-title">${project.title}</h2>
         <div class="overlay-date">${project.date}</div>
+        ${instructorInfo}
+        ${companyInfo}
         <p class="overlay-description">${project.description}</p>
+        ${project.disclaimer ? `<div class="overlay-disclaimer">${project.disclaimer}</div>` : ''}
         ${project.tags.length > 0 ? `
         <div class="overlay-tags">
             ${project.tags.map(tag => `<span class="overlay-tag">${tag}</span>`).join('')}
