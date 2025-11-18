@@ -156,8 +156,28 @@ window.addProject = function(project) {
     renderProjects();
 };
 
+// Footer visibility on scroll
+const footer = document.getElementById('footer');
+
+function checkFooterVisibility() {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const windowHeight = window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight;
+    
+    // Show footer when near bottom (within 100px of bottom)
+    if (scrollTop + windowHeight >= documentHeight - 100) {
+        footer.classList.add('visible');
+    } else {
+        footer.classList.remove('visible');
+    }
+}
+
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
     renderProjects();
+    
+    // Check footer visibility on scroll
+    window.addEventListener('scroll', checkFooterVisibility);
+    checkFooterVisibility(); // Check initial state
 });
 

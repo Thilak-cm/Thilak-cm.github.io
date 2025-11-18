@@ -33,6 +33,7 @@ body {
     color: var(--text-primary);
     background-color: var(--bg-primary);
     overflow-x: hidden;
+    padding-bottom: 100px;
 }
 
 .container {
@@ -239,6 +240,24 @@ body {
     background: var(--primary-color);
     color: white;
     transform: translateY(-2px);
+}
+
+.hero-contact {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    justify-content: center;
+}
+
+.hero-contact-link {
+    font-size: 1.75rem;
+    text-decoration: none;
+    transition: var(--transition);
+    display: inline-block;
+}
+
+.hero-contact-link:hover {
+    transform: translateY(-3px) scale(1.1);
 }
 
 .hero-visual {
@@ -533,41 +552,53 @@ section {
     text-decoration: underline;
 }
 
-/* Contact Section */
-.contact {
-    background: var(--bg-secondary);
-}
-
-.contact-content {
-    max-width: 600px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-}
-
-.contact-link {
-    color: var(--text-primary);
-    text-decoration: none;
-    font-size: 1.125rem;
-    transition: var(--transition);
-}
-
-.contact-link:hover {
-    color: var(--primary-color);
-}
-
 /* Footer */
 .footer {
+    position: fixed;
+    bottom: -100px;
+    left: 0;
+    right: 0;
     background: var(--bg-dark);
     color: white;
-    padding: 2rem 0;
+    padding: 1.5rem 0;
     text-align: center;
+    transition: bottom 0.3s ease-in-out;
+    z-index: 999;
+    box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.footer.visible {
+    bottom: 0;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.footer-contact {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.footer-contact-link {
+    font-size: 1.5rem;
+    text-decoration: none;
+    transition: var(--transition);
+    display: inline-block;
+}
+
+.footer-contact-link:hover {
+    transform: translateY(-3px) scale(1.1);
 }
 
 .footer p {
     color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+    font-size: 0.875rem;
 }
 
 /* Responsive Design */
@@ -632,6 +663,23 @@ section {
 
     .about-image {
         max-width: 300px;
+    }
+
+    .hero-contact {
+        gap: 1rem;
+        margin-top: 1.5rem;
+    }
+
+    .hero-contact-link {
+        font-size: 1.5rem;
+    }
+
+    .footer-contact {
+        gap: 1rem;
+    }
+
+    .footer-contact-link {
+        font-size: 1.25rem;
     }
 }
 
