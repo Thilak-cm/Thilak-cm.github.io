@@ -142,41 +142,41 @@ const projectsData = [
     }
 ];
 
-// Function to render projects timeline
+// Function to render projects grid
 function renderProjects() {
-    const projectsTimeline = document.getElementById('projects-timeline');
+    const projectsGrid = document.getElementById('projects-timeline');
     
     if (projectsData.length === 0) {
-        projectsTimeline.innerHTML = '<p style="text-align: center; color: var(--text-secondary);">No projects to display yet.</p>';
+        projectsGrid.innerHTML = '<p style="text-align: center; color: var(--text-secondary);">No projects to display yet.</p>';
         return;
     }
     
-    projectsTimeline.innerHTML = projectsData.map((project, index) => `
-        <div class="projects-timeline-item" data-project-index="${index}">
-            <div class="timeline-card">
-                ${project.badge ? `<span class="timeline-badge">${project.badge}</span>` : ''}
-                <div class="timeline-date">${project.date}</div>
-                <div class="timeline-title">${project.title}</div>
-                <div class="timeline-summary">${project.summary}</div>
+    projectsGrid.innerHTML = projectsData.map((project, index) => `
+        <div class="project-card-item" data-project-index="${index}">
+            <div class="project-card">
+                ${project.badge ? `<span class="project-badge">${project.badge}</span>` : ''}
+                <div class="project-date">${project.date}</div>
+                <div class="project-title">${project.title}</div>
+                <div class="project-summary">${project.summary}</div>
             </div>
         </div>
     `).join('');
     
-    // Add click handlers to timeline items
-    const timelineItems = document.querySelectorAll('.projects-timeline-item');
-    timelineItems.forEach(item => {
-        item.addEventListener('click', () => {
-            const projectIndex = parseInt(item.getAttribute('data-project-index'));
+    // Add click handlers to project cards
+    const projectCards = document.querySelectorAll('.project-card-item');
+    projectCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const projectIndex = parseInt(card.getAttribute('data-project-index'));
             showProjectOverlay(projectsData[projectIndex]);
         });
     });
     
     // Re-observe new elements
-    timelineItems.forEach(item => {
-        item.style.opacity = '0';
-        item.style.transform = 'translateX(-20px)';
-        item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(item);
+    projectCards.forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(card);
     });
 }
 
