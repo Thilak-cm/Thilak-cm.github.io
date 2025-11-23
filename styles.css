@@ -161,11 +161,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 8rem 2rem 4rem;
+    padding: 8rem 2rem 4rem 0.5rem;
     max-width: 1200px;
     margin: 0 auto;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
     background: var(--bg-primary);
     gap: 3rem;
 }
@@ -368,8 +368,7 @@ body {
     height: 500px;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    margin-right: -2rem;
+    justify-content: center;
 }
 
 .image-carousel {
