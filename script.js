@@ -111,6 +111,7 @@ const projectsData = [
         description: "Rebuilt a 128M-parameter GPT-2 model from scratch to learn the internals. Implemented tokenizer → embedding → attention stack → LM head, KV-cache optimization, training stability techniques, and positional encoding design tradeoffs.",
         tags: ["PyTorch", "CUDA", "Transformers"],
         projectLink: "https://848k-project-gpt2.streamlit.app/",
+        projectLinkText: "chat with the models i trained here!",
         githubLink: null,
         badge: "Course Project",
         instructor: {
@@ -137,8 +138,20 @@ const projectsData = [
         description: "A comprehensive system for analyzing and predicting flight delays using various machine learning approaches. Features data analysis, model training, and interactive visualizations.",
         tags: [],
         projectLink: "https://flight-delay-analysis-and-prediction-ds602project.streamlit.app/",
+        projectLinkText: "check this project out here",
         githubLink: null,
-        badge: null
+        badge: "Course Project"
+    },
+    {
+        title: "AI-Powered Campus Parking System",
+        date: "Mar 2025",
+        summary: "Won EY InfoChallenge hackathon at UMD. AI system for campus parking management that UMD DOTS wants to fund and scale.",
+        description: "Won the Outstanding AI and Machine Learning Project award at the 2025 EY InfoChallenge hackathon at University of Maryland. Built an AI system to determine parking permissions and improve campus parking management. Proposed the project to UMD's Department of Transportation Services (DOTS), who expressed interest in funding and scaling it to other universities. The system uses AI algorithms to streamline parking enforcement and customer service.",
+        tags: ["AI", "Machine Learning", "Python", "Hackathon"],
+        projectLink: null,
+        githubLink: "https://github.com/Thilak-cm/IC25-hackathon",
+        badge: "Hackathon",
+        award: "Outstanding AI and Machine Learning Project"
     }
 ];
 
@@ -221,11 +234,17 @@ function showProjectOverlay(project) {
         companyInfo = `<div class="overlay-company">${project.badge} at ${project.company}</div>`;
     }
     
+    let awardInfo = '';
+    if (project.award) {
+        awardInfo = `<div class="overlay-award">🏆 ${project.award}</div>`;
+    }
+    
     overlayContent.innerHTML = `
         <h2 class="overlay-title">${project.title}</h2>
         <div class="overlay-date">${project.date}</div>
         ${instructorInfo}
         ${companyInfo}
+        ${awardInfo}
         <p class="overlay-description">${project.description}</p>
         ${project.disclaimer ? `<div class="overlay-disclaimer">${project.disclaimer}</div>` : ''}
         ${project.tags.length > 0 ? `
@@ -235,7 +254,9 @@ function showProjectOverlay(project) {
         ` : ''}
         ${(project.projectLink || project.githubLink) ? `
         <div class="overlay-links">
-            ${project.projectLink ? `<a href="${project.projectLink}" class="overlay-link" target="_blank" rel="noopener noreferrer">View Project</a>` : ''}
+            ${project.projectLink ? (project.projectLinkText ? 
+                `<p style="font-size: 1rem; color: var(--text-secondary); margin-top: 1rem;">${project.projectLinkText.split('here')[0]}<a href="${project.projectLink}" class="overlay-link-inline" target="_blank" rel="noopener noreferrer">here</a>${project.projectLinkText.split('here')[1] || ''}</p>` :
+                `<a href="${project.projectLink}" class="overlay-link" target="_blank" rel="noopener noreferrer">View Project</a>`) : ''}
             ${project.githubLink ? `<a href="${project.githubLink}" class="overlay-link" target="_blank" rel="noopener noreferrer">GitHub</a>` : ''}
         </div>
         ` : ''}

@@ -217,6 +217,41 @@ body {
     line-height: 1.7;
 }
 
+.hero-bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem 0;
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+.hero-bullets li {
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.hero-bullets li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.hero-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.hero-link:hover {
+    text-decoration: underline;
+    color: var(--primary-dark);
+}
+
 .hero-specializations {
     margin: 2rem 0;
     padding: 1.5rem;
@@ -643,27 +678,39 @@ section {
     line-height: 1.8;
 }
 
-.ownership-list {
+.side-quests-list {
     list-style: none;
     padding: 0;
     margin: 1.5rem 0;
     padding-left: 1.5rem;
 }
 
-.ownership-list li {
+.side-quests-list li {
     color: var(--text-secondary);
-    padding: 0.5rem 0;
+    padding: 0.75rem 0;
     position: relative;
     line-height: 1.8;
+    font-size: 1.0625rem;
 }
 
-.ownership-list li::before {
-    content: "•";
+.side-quests-list li::before {
+    content: "→";
     position: absolute;
     left: -1.5rem;
     color: var(--primary-color);
     font-weight: 600;
-    font-size: 1.2rem;
+}
+
+.about-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.about-link:hover {
+    text-decoration: underline;
+    color: var(--primary-dark);
 }
 
 .skills-section {
@@ -1204,6 +1251,13 @@ section {
     font-weight: 500;
 }
 
+.overlay-award {
+    color: var(--primary-color);
+    font-size: 0.9375rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
 .overlay-disclaimer {
     background: rgba(255, 193, 7, 0.1);
     border-left: 3px solid #ffc107;
@@ -1226,12 +1280,31 @@ section {
     text-decoration: none;
     font-weight: 600;
     transition: var(--transition);
-    font-size: 0.9375rem;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    background: rgba(99, 102, 241, 0.1);
+    border-radius: 0.5rem;
+    display: inline-block;
 }
 
 .overlay-link:hover {
     color: var(--primary-dark);
-    text-decoration: underline;
+    background: rgba(99, 102, 241, 0.2);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+.overlay-link-inline {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.overlay-link-inline:hover {
+    color: var(--primary-dark);
+    border-bottom-color: var(--primary-dark);
 }
 
 /* Resume Overlay Modal */
