@@ -68,41 +68,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Projects data structure (reverse chronological order)
+// Projects data structure (ordered as specified)
 const projectsData = [
     {
         title: "Montessori AI SaaS Platform",
         date: "July 2025 - Current",
         summary: "Full SaaS platform with agentic workflows and RAG pipeline for Montessori education.",
-        description: "A full SaaS platform used daily by ~100 teachers across multiple schools, logging ~2,000 student observations/month. Features agentic workflows via MCP, RAG pipeline over foundational Montessori texts, and automated student insight synthesis.",
+        description: "A full SaaS platform used daily by ~100 teachers across multiple schools, logging ~1,000 notes/month. Features agentic workflows via MCP, RAG pipeline over foundational Montessori texts, and automated student insight synthesis.",
         tags: ["React", "Vite", "Firebase", "Firestore", "MCP", "RAG", "GPT"],
         projectLink: null,
         githubLink: null,
         badge: "Freelance"
-    },
-    {
-        title: "Financial Compliance & TDS Reconciliation",
-        date: "Aug 2025 - Nov 2025",
-        summary: "Embedding-based matching system for TDS/GST reconciliation with RAG-style investigation helpers.",
-        description: "A system to reconcile TDS/GST data between client books and government records. Built embedding-based matching workflows, RAG-style ledger investigation helpers, and data cleaning pipelines. Turned hours of manual matching into minutes.",
-        tags: ["FastAPI", "AWS Bedrock", "S3", "Python", "Vector Search"],
-        projectLink: null,
-        githubLink: null,
-        badge: "Freelance"
-    },
-    {
-        title: "Demand Forecasting Transformer",
-        date: "Jan 2025 - May 2025",
-        summary: "Transformer-based sequence model for 12-hour demand forecasting with multi-step prediction.",
-        description: "A transformer-based sequence model that takes 12 hours of time/weather features and predicts the next 12 hours of demand per zone. Features custom dataloaders, multi-step forecasting with sliding windows, and ClearML experiment tracking.",
-        tags: ["PyTorch", "Transformers", "ClearML", "AWS EC2"],
-        projectLink: null,
-        githubLink: null,
-        badge: "Course Project",
-        instructor: {
-            name: "Samet Ayhan",
-            link: "https://scholar.google.com/citations?user=cPnpZ8IAAAAJ&hl=en"
-        }
     },
     {
         title: "GPT-2 From Scratch",
@@ -121,28 +97,6 @@ const projectsData = [
         disclaimer: "⚠️ Note: Due to memory constraints (each .pth file is ~500MB), installing multiple models can crash the app. A reboot will have to be done. We are working on a fix for this as you read this."
     },
     {
-        title: "Agentic Trading Pattern System",
-        date: "Sep 2023 - Dec 2023",
-        summary: "CLI system for extracting metrics and generating actionable trade plans with ML hybrid signals.",
-        description: "A CLI-based system that extracts daily metrics, maps them to next-day timeframes, and outputs actionable trade plans (direction, entry/exit, TP/SL). Features streaming minute-level data processing and rule-based + ML hybrid signals.",
-        tags: ["Python", "pandas", "ML", "Trading"],
-        projectLink: null,
-        githubLink: null,
-        badge: "Internship",
-        company: "CDUS Trading LLC"
-    },
-    {
-        title: "Flight Delay Prediction",
-        date: "Sep 2023 - Dec 2023",
-        summary: "Flight delay analysis and prediction system using machine learning models.",
-        description: "A comprehensive system for analyzing and predicting flight delays using various machine learning approaches. Features data analysis, model training, and interactive visualizations.",
-        tags: [],
-        projectLink: "https://flight-delay-analysis-and-prediction-ds602project.streamlit.app/",
-        projectLinkText: "check this project out here",
-        githubLink: null,
-        badge: "Course Project"
-    },
-    {
         title: "AI-Powered Campus Parking System",
         date: "Mar 2025",
         summary: "Won EY InfoChallenge hackathon at UMD. AI system for campus parking management that UMD DOTS wants to fund and scale.",
@@ -152,6 +106,41 @@ const projectsData = [
         githubLink: "https://github.com/Thilak-cm/IC25-hackathon",
         badge: "Hackathon",
         award: "Outstanding AI and Machine Learning Project"
+    },
+    {
+        title: "Demand Forecasting Transformer",
+        date: "Jan 2025 - May 2025",
+        summary: "Transformer-based sequence model for 12-hour demand forecasting with multi-step prediction.",
+        description: "A transformer-based sequence model that takes 12 hours of time/weather features and predicts the next 12 hours of demand per zone. Features custom dataloaders, multi-step forecasting with sliding windows, and ClearML experiment tracking.",
+        tags: ["PyTorch", "Transformers", "ClearML", "AWS EC2"],
+        projectLink: null,
+        githubLink: null,
+        badge: "Course Project",
+        instructor: {
+            name: "Samet Ayhan",
+            link: "https://scholar.google.com/citations?user=cPnpZ8IAAAAJ&hl=en"
+        }
+    },
+    {
+        title: "Financial Compliance & TDS Reconciliation",
+        date: "Aug 2025 - Nov 2025",
+        summary: "Embedding-based matching system for TDS/GST reconciliation with RAG-style investigation helpers.",
+        description: "A system to reconcile TDS/GST data between client books and government records. Built embedding-based matching workflows, RAG-style ledger investigation helpers, and data cleaning pipelines. Turned hours of manual matching into minutes.",
+        tags: ["FastAPI", "AWS Bedrock", "S3", "Python", "Vector Search"],
+        projectLink: null,
+        githubLink: null,
+        badge: "Freelance"
+    },
+    {
+        title: "Agentic Trading Pattern System",
+        date: "Sep 2023 - Dec 2023",
+        summary: "CLI system for extracting metrics and generating actionable trade plans with ML hybrid signals.",
+        description: "A CLI-based system that extracts daily metrics, maps them to next-day timeframes, and outputs actionable trade plans (direction, entry/exit, TP/SL). Features streaming minute-level data processing and rule-based + ML hybrid signals.",
+        tags: ["Python", "pandas", "ML", "Trading"],
+        projectLink: null,
+        githubLink: null,
+        badge: "Internship",
+        company: "CDUS Trading LLC"
     }
 ];
 
@@ -416,12 +405,36 @@ function initCarousel() {
     startCarousel();
 }
 
+// Handle Montessori link click - scroll to projects and open Montessori card
+function initMontessoriLink() {
+    const montessoriLink = document.getElementById('montessori-link');
+    if (montessoriLink) {
+        montessoriLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            const projectsSection = document.getElementById('projects');
+            if (projectsSection) {
+                const offsetTop = projectsSection.offsetTop - 80;
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+                
+                // Wait for scroll to complete, then open Montessori project (index 0)
+                setTimeout(() => {
+                    showProjectOverlay(projectsData[0]);
+                }, 800);
+            }
+        });
+    }
+}
+
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
     initOverlay();
     initResumeOverlay();
     initCarousel();
     renderProjects();
+    initMontessoriLink();
     
     // Check footer visibility on scroll
     window.addEventListener('scroll', checkFooterVisibility);
