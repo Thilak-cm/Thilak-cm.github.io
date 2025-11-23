@@ -161,7 +161,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 8rem 2rem 4rem 0.5rem;
+    padding: 8rem 2rem 4rem 2rem;
     max-width: 1200px;
     margin: 0 auto;
     position: relative;
@@ -369,6 +369,9 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    max-width: 400px;
+    min-width: 300px;
 }
 
 .image-carousel {
@@ -379,6 +382,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 0 auto;
 }
 
 .carousel-container {
