@@ -84,17 +84,17 @@ const projectsData = [
         title: "GPT-2 From Scratch",
         date: "Aug 2024 - Dec 2024",
         summary: "Rebuilt 128M-parameter GPT-2 from scratch to learn transformer internals and optimization techniques.",
-        description: "Rebuilt a 128M-parameter GPT-2 model from scratch to learn the internals. Implemented tokenizer → embedding → attention stack → LM head, KV-cache optimization, training stability techniques, and positional encoding design tradeoffs.",
+        description: "Rebuilt a 128M-parameter GPT-2 model from scratch to learn the internals. Implemented tokenizer → embedding (ALIBI, KERPLE, FIRE, learned and sinusoidal) → attention stack → LM head. Also implemented inference use. Trained for approximately 2 days on 4 A100 GPUs for ~20k epochs on a 10B tokens FineWeb-Edu dataset (https://huggingface.co/datasets/HuggingFaceFW/fineweb-edu).",
         tags: ["PyTorch", "CUDA", "Transformers"],
         projectLink: "https://848k-project-gpt2.streamlit.app/",
-        projectLinkText: "chat with the models i trained here!",
+        projectLinkText: "Chat with the models I trained here!",
         githubLink: null,
         badge: "Course Project",
         instructor: {
             name: "Jia Bin Huang",
             link: "https://scholar.google.com/citations?user=pp848fYAAAAJ&hl=en"
         },
-        disclaimer: "⚠️ Note: Due to memory constraints (each .pth file is ~500MB), installing multiple models can crash the app. A reboot will have to be done. We are working on a fix for this as you read this."
+        disclaimer: "⚠️ Note: Due to memory constraints (each model is ~500MB), installing multiple models can crash the app. A reboot will have to be done. I'm working on a fix for this as you read this."
     },
     {
         title: "AI-Powered Campus Parking System",
