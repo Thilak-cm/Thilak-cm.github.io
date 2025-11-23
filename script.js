@@ -84,7 +84,7 @@ const projectsData = [
         title: "GPT-2 From Scratch",
         date: "Aug 2024 - Dec 2024",
         summary: "Rebuilt 128M-parameter GPT-2 from scratch to learn transformer internals and optimization techniques.",
-        description: "Rebuilt a 128M-parameter GPT-2 model from scratch to learn the internals. Implemented tokenizer → embedding (ALIBI, KERPLE, FIRE, learned and sinusoidal) → attention stack → LM head. Also implemented inference use. Trained for approximately 2 days on 4 A100 GPUs for ~20k epochs on a 10B tokens FineWeb-Edu dataset (https://huggingface.co/datasets/HuggingFaceFW/fineweb-edu).",
+        description: "Rebuilt a 128M-parameter GPT-2 model from scratch to learn the internals. Implemented tokenizer → embedding (ALIBI, KERPLE, FIRE, learned and sinusoidal) → attention stack → LM head. Also implemented inference use. <a href=\"https://848k-project-gpt2.streamlit.app/\" class=\"overlay-link-inline\" target=\"_blank\" rel=\"noopener noreferrer\">Chat with the models I trained here</a>. Trained for approximately 2 days on 4 A100 GPUs for ~20k epochs on a 10B tokens <a href=\"https://huggingface.co/datasets/HuggingFaceFW/fineweb-edu\" class=\"overlay-link-inline\" target=\"_blank\" rel=\"noopener noreferrer\">FineWeb-Edu</a> dataset.",
         tags: ["PyTorch", "CUDA", "Transformers"],
         projectLink: "https://848k-project-gpt2.streamlit.app/",
         projectLinkText: "Chat with the models I trained here!",
