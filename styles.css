@@ -356,7 +356,7 @@ body {
     overflow: hidden;
     border-radius: 1rem;
     box-shadow: var(--shadow-lg);
-    background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(139, 92, 246, 0.05));
+    background: transparent;
     display: flex;
     align-items: center;
     justify-content: center;
