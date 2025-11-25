@@ -298,7 +298,6 @@ body {
     gap: 1rem;
     flex-wrap: wrap;
     margin-top: 2rem;
-    justify-content: center;
 }
 
 .btn {
@@ -374,8 +373,8 @@ body {
 .hero-visual {
     flex-shrink: 0;
     position: relative;
+    height: 500px;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
