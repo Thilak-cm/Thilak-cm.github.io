@@ -72,10 +72,23 @@ document.addEventListener('DOMContentLoaded', () => {
 const projectsData = [
     {
         title: "Montessori AI SaaS Platform",
-        date: "July 2025 - Current",
-        summary: "Full SaaS platform with agentic workflows and RAG pipeline for Montessori education.",
-        description: "A full SaaS platform used daily by ~100 teachers across multiple schools, logging ~1,000 notes/month. Features agentic workflows via MCP, RAG pipeline over foundational Montessori texts, and automated student insight synthesis.",
-        tags: ["LangChain", "React", "Firebase", "MCP", "RAG"],
+        date: "July 2025 – Current",
+        summary: "A production SaaS used daily by ~100 teachers (~1,000 notes/month) across multiple schools. Built end-to-end: architecture, coding, deployment, monitoring, iteration.",
+        description: `<p><strong>What it does</strong></p>
+<ul>
+<li>Agentic workflows via MCP (automated note processing + task routing)</li>
+<li>RAG pipeline over foundational Montessori texts</li>
+<li>Automated student-insight synthesis + teacher-support features</li>
+<li>Real-time dashboards for classrooms, cohorts, and students</li>
+</ul>
+<p><strong>What I learned (and why it matters)</strong></p>
+<ul>
+<li>True product ownership: handling scaling issues, reliability, UX feedback loops</li>
+<li>How to build "AI-first" systems that integrate tightly with real user workflows</li>
+<li>Shipping features under real constraints—latency, cost, user trust, and uptime</li>
+<li>The difference between "a demo" and a system people depend on every day</li>
+</ul>`,
+        tags: ["LangChain", "Firebase", "MCP", "RAG", "React"],
         projectLink: null,
         githubLink: null,
         badge: "Freelance"
@@ -328,7 +341,7 @@ function showProjectOverlay(project) {
         ${instructorInfo}
         ${companyInfo}
         ${awardInfo}
-        <p class="overlay-description">${project.description}</p>
+        <div class="overlay-description">${project.description}</div>
         ${project.disclaimer ? `<div class="overlay-disclaimer">${project.disclaimer}</div>` : ''}
         ${project.tags && project.tags.length > 0 ? `
         <div class="overlay-tags">

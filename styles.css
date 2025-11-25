@@ -1420,6 +1420,50 @@ section {
     font-size: 1.0625rem;
 }
 
+.overlay-description p {
+    margin-bottom: 1rem;
+}
+
+.overlay-description p:last-child {
+    margin-bottom: 0;
+}
+
+.overlay-description strong {
+    color: var(--text-primary);
+    font-weight: 600;
+    display: block;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.overlay-description strong:first-child {
+    margin-top: 0;
+}
+
+.overlay-description ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 1.5rem;
+}
+
+.overlay-description ul:last-child {
+    margin-bottom: 0;
+}
+
+.overlay-description li {
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.overlay-description li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
 .overlay-tags {
     display: flex;
     flex-wrap: wrap;
