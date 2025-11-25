@@ -563,10 +563,6 @@ function renderSkills() {
         'Git'
     ];
     
-    // Get additional unique tools from projects
-    const uniqueTools = getUniqueTools();
-    const additionalTools = uniqueTools.filter(tool => !coreTools.includes(tool));
-    
     // Clear existing content
     skillsList.innerHTML = '';
     
@@ -591,24 +587,6 @@ function renderSkills() {
     });
     coreToolsLi.appendChild(coreToolsGrid);
     skillsList.appendChild(coreToolsLi);
-    
-    // Add additional tools section if there are any
-    if (additionalTools.length > 0) {
-        const additionalToolsLi = document.createElement('li');
-        additionalToolsLi.className = 'skills-tools-container';
-        const additionalToolsTitle = document.createElement('div');
-        additionalToolsTitle.className = 'skills-tools-title';
-        additionalToolsTitle.textContent = 'And more:';
-        additionalToolsLi.appendChild(additionalToolsTitle);
-        
-        const additionalToolsGrid = document.createElement('div');
-        additionalToolsGrid.className = 'skills-tools-grid';
-        additionalTools.forEach(tool => {
-            additionalToolsGrid.innerHTML += renderTagLogo(tool);
-        });
-        additionalToolsLi.appendChild(additionalToolsGrid);
-        skillsList.appendChild(additionalToolsLi);
-    }
 }
 
 // Initialize

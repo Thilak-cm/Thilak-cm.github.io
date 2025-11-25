@@ -769,11 +769,16 @@ section {
 }
 
 .skills-tools-grid .tag-logo {
-    width: 40px;
-    height: 40px;
-    padding: 0.5rem;
+    width: 64px;
+    height: 64px;
+    padding: 0.75rem;
     background: white;
     box-shadow: var(--shadow-sm);
+}
+
+.skills-tools-grid .tag-logo img {
+    filter: none !important;
+    opacity: 1 !important;
 }
 
 .skills-tools-grid .tag-logo:hover {
