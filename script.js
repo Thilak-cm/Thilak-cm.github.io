@@ -145,11 +145,20 @@ const projectsData = [
 
 // Function to get logo URL for a tag
 function getTagLogo(tag) {
+    // Check for local files first
+    const localFiles = {
+        'MCP': 'mcp.avif'
+    };
+    
+    const normalizedTag = tag.trim();
+    if (localFiles[normalizedTag]) {
+        return localFiles[normalizedTag];
+    }
+    
     const tagMap = {
         'LangChain': 'langchain',
         'React': 'react',
         'Firebase': 'firebase',
-        'MCP': 'openai', // Model Context Protocol
         'RAG': 'openai', // Retrieval Augmented Generation
         'PyTorch': 'pytorch',
         'Distributed Data Parallel (DDP) Training': 'pytorch',
@@ -169,8 +178,6 @@ function getTagLogo(tag) {
         'market pattern recognition': 'python'
     };
     
-    // Normalize tag name and find match
-    const normalizedTag = tag.trim();
     let iconName = tagMap[normalizedTag];
     
     // If no direct match, try to infer from tag name
