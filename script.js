@@ -95,10 +95,20 @@ const projectsData = [
     },
     {
         title: "GPT-2 From Scratch",
-        date: "Aug 2024 - Dec 2024",
-        summary: "Rebuilt 128M-parameter GPT-2 from scratch to learn transformer internals and optimization techniques.",
-        description: "Rebuilt a 128M-parameter GPT-2 model from scratch to learn the internals. Implemented tokenizer → embedding (ALIBI, KERPLE, FIRE, learned and sinusoidal) → attention stack → LM head. Also implemented inference use. <a href=\"https://848k-project-gpt2.streamlit.app/\" class=\"overlay-link-inline\" target=\"_blank\" rel=\"noopener noreferrer\">Chat with the models I trained here</a>. Trained for approximately 2 days on 4 A100 GPUs for ~20k epochs on a 10B tokens <a href=\"https://huggingface.co/datasets/HuggingFaceFW/fineweb-edu\" class=\"overlay-link-inline\" target=\"_blank\" rel=\"noopener noreferrer\">FineWeb-Edu</a> dataset.",
-        tags: ["PyTorch", "Distributed Data Parallel (DDP) Training", "Slurm"],
+        date: "Aug 2024 – Dec 2024",
+        summary: "Rebuilt a 128M-parameter GPT-2 from scratch in PyTorch to deeply understand transformer internals. Implemented the full stack: tokenizer → embeddings → multi-head attention → decoder blocks → LM head → inference pipeline.",
+        description: `<p><strong>What I built</strong></p>
+<p>Rebuilt a 128M-parameter GPT-2 from scratch in PyTorch to deeply understand transformer internals. Implemented the full stack: tokenizer → embeddings (ALiBi, KERPLE, FIRE, learned + sinusoidal) → multi-head attention → decoder blocks → LM head → inference pipeline.</p>
+<p><strong>Why it matters</strong></p>
+<ul>
+<li>Shows I can build foundational model components instead of only calling APIs</li>
+<li>Internalized transformer mechanics by implementing them end-to-end</li>
+<li>Debugged stability issues, KV-cache performance, and positional encoding tradeoffs</li>
+<li>Trained at scale: 2 days on 4×A100s (~20k epochs) on a 10B-token FineWeb-Edu corpus</li>
+</ul>
+<p><strong>Try it live</strong></p>
+<p>→ <a href="https://848k-project-gpt2.streamlit.app/" class="overlay-link-inline" target="_blank" rel="noopener noreferrer">Chat with the models I trained here</a>.</p>`,
+        tags: ["PyTorch", "Linux", "Distributed Data Parallel (DDP)", "Deployment for inference"],
         projectLink: "https://848k-project-gpt2.streamlit.app/",
         projectLinkText: "Chat with the models I trained here!",
         githubLink: null,
@@ -107,7 +117,7 @@ const projectsData = [
             name: "Jia Bin Huang",
             link: "https://scholar.google.com/citations?user=pp848fYAAAAJ&hl=en"
         },
-        disclaimer: "⚠️ Note: Due to memory constraints (each model is ~500MB), installing multiple models can crash the app. A reboot will have to be done. I'm working on a fix for this as you read this."
+        disclaimer: "⚠️ Each model is ~500MB. Installing multiple models may crash the app; reboot required. Actively working on a fix."
     },
     {
         title: "AI-Powered Campus Parking System",
@@ -174,8 +184,11 @@ function getTagLogo(tag) {
         'Firebase': 'firebase',
         'RAG': 'openai', // Retrieval Augmented Generation
         'PyTorch': 'pytorch',
+        'Distributed Data Parallel (DDP)': 'pytorch',
         'Distributed Data Parallel (DDP) Training': 'pytorch',
+        'Linux': 'linux',
         'Slurm': 'linux',
+        'Deployment for inference': 'docker',
         'Transformers': 'huggingface',
         'ClearML': 'python',
         'AWS EC2': 'amazonaws',
