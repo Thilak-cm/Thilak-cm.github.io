@@ -269,6 +269,11 @@ function renderTagLogo(tag) {
     `;
 }
 
+// Function to render text tags (for project cards)
+function renderTagText(tag) {
+    return `<span class="tag">${tag}</span>`;
+}
+
 // Function to render projects grid
 function renderProjects() {
     const projectsGrid = document.getElementById('projects-timeline');
@@ -287,7 +292,7 @@ function renderProjects() {
                 <div class="project-summary">${project.summary}</div>
                 ${project.tags && project.tags.length > 0 ? `
                 <div class="project-tags">
-                    ${project.tags.map(tag => renderTagLogo(tag)).join('')}
+                    ${project.tags.map(tag => renderTagText(tag)).join('')}
                 </div>
                 ` : ''}
             </div>
