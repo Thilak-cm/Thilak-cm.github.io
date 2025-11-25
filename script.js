@@ -145,10 +145,18 @@ const projectsData = [
     },
     {
         title: "Financial Compliance & TDS Reconciliation",
-        date: "Aug 2025 - Nov 2025",
-        summary: "Embedding-based matching system for TDS/GST reconciliation with RAG-style investigation helpers.",
-        description: "A system to reconcile TDS/GST data between client books and government records. Built embedding-based matching workflows, RAG-style ledger investigation helpers, and data cleaning pipelines. Turned hours of manual matching into minutes.",
-        tags: ["Generative UI", "FastAPI", "AWS Bedrock", "S3", "Python"],
+        date: "Aug 2025 – Nov 2025",
+        summary: "A system that reconciles TDS/GST data between client books and government records. Built embedding-based matching, RAG-style investigation helpers, and automated data-cleaning pipelines—reducing hours of manual effort to minutes.",
+        description: `<p><strong>What I built</strong></p>
+<p>A system that reconciles TDS/GST data between client books and government records. Built embedding-based matching, RAG-style investigation helpers, and automated data-cleaning pipelines—reducing hours of manual effort to minutes.</p>
+<p><strong>Why it matters</strong></p>
+<ul>
+<li>Designed AI workflows for a high-stakes, compliance-heavy domain</li>
+<li>Improved accuracy and reliability vs. manual workflows</li>
+<li>Showcases ability to turn messy, real-world enterprise data into structured pipelines</li>
+<li>Demonstrates ML-ops thinking: data ingestion → cleaning → matching → human-in-loop review</li>
+</ul>`,
+        tags: ["Bedrock", "FastAPI", "AWS Lambda/EC2", "S3", "Python"],
         projectLink: null,
         githubLink: null,
         badge: "Freelance"
@@ -192,9 +200,11 @@ function getTagLogo(tag) {
         'Transformers': 'huggingface',
         'ClearML': 'python',
         'AWS EC2': 'amazonaws',
+        'AWS Lambda/EC2': 'amazonaws',
         'Generative UI': 'openai',
         'FastAPI': 'fastapi',
         'AWS Bedrock': 'amazonaws',
+        'Bedrock': 'amazonaws',
         'S3': 'amazonaws',
         'Python': 'python',
         'C++': 'cplusplus',
@@ -216,7 +226,7 @@ function getTagLogo(tag) {
     // If no direct match, try to infer from tag name
     if (!iconName) {
         const lowerTag = normalizedTag.toLowerCase();
-        if (lowerTag.includes('aws') || lowerTag.includes('amazon')) {
+        if (lowerTag.includes('aws') || lowerTag.includes('amazon') || lowerTag.includes('bedrock') || lowerTag.includes('lambda') || lowerTag.includes('s3')) {
             iconName = 'amazonaws';
         } else if (lowerTag.includes('python')) {
             iconName = 'python';
