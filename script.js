@@ -171,6 +171,13 @@ function getTagLogo(tag) {
         'AWS Bedrock': 'amazonaws',
         'S3': 'amazonaws',
         'Python': 'python',
+        'C++': 'cplusplus',
+        'SQL': 'mysql', // Using MySQL as SQL representation
+        'Bash': 'gnubash',
+        'Django': 'django',
+        'Scikit-learn': 'scikitlearn',
+        'Docker': 'docker',
+        'Git': 'git',
         'ETL': 'python',
         'pandas': 'pandas',
         'ML': 'scikitlearn',
@@ -191,6 +198,20 @@ function getTagLogo(tag) {
             iconName = 'react';
         } else if (lowerTag.includes('pytorch') || lowerTag.includes('torch')) {
             iconName = 'pytorch';
+        } else if (lowerTag.includes('django')) {
+            iconName = 'django';
+        } else if (lowerTag.includes('docker')) {
+            iconName = 'docker';
+        } else if (lowerTag.includes('git')) {
+            iconName = 'git';
+        } else if (lowerTag.includes('sql')) {
+            iconName = 'mysql';
+        } else if (lowerTag.includes('bash') || lowerTag.includes('shell')) {
+            iconName = 'gnubash';
+        } else if (lowerTag.includes('c++') || lowerTag.includes('cpp')) {
+            iconName = 'cplusplus';
+        } else if (lowerTag.includes('scikit') || lowerTag.includes('sklearn')) {
+            iconName = 'scikitlearn';
         } else {
             // Try using the tag name directly (Simple Icons uses lowercase, no spaces)
             iconName = normalizedTag.toLowerCase().replace(/\s+/g, '').replace(/[^a-z0-9]/g, '');
@@ -526,8 +547,25 @@ function renderSkills() {
     const skillsList = document.querySelector('.skills-list');
     if (!skillsList) return;
     
+    const introText = "With development costs at an all-time low, I'm not limited by tools or languages—the only limit is curiosity. But my strong suits are:";
+    
+    // Curated list of core technologies
+    const coreTools = [
+        'Python',
+        'C++',
+        'SQL',
+        'Bash',
+        'Django',
+        'React',
+        'PyTorch',
+        'Scikit-learn',
+        'Docker',
+        'Git'
+    ];
+    
+    // Get additional unique tools from projects
     const uniqueTools = getUniqueTools();
-    const introText = "I'm not limited by tools or languages—the only limit is curiosity. With development costs at an all-time low, I can learn and apply any technology needed to solve the problem at hand.";
+    const additionalTools = uniqueTools.filter(tool => !coreTools.includes(tool));
     
     // Clear existing content
     skillsList.innerHTML = '';
@@ -538,21 +576,39 @@ function renderSkills() {
     introLi.textContent = introText;
     skillsList.appendChild(introLi);
     
-    // Add tools section
-    const toolsLi = document.createElement('li');
-    toolsLi.className = 'skills-tools-container';
-    const toolsTitle = document.createElement('div');
-    toolsTitle.className = 'skills-tools-title';
-    toolsTitle.textContent = 'Technologies I\'ve worked with:';
-    toolsLi.appendChild(toolsTitle);
+    // Add core tools section
+    const coreToolsLi = document.createElement('li');
+    coreToolsLi.className = 'skills-tools-container';
+    const coreToolsTitle = document.createElement('div');
+    coreToolsTitle.className = 'skills-tools-title';
+    coreToolsTitle.textContent = 'My strong suits:';
+    coreToolsLi.appendChild(coreToolsTitle);
     
-    const toolsGrid = document.createElement('div');
-    toolsGrid.className = 'skills-tools-grid';
-    uniqueTools.forEach(tool => {
-        toolsGrid.innerHTML += renderTagLogo(tool);
+    const coreToolsGrid = document.createElement('div');
+    coreToolsGrid.className = 'skills-tools-grid';
+    coreTools.forEach(tool => {
+        coreToolsGrid.innerHTML += renderTagLogo(tool);
     });
-    toolsLi.appendChild(toolsGrid);
-    skillsList.appendChild(toolsLi);
+    coreToolsLi.appendChild(coreToolsGrid);
+    skillsList.appendChild(coreToolsLi);
+    
+    // Add additional tools section if there are any
+    if (additionalTools.length > 0) {
+        const additionalToolsLi = document.createElement('li');
+        additionalToolsLi.className = 'skills-tools-container';
+        const additionalToolsTitle = document.createElement('div');
+        additionalToolsTitle.className = 'skills-tools-title';
+        additionalToolsTitle.textContent = 'And more:';
+        additionalToolsLi.appendChild(additionalToolsTitle);
+        
+        const additionalToolsGrid = document.createElement('div');
+        additionalToolsGrid.className = 'skills-tools-grid';
+        additionalTools.forEach(tool => {
+            additionalToolsGrid.innerHTML += renderTagLogo(tool);
+        });
+        additionalToolsLi.appendChild(additionalToolsGrid);
+        skillsList.appendChild(additionalToolsLi);
+    }
 }
 
 // Initialize
