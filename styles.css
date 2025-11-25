@@ -628,6 +628,42 @@ body {
     animation-delay: 3.8s;
 }
 
+.shape-14 {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    top: 20%;
+    right: 10%;
+    animation-delay: 2s;
+}
+
+.shape-15 {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    bottom: 20%;
+    left: 8%;
+    animation-delay: 4.5s;
+}
+
+.shape-16 {
+    width: 90px;
+    height: 90px;
+    background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+    top: 40%;
+    left: 5%;
+    animation-delay: 1.8s;
+}
+
+.shape-17 {
+    width: 75px;
+    height: 75px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    bottom: 15%;
+    right: 8%;
+    animation-delay: 3.2s;
+}
+
 @keyframes float {
     0%, 100% {
         transform: translateY(0) rotate(0deg);
@@ -655,6 +691,40 @@ section {
     color: var(--text-secondary);
     font-size: 1.125rem;
     margin-bottom: 3rem;
+}
+
+/* Skills Section */
+.skills {
+    background: var(--bg-secondary);
+    position: relative;
+}
+
+.skills-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.skills-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+    padding-left: 1.5rem;
+}
+
+.skills-list li {
+    color: var(--text-secondary);
+    padding: 0.75rem 0;
+    position: relative;
+    line-height: 1.8;
+    font-size: 1.0625rem;
+}
+
+.skills-list li::before {
+    content: "→";
+    position: absolute;
+    left: -1.5rem;
+    color: var(--primary-color);
+    font-weight: 600;
 }
 
 /* About Section */
