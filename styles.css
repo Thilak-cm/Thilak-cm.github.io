@@ -714,7 +714,7 @@ section {
     list-style: none;
     padding: 0;
     margin: 1.5rem 0;
-    padding-left: 1.5rem;
+    padding-left: 0;
 }
 
 .skills-list li {
@@ -725,12 +725,60 @@ section {
     font-size: 1.0625rem;
 }
 
-.skills-list li::before {
-    content: "→";
-    position: absolute;
-    left: -1.5rem;
-    color: var(--primary-color);
+.skills-intro {
+    font-size: 1.125rem;
+    line-height: 1.9;
+    color: var(--text-primary);
+    font-weight: 500;
+    margin-bottom: 2rem;
+    padding: 0;
+    text-align: center;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.skills-intro::before {
+    display: none;
+}
+
+.skills-tools-container {
+    margin-top: 2.5rem;
+    padding: 0;
+}
+
+.skills-tools-container::before {
+    display: none;
+}
+
+.skills-tools-title {
+    font-size: 1rem;
     font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.skills-tools-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.skills-tools-grid .tag-logo {
+    width: 40px;
+    height: 40px;
+    padding: 0.5rem;
+    background: white;
+    box-shadow: var(--shadow-sm);
+}
+
+.skills-tools-grid .tag-logo:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-3px);
 }
 
 /* About Section */

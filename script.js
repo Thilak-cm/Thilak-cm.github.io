@@ -494,12 +494,67 @@ function initMontessoriLink() {
     }
 }
 
+// Function to get unique tools from all projects
+function getUniqueTools() {
+    const allTags = new Set();
+    // Exclude long descriptive tags that aren't tool names
+    const excludePatterns = ['Distributed Data Parallel', 'Training', 'time-series forecasting', 'market pattern recognition'];
+    
+    projectsData.forEach(project => {
+        if (project.tags && project.tags.length > 0) {
+            project.tags.forEach(tag => {
+                // Keep tool/tech names, skip long descriptive tags
+                const shouldExclude = excludePatterns.some(pattern => tag.includes(pattern));
+                if (!shouldExclude) {
+                    allTags.add(tag);
+                }
+            });
+        }
+    });
+    return Array.from(allTags).sort();
+}
+
+// Function to render skills section
+function renderSkills() {
+    const skillsList = document.querySelector('.skills-list');
+    if (!skillsList) return;
+    
+    const uniqueTools = getUniqueTools();
+    const introText = "I'm not limited by tools or languages—the only limit is curiosity. With development costs at an all-time low, I can learn and apply any technology needed to solve the problem at hand.";
+    
+    // Clear existing content
+    skillsList.innerHTML = '';
+    
+    // Add intro text
+    const introLi = document.createElement('li');
+    introLi.className = 'skills-intro';
+    introLi.textContent = introText;
+    skillsList.appendChild(introLi);
+    
+    // Add tools section
+    const toolsLi = document.createElement('li');
+    toolsLi.className = 'skills-tools-container';
+    const toolsTitle = document.createElement('div');
+    toolsTitle.className = 'skills-tools-title';
+    toolsTitle.textContent = 'Technologies I\'ve worked with:';
+    toolsLi.appendChild(toolsTitle);
+    
+    const toolsGrid = document.createElement('div');
+    toolsGrid.className = 'skills-tools-grid';
+    uniqueTools.forEach(tool => {
+        toolsGrid.innerHTML += renderTagLogo(tool);
+    });
+    toolsLi.appendChild(toolsGrid);
+    skillsList.appendChild(toolsLi);
+}
+
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
     initOverlay();
     initResumeOverlay();
     initCarousel();
     renderProjects();
+    renderSkills();
     initMontessoriLink();
     
     // Check footer visibility on scroll
