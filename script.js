@@ -143,6 +143,68 @@ const projectsData = [
     }
 ];
 
+// Function to get logo URL for a tag
+function getTagLogo(tag) {
+    const tagMap = {
+        'LangChain': 'langchain',
+        'React': 'react',
+        'Firebase': 'firebase',
+        'MCP': 'openai', // Model Context Protocol
+        'RAG': 'openai', // Retrieval Augmented Generation
+        'PyTorch': 'pytorch',
+        'Distributed Data Parallel (DDP) Training': 'pytorch',
+        'Slurm': 'linux',
+        'Transformers': 'huggingface',
+        'ClearML': 'python',
+        'AWS EC2': 'amazonaws',
+        'Generative UI': 'openai',
+        'FastAPI': 'fastapi',
+        'AWS Bedrock': 'amazonaws',
+        'S3': 'amazonaws',
+        'Python': 'python',
+        'ETL': 'python',
+        'pandas': 'pandas',
+        'ML': 'scikitlearn',
+        'time-series forecasting': 'python',
+        'market pattern recognition': 'python'
+    };
+    
+    // Normalize tag name and find match
+    const normalizedTag = tag.trim();
+    let iconName = tagMap[normalizedTag];
+    
+    // If no direct match, try to infer from tag name
+    if (!iconName) {
+        const lowerTag = normalizedTag.toLowerCase();
+        if (lowerTag.includes('aws') || lowerTag.includes('amazon')) {
+            iconName = 'amazonaws';
+        } else if (lowerTag.includes('python')) {
+            iconName = 'python';
+        } else if (lowerTag.includes('react')) {
+            iconName = 'react';
+        } else if (lowerTag.includes('pytorch') || lowerTag.includes('torch')) {
+            iconName = 'pytorch';
+        } else {
+            // Try using the tag name directly (Simple Icons uses lowercase, no spaces)
+            iconName = normalizedTag.toLowerCase().replace(/\s+/g, '').replace(/[^a-z0-9]/g, '');
+        }
+    }
+    
+    // Use Simple Icons CDN
+    return `https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/${iconName}.svg`;
+}
+
+// Function to render tag logos
+function renderTagLogo(tag) {
+    const logoUrl = getTagLogo(tag);
+    return `
+        <span class="tag-logo" title="${tag}">
+            <img src="${logoUrl}" alt="${tag}" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
+            <span class="tag-fallback" style="display: none;">${tag}</span>
+        </span>
+    `;
+}
+
 // Function to render projects grid
 function renderProjects() {
     const projectsGrid = document.getElementById('projects-timeline');
@@ -159,6 +221,11 @@ function renderProjects() {
                 <div class="project-date">${project.date}</div>
                 <div class="project-title">${project.title}</div>
                 <div class="project-summary">${project.summary}</div>
+                ${project.tags && project.tags.length > 0 ? `
+                <div class="project-tags">
+                    ${project.tags.map(tag => renderTagLogo(tag)).join('')}
+                </div>
+                ` : ''}
             </div>
         </div>
     `).join('');
@@ -235,9 +302,9 @@ function showProjectOverlay(project) {
         ${awardInfo}
         <p class="overlay-description">${project.description}</p>
         ${project.disclaimer ? `<div class="overlay-disclaimer">${project.disclaimer}</div>` : ''}
-        ${project.tags.length > 0 ? `
+        ${project.tags && project.tags.length > 0 ? `
         <div class="overlay-tags">
-            ${project.tags.map(tag => `<span class="overlay-tag">${tag}</span>`).join('')}
+            ${project.tags.map(tag => renderTagLogo(tag)).join('')}
         </div>
         ` : ''}
         ${(project.projectLink || project.githubLink) ? `
