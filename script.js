@@ -289,7 +289,6 @@ function renderProjects() {
                 ${project.badge ? `<span class="project-badge">${project.badge}</span>` : ''}
                 <div class="project-date">${project.date}</div>
                 <div class="project-title">${project.title}</div>
-                <div class="project-summary">${project.summary}</div>
                 ${project.tags && project.tags.length > 0 ? `
                 <div class="project-tags">
                     ${project.tags.map(tag => renderTagText(tag)).join('')}
