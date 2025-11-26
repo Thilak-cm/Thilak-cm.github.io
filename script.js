@@ -121,13 +121,16 @@ const projectsData = [
     },
     {
         title: "AI-Powered Campus Parking System",
-        date: "Mar 2025",
+        date: "Mar 2025 -- We built this near-MVP product in under a week—sheesh!",
         summary: "Dual-interface parking assistant: conversational UX for students plus admin dashboard + rule engine that UMD DOTS wants to fund and scale.",
         description: `<p><strong>What I built</strong></p>
 <ul>
-<li>An AI-powered parking system with a dual interface</li>
-<li>User-facing chatbot that answers “Can I park here now with my permit?” and suggests alternatives</li>
-<li>Admin-facing dashboard with an intuitive UI to update rules for events, construction, and dynamic lot restrictions</li>
+<li>An AI-powered parking system with a dual interface
+    <ul>
+        <li>User-facing chatbot that answers “Can I park here now with my permit?” and suggests alternatives</li>
+        <li>Admin-facing dashboard with an intuitive UI to update rules for events, construction, and dynamic lot restrictions</li>
+    </ul>
+</li>
 <li>An intricately designed rule-based permission engine powering both interfaces</li>
 <li>An interactive frontend that feels like Google Maps augmented with UMD parking lots, showing color-coded permissions, violations, and alternative-lot recommendations</li>
 <li>End-to-end flow: conversational query → rule evaluation → violation/fine logic → navigation via Google/Apple Maps</li>
@@ -139,7 +142,6 @@ const projectsData = [
 <li>Reduces wrongful parking and improves enforcement accuracy through real-time, consistent rule interpretation</li>
 <li>Demonstrates ability to design and ship an AI-first, multi-interface product—strong enough that UMD DOTS expressed interest in funding and scaling it</li>
 </ul>`,
-        durationNote: "We built this near-MVP product in under a week—sheesh!",
         projectLink: null,
         githubLink: "https://github.com/Thilak-cm/IC25-hackathon",
         badge: "Hackathon",
@@ -396,7 +398,6 @@ function showProjectOverlay(project) {
         ${instructorInfo}
         ${companyInfo}
         ${metaItems.length ? `<div class="overlay-meta">${metaItems.join('')}</div>` : ''}
-        ${project.durationNote ? `<div class="overlay-duration">${project.durationNote}</div>` : ''}
         <div class="overlay-description">${project.description}</div>
         ${project.disclaimer ? `<div class="overlay-disclaimer">${project.disclaimer}</div>` : ''}
         ${project.tags && project.tags.length > 0 ? `
