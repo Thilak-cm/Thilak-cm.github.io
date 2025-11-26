@@ -166,15 +166,21 @@ const projectsData = [
     {
         title: "Financial Compliance & TDS Reconciliation",
         date: "Aug 2025 – Nov 2025",
-        summary: "A system that reconciles TDS/GST data between client books and government records. Built embedding-based matching, RAG-style investigation helpers, and automated data-cleaning pipelines—reducing hours of manual effort to minutes.",
+        summary: "Turned a painful Excel-heavy TDS/GST reconciliation workflow into an AI-assisted product with generative UI, embedding-based matching, and automated data pipelines.",
         description: `<p><strong>What I built</strong></p>
-<p>A system that reconciles TDS/GST data between client books and government records. Built embedding-based matching, RAG-style investigation helpers, and automated data-cleaning pipelines—reducing hours of manual effort to minutes.</p>
+<ul>
+<li>A generative UI system where the LLM can propose UI mutations (insert/move/delete/update components) via structured JSON tool-calls—turning TDS reconciliation into an AI-assisted workflow rather than a static dashboard</li>
+<li>Embedding-based matching pipelines for reconciling TDS/GST records across books vs. government data, with RAG-style ledger investigation helpers</li>
+<li>Automated data-cleaning + consolidation pipelines to preprocess messy enterprise financial data</li>
+<li>Multi-pass matching logic (perfect match → consolidation → semantic clustering) wrapped in a FastAPI backend with AWS Bedrock for model inference</li>
+</ul>
 <p><strong>Why it matters</strong></p>
 <ul>
-<li>Designed AI workflows for a high-stakes, compliance-heavy domain</li>
-<li>Improved accuracy and reliability vs. manual workflows</li>
-<li>Showcases ability to turn messy, real-world enterprise data into structured pipelines</li>
-<li>Demonstrates ML-ops thinking: data ingestion → cleaning → matching → human-in-loop review</li>
+<li>Showcases AI-native product thinking: instead of a human clicking UI, the LLM helps design and adjust the UI itself, accelerating analyst workflows</li>
+<li>Transforms a traditionally painful, Excel-heavy, multi-hour reconciliation process into a minutes-long, semi-automated flow</li>
+<li>Demonstrates ability to architect systems combining tool-calling agents + deterministic pipelines + enterprise constraints</li>
+<li>Proves strong ML-ops thinking: ingestion → cleaning → multi-pass matching → human-in-loop review → generative UI suggestions</li>
+<li>Solved a real enterprise problem with messy, high-stakes, compliance-driven data—something few candidates have experience with</li>
 </ul>`,
         tags: ["Bedrock", "FastAPI", "AWS Lambda/EC2", "S3", "Python"],
         projectLink: null,
