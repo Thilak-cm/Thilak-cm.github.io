@@ -1525,6 +1525,13 @@ section {
     flex-wrap: wrap;
 }
 
+.overlay-duration {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
 .overlay-award {
     color: var(--primary-color);
     font-size: 0.875rem;

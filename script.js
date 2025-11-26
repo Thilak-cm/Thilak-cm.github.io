@@ -125,19 +125,21 @@ const projectsData = [
         summary: "Dual-interface parking assistant: conversational UX for students plus admin dashboard + rule engine that UMD DOTS wants to fund and scale.",
         description: `<p><strong>What I built</strong></p>
 <ul>
-<li>AI-powered parking assistant with chatbot UX that answers “Can I park here now with my permit?” and suggests alternatives</li>
-<li>Admin dashboard to update rules for events, construction, and dynamic lot restrictions</li>
-<li>Rule-based permission engine powering both interfaces and flagging violations</li>
-<li>Interactive map (Google Maps + UMD lots) with color-coded permissions, violations, and alternative-lot recommendations</li>
-<li>End-to-end flow: conversational query → rule evaluation → violation/fine logic → Google/Apple Maps navigation</li>
+<li>An AI-powered parking system with a dual interface</li>
+<li>User-facing chatbot that answers “Can I park here now with my permit?” and suggests alternatives</li>
+<li>Admin-facing dashboard with an intuitive UI to update rules for events, construction, and dynamic lot restrictions</li>
+<li>An intricately designed rule-based permission engine powering both interfaces</li>
+<li>An interactive frontend that feels like Google Maps augmented with UMD parking lots, showing color-coded permissions, violations, and alternative-lot recommendations</li>
+<li>End-to-end flow: conversational query → rule evaluation → violation/fine logic → navigation via Google/Apple Maps</li>
 </ul>
 <p><strong>Why it matters</strong></p>
 <ul>
-<li>Replaces UMD’s Excel + manpower workflow that is slow, error-prone, and inefficient</li>
-<li>Makes a confusing, rule-heavy system instantly understandable for students and admins</li>
-<li>Reduces wrongful parking and improves enforcement accuracy via consistent rule interpretation</li>
-<li>Demonstrates I can design and ship an AI-first, multi-interface product—UMD DOTS expressed interest in funding and scaling it</li>
+<li>Replaces UMD’s current Excel + heavy manpower workflow, which is slow, error-prone, and a breeding ground for inefficiencies</li>
+<li>Converts a confusing, rule-heavy system into something instantly understandable for both students and administrators</li>
+<li>Reduces wrongful parking and improves enforcement accuracy through real-time, consistent rule interpretation</li>
+<li>Demonstrates ability to design and ship an AI-first, multi-interface product—strong enough that UMD DOTS expressed interest in funding and scaling it</li>
 </ul>`,
+        durationNote: "We built this near-MVP product in under a week—sheesh!",
         projectLink: null,
         githubLink: "https://github.com/Thilak-cm/IC25-hackathon",
         badge: "Hackathon",
@@ -394,6 +396,7 @@ function showProjectOverlay(project) {
         ${instructorInfo}
         ${companyInfo}
         ${metaItems.length ? `<div class="overlay-meta">${metaItems.join('')}</div>` : ''}
+        ${project.durationNote ? `<div class="overlay-duration">${project.durationNote}</div>` : ''}
         <div class="overlay-description">${project.description}</div>
         ${project.disclaimer ? `<div class="overlay-disclaimer">${project.disclaimer}</div>` : ''}
         ${project.tags && project.tags.length > 0 ? `
