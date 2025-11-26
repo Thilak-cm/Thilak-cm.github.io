@@ -127,6 +127,7 @@ const projectsData = [
         projectLink: null,
         githubLink: "https://github.com/Thilak-cm/IC25-hackathon",
         badge: "Hackathon",
+        tags: ["Python", "JavaScript", "C++", "CMake", "CSS", "HTML"],
         award: "Outstanding AI and Machine Learning Project"
     },
     {
@@ -587,20 +588,20 @@ function renderSkills() {
     const skillsList = document.querySelector('.skills-list');
     if (!skillsList) return;
     
-    const introText = "With development costs at an all-time low, I'm not limited by tools or languages—the only limit is curiosity. But my strong suits are:";
+    const introText = "With development costs at an all-time low, I'm not limited by tools or languages—the only limit is curiosity and drive. But my strong suits are:";
     
     // Curated list of core technologies
     const coreTools = [
         'Python',
-        'C++',
-        'SQL',
-        'Bash',
-        'Django',
-        'React',
+        'Git',
         'PyTorch',
         'Scikit-learn',
-        'Docker',
-        'Git'
+        'Bash',
+        'Django',
+        'C++',
+        'SQL',
+        'React',
+        'Docker'
     ];
     
     // Clear existing content
