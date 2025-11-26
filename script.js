@@ -121,7 +121,7 @@ const projectsData = [
     },
     {
         title: "AI-Powered Campus Parking System",
-        date: "Mar 2025 -- We built this near-MVP product in under a week—sheesh!",
+        date: "Mar 2025 (We built this near-MVP product in under a week—sheesh!)",
         summary: "Dual-interface parking assistant: conversational UX for students plus admin dashboard + rule engine that UMD DOTS wants to fund and scale.",
         description: `<p><strong>What I built</strong></p>
 <ul>
