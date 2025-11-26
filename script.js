@@ -122,8 +122,22 @@ const projectsData = [
     {
         title: "AI-Powered Campus Parking System",
         date: "Mar 2025",
-        summary: "Won EY InfoChallenge hackathon at UMD. AI system for campus parking management that UMD DOTS wants to fund and scale.",
-        description: "Won the Outstanding AI and Machine Learning Project award at the 2025 EY InfoChallenge hackathon at University of Maryland. Built an AI system to determine parking permissions and improve campus parking management. Proposed the project to UMD's Department of Transportation Services (DOTS), who expressed interest in funding and scaling it to other universities. The system uses AI algorithms to streamline parking enforcement and customer service.",
+        summary: "Dual-interface parking assistant: conversational UX for students plus admin dashboard + rule engine that UMD DOTS wants to fund and scale.",
+        description: `<p><strong>What I built</strong></p>
+<ul>
+<li>AI-powered parking assistant with chatbot UX that answers “Can I park here now with my permit?” and suggests alternatives</li>
+<li>Admin dashboard to update rules for events, construction, and dynamic lot restrictions</li>
+<li>Rule-based permission engine powering both interfaces and flagging violations</li>
+<li>Interactive map (Google Maps + UMD lots) with color-coded permissions, violations, and alternative-lot recommendations</li>
+<li>End-to-end flow: conversational query → rule evaluation → violation/fine logic → Google/Apple Maps navigation</li>
+</ul>
+<p><strong>Why it matters</strong></p>
+<ul>
+<li>Replaces UMD’s Excel + manpower workflow that is slow, error-prone, and inefficient</li>
+<li>Makes a confusing, rule-heavy system instantly understandable for students and admins</li>
+<li>Reduces wrongful parking and improves enforcement accuracy via consistent rule interpretation</li>
+<li>Demonstrates I can design and ship an AI-first, multi-interface product—UMD DOTS expressed interest in funding and scaling it</li>
+</ul>`,
         projectLink: null,
         githubLink: "https://github.com/Thilak-cm/IC25-hackathon",
         badge: "Hackathon",
@@ -643,4 +657,3 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', checkFooterVisibility);
     checkFooterVisibility(); // Check initial state
 });
-
