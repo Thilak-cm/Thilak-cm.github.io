@@ -184,6 +184,14 @@ body {
     line-height: 1.2;
     margin-bottom: 1.5rem;
     color: var(--text-primary);
+    white-space: nowrap;
+    overflow-wrap: normal;
+}
+
+@media (max-width: 768px) {
+    .hero-title {
+        white-space: normal;
+    }
 }
 
 .gradient-text {
