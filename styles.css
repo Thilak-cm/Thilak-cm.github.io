@@ -264,6 +264,51 @@ body {
     color: var(--primary-dark);
 }
 
+.hero-inline-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.25rem 0.75rem;
+    margin-left: 0.5rem;
+    border-radius: 999px;
+    border: 1px solid rgba(99, 102, 241, 0.18);
+    background: rgba(99, 102, 241, 0.04);
+    font-size: 0.95em;
+    font-weight: 600;
+    color: var(--text-primary);
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+.hero-inline-cta-label {
+    text-decoration: none;
+}
+
+.hero-inline-cta-icon {
+    font-size: 0.9em;
+    transform: translateY(0.5px);
+}
+
+.hero-inline-cta:hover,
+.hero-inline-cta:focus-visible {
+    background: #ffffff;
+    border-color: rgba(79, 70, 229, 0.6);
+    color: var(--primary-dark);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+}
+
+.hero-inline-cta:hover .hero-inline-cta-label,
+.hero-inline-cta:focus-visible .hero-inline-cta-label {
+    text-decoration: underline;
+}
+
+.hero-inline-cta:focus-visible {
+    outline: none;
+}
+
 .hero-specializations {
     margin: 2rem 0;
     padding: 1.5rem;
