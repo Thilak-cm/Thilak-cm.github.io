@@ -311,7 +311,7 @@ body {
 
 .hero-visual .hero-buttons {
     justify-content: center;
-    margin-top: 1.5rem;
+    margin-top: 1.25rem;
 }
 
 .hero-specializations {
@@ -433,6 +433,7 @@ body {
     position: relative;
     height: 500px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
