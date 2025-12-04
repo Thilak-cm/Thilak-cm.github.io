@@ -622,7 +622,7 @@ function renderSkills() {
     const skillsList = document.querySelector('.skills-list');
     if (!skillsList) return;
     
-    const introText = "With development costs at an all-time low, I'm not limited by tools or languages—the only limit is curiosity and drive.";
+    const introText = "With development costs at an all-time low, I'm not limited by tools or languages—the only limit is curiosity and drive. But my strong suits are:";
     
     // Curated list of core technologies
     const coreTools = [
