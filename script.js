@@ -105,7 +105,6 @@ const projectsData = [
 </ul>
 <p><strong>Section 2: AI-Native System Design & Execution</strong></p>
 <ul>
-<li>Built a React frontend with a Firebase backend, optimized for fast iteration, real-time updates, and operational simplicity in a non-technical user environment.</li>
 <li>Designed an agentic chatbot interface capable of answering complex, cross-cutting queries (e.g., student progress trends, targeted parent-meeting prep) rather than single-turn Q&A.</li>
 <li>Orchestrated multi-step AI workflows using tools to fetch relevant context, route requests to task-specific agents, and assemble structured responses from heterogeneous data sources.</li>
 <li>Added an evaluation and grounding layer to validate outputs before user delivery, prioritizing trust, explainability, and safe failure modes over raw model capability.</li>
@@ -143,26 +142,25 @@ const projectsData = [
     {
         title: "AI-Powered Campus Parking System",
         date: "Mar 2025",
-        summary: "Dual-interface parking assistant: conversational UX for students plus admin dashboard + rule engine that UMD DOTS wants to fund and scale.",
+        summary: "Dual-interface parking assistant: conversational UX for students plus admin dashboard + rule engine that UMD Parking Department wants to fund and scale.",
         disclaimer: "We built this near-MVP product in under a week—sheesh!",
-        description: `<p><strong>What I built</strong></p>
+        description: `<p><strong>Section 1: Problem Framing & System Design</strong></p>
 <ul>
-<li>An AI-powered parking system with a dual interface
+<li>Tackled a highly rule-dense, real-world problem: campus parking policies span permits, time windows, events, construction overrides, and exceptions—making correct decisions hard for both students and administrators.</li>
+<li>Translated messy, human-written policies into a deterministic rule engine, explicitly modeling precedence, overrides, and edge cases instead of relying on probabilistic LLM behavior.</li>
+<li>Designed the system under extreme time constraints, shipping a near-MVP in under a week by ruthlessly scoping to the smallest architecture that could still handle real policy complexity.</li>
+</ul>
+<p><strong>Section 2: Multi-Interface AI Execution</strong></p>
+<ul>
+<li>Built a dual-interface product:
     <ul>
-        <li>User-facing chatbot that answers “Can I park here now with my permit?” and suggests alternatives</li>
-        <li>Admin-facing dashboard with an intuitive UI to update rules for events, construction, and dynamic lot restrictions</li>
+        <li>a student-facing conversational assistant answering questions like "Can I park here right now?"</li>
+        <li>an admin dashboard for updating rules tied to events, construction, and dynamic restrictions.</li>
     </ul>
 </li>
-<li>An intricately designed rule-based permission engine powering both interfaces</li>
-<li>An interactive frontend that feels like Google Maps augmented with UMD parking lots, showing color-coded permissions, violations, and alternative-lot recommendations</li>
-<li>End-to-end flow: conversational query → rule evaluation → violation/fine logic → navigation via Google/Apple Maps</li>
-</ul>
-<p><strong>Why it matters</strong></p>
-<ul>
-<li>Replaces UMD’s current Excel + heavy manpower workflow, which is slow, error-prone, and a breeding ground for inefficiencies</li>
-<li>Converts a confusing, rule-heavy system into something instantly understandable for both students and administrators</li>
-<li>Reduces wrongful parking and improves enforcement accuracy through real-time, consistent rule interpretation</li>
-<li>Demonstrates ability to design and ship an AI-first, multi-interface product—strong enough that UMD DOTS expressed interest in funding and scaling it</li>
+<li>Integrated an AI layer as a reasoning interface, not an authority, using it to interpret user intent and query the rule engine rather than decide outcomes itself.</li>
+<li>Designed for explainability and trust, surfacing why a parking action was allowed or denied, including violations, fines, and alternative lot suggestions.</li>
+<li>Demonstrated system-level product thinking, strong enough that UMD Parking Department expressed interest in funding and scaling the solution beyond the hackathon context.</li>
 </ul>`,
         projectLink: null,
         githubLink: "https://github.com/Thilak-cm/IC25-hackathon",
