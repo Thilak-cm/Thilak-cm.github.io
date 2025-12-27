@@ -95,20 +95,20 @@ const projectsData = [
     {
         title: "Montessori AI SaaS Platform",
         date: "July 2025 – Current",
-        summary: "A production SaaS used daily by ~100 teachers (~1,000 notes/month) across multiple schools. Built end-to-end: architecture, coding, deployment, monitoring, iteration.",
-        description: `<p><strong>What it does</strong></p>
+        summary: "A production SaaS used daily by ~100 teachers (~2,000 notes/month) across 4 branches in 2 states in India. Built end-to-end: architecture, coding, deployment, monitoring, iteration.",
+        description: `<p><strong>Section 1: Product Ownership & User Discovery</strong></p>
 <ul>
-<li>Agentic workflows via MCP (automated note processing + task routing)</li>
-<li>RAG pipeline over foundational Montessori texts</li>
-<li>Automated student-insight synthesis + teacher-support features</li>
-<li>Real-time dashboards for classrooms, cohorts, and students</li>
+<li>Identified and scoped an ambiguous real-world problem: Montessori teachers generate high-quality qualitative insight through daily micro-observations, but friction-heavy workflows cause most of it to be lost and unusable at the school level.</li>
+<li>Led direct user discovery with teachers and administrators to define success criteria centered on zero-friction note logging, psychological safety around raw observations, and multilingual access for regional teachers.</li>
+<li>Owned the product end-to-end: problem definition, system architecture, data modeling, AI workflow design, frontend/backend implementation, deployment, and iteration—no handoff points.</li>
+<li>Shipped and maintained a production system used daily by ~100 teachers logging ~2,000 notes/month across 4 branches in 2 states in India, operating under real constraints of reliability, latency, cost, and user trust.</li>
 </ul>
-<p><strong>What I learned (and why it matters)</strong></p>
+<p><strong>Section 2: AI-Native System Design & Execution</strong></p>
 <ul>
-<li>True product ownership: handling scaling issues, reliability, UX feedback loops</li>
-<li>How to build "AI-first" systems that integrate tightly with real user workflows</li>
-<li>Shipping features under real constraints—latency, cost, user trust, and uptime</li>
-<li>The difference between "a demo" and a system people depend on every day</li>
+<li>Built a React frontend with a Firebase backend, optimized for fast iteration, real-time updates, and operational simplicity in a non-technical user environment.</li>
+<li>Designed an agentic chatbot interface capable of answering complex, cross-cutting queries (e.g., student progress trends, targeted parent-meeting prep) rather than single-turn Q&A.</li>
+<li>Orchestrated multi-step AI workflows using tools to fetch relevant context, route requests to task-specific agents, and assemble structured responses from heterogeneous data sources.</li>
+<li>Added an evaluation and grounding layer to validate outputs before user delivery, prioritizing trust, explainability, and safe failure modes over raw model capability.</li>
 </ul>`,
         tags: ["LangChain", "Firebase", "MCP", "RAG", "React"],
         projectLink: null,
@@ -423,19 +423,18 @@ function showProjectOverlay(project) {
         const awardContent = project.awardLink ? `<a href="${project.awardLink}" target="_blank" rel="noopener noreferrer" class="overlay-award-link">${project.award}</a>` : project.award;
         metaItems.push(`<div class="overlay-award">🏆 ${awardContent}</div>`);
     }
-    if (project.githubLink) {
-        metaItems.push(`
-            <a href="${project.githubLink}" class="overlay-github-icon" target="_blank" rel="noopener noreferrer" title="View on GitHub" aria-label="GitHub repository">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path d="M12 0C5.373 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.565 21.8 24 17.303 24 12c0-6.627-5.373-12-12-12z"/>
-                </svg>
-            </a>
-        `);
-    }
+    
+    const githubIconHtml = project.githubLink ? `
+        <a href="${project.githubLink}" class="overlay-date-github" target="_blank" rel="noopener noreferrer" title="View on GitHub" aria-label="GitHub repository">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 0C5.373 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.565 21.8 24 17.303 24 12c0-6.627-5.373-12-12-12z"/>
+            </svg>
+        </a>
+    ` : '';
     
     overlayContent.innerHTML = `
         <h2 class="overlay-title">${project.title}</h2>
-        <div class="overlay-date">${project.date}</div>
+        <div class="overlay-date">${project.date}${githubIconHtml}</div>
         ${instructorInfo}
         ${companyInfo}
         ${metaItems.length ? `<div class="overlay-meta">${metaItems.join('')}</div>` : ''}
