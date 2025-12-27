@@ -172,7 +172,7 @@ const projectsData = [
         award: "Outstanding AI and Machine Learning Project"
     },
     {
-        title: "End-to-End ML Pipeline: ETL → Training → Deployment",
+        title: "NYC Taxi Demand Forecasting CICD Pipeline",
         date: "Jan 2025 - May 2025",
         summary: "Built a production CI/CD pipeline orchestrating ETL, ML training, weekly retraining, version control, and web app deployment using AWS CodePipeline and Docker.",
         description: `<p><strong>What I built</strong></p>
@@ -180,10 +180,7 @@ const projectsData = [
 <li>End-to-end CI/CD pipeline orchestrating ETL → ML training → model versioning → web application deployment</li>
 <li>ETL pipeline pulling from multiple data sources: decompression, merging, feature transformation, and data validation</li>
 <li>Automated weekly retraining workflow with data validation, model evaluation, and rollback capabilities</li>
-<li>Containerized ML training and web application services using Docker for reproducible deployments</li>
-<li>Model and artifact versioning system for reproducibility, rollback, and experiment tracking</li>
-<li>ClearML integration for comprehensive experiment logging, telemetry, and debugging across the entire pipeline</li>
-<li>Multi-stage AWS CodePipeline (build → test → deploy) with environment promotion and automated quality gates</li>
+<li>Containerized ML training and web application services using Docker with multi-stage AWS CodePipeline deployment</li>
 </ul>
 <p><strong>Why it matters</strong></p>
 <ul>
@@ -191,8 +188,6 @@ const projectsData = [
 <li>Shows infrastructure-as-code thinking: building reproducible, scalable pipeline architecture</li>
 <li>Highlights observability-first approach: ClearML logging for debugging, monitoring, and performance tracking</li>
 <li>Proves ability to build reliable ML systems that run autonomously without manual intervention</li>
-<li>Bridges ML engineering and DevOps: containerization, CI/CD best practices, and infrastructure automation</li>
-<li>Demonstrates end-to-end ownership: from raw data ingestion to deployed web application serving predictions</li>
 </ul>`,
         tags: ["AWS CodePipeline", "Docker", "ClearML", "MLOps", "CI/CD", "ETL"],
         projectLink: null,
