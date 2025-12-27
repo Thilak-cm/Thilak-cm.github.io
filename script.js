@@ -1,3 +1,25 @@
+// Dark Mode functionality
+function initDarkMode() {
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    const html = document.documentElement;
+    
+    // Check for saved theme preference or default to light mode
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    html.setAttribute('data-theme', savedTheme);
+    
+    // Toggle dark mode
+    function toggleDarkMode() {
+        const currentTheme = html.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+    }
+    
+    if (darkModeToggle) {
+        darkModeToggle.addEventListener('click', toggleDarkMode);
+    }
+}
+
 // Navigation functionality
 const navbar = document.getElementById('navbar');
 const hamburger = document.getElementById('hamburger');
@@ -150,11 +172,29 @@ const projectsData = [
         award: "Outstanding AI and Machine Learning Project"
     },
     {
-        title: "Demand Forecasting Transformer",
+        title: "End-to-End ML Pipeline: ETL → Training → Deployment",
         date: "Jan 2025 - May 2025",
-        summary: "Transformer-based sequence model for 12-hour demand forecasting with multi-step prediction.",
-        description: "A transformer-based sequence model that takes 12 hours of time/weather features and predicts the next 12 hours of demand per zone. Features custom dataloaders, multi-step forecasting with sliding windows, and ClearML experiment tracking.",
-        tags: ["PyTorch", "Transformers", "ClearML", "AWS EC2"],
+        summary: "Built a production CI/CD pipeline orchestrating ETL, ML training, weekly retraining, version control, and web app deployment using AWS CodePipeline and Docker.",
+        description: `<p><strong>What I built</strong></p>
+<ul>
+<li>End-to-end CI/CD pipeline orchestrating ETL → ML training → model versioning → web application deployment</li>
+<li>ETL pipeline pulling from multiple data sources: decompression, merging, feature transformation, and data validation</li>
+<li>Automated weekly retraining workflow with data validation, model evaluation, and rollback capabilities</li>
+<li>Containerized ML training and web application services using Docker for reproducible deployments</li>
+<li>Model and artifact versioning system for reproducibility, rollback, and experiment tracking</li>
+<li>ClearML integration for comprehensive experiment logging, telemetry, and debugging across the entire pipeline</li>
+<li>Multi-stage AWS CodePipeline (build → test → deploy) with environment promotion and automated quality gates</li>
+</ul>
+<p><strong>Why it matters</strong></p>
+<ul>
+<li>Demonstrates production MLOps skills: automated retraining, version control, and deployment orchestration</li>
+<li>Shows infrastructure-as-code thinking: building reproducible, scalable pipeline architecture</li>
+<li>Highlights observability-first approach: ClearML logging for debugging, monitoring, and performance tracking</li>
+<li>Proves ability to build reliable ML systems that run autonomously without manual intervention</li>
+<li>Bridges ML engineering and DevOps: containerization, CI/CD best practices, and infrastructure automation</li>
+<li>Demonstrates end-to-end ownership: from raw data ingestion to deployed web application serving predictions</li>
+</ul>`,
+        tags: ["AWS CodePipeline", "Docker", "ClearML", "MLOps", "CI/CD", "ETL"],
         projectLink: null,
         githubLink: null,
         badge: "Course Project",
@@ -666,6 +706,7 @@ function renderSkills() {
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
+    initDarkMode();
     initOverlay();
     initResumeOverlay();
     initCarousel();
