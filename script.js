@@ -96,15 +96,18 @@ const projectsData = [
         title: "Montessori AI SaaS Platform",
         date: "July 2025 – Current",
         summary: "A production SaaS used daily by ~100 teachers (~2,000 notes/month) across 4 branches in 2 states in India. Built end-to-end: architecture, coding, deployment, monitoring, iteration.",
-        description: `<p><strong>Section 1: Product Ownership & User Discovery</strong></p>
+        description: `<p><strong>Adoption</strong></p>
+<p>Deployed across 4 branches, 2 states in India, currently in use by 100+ teachers logging 2,000 notes/month.</p>
+<p><strong>Product Ownership & User Discovery</strong></p>
 <ul>
 <li>Identified and scoped an ambiguous real-world problem: Montessori teachers generate high-quality qualitative insight through daily micro-observations, but friction-heavy workflows cause most of it to be lost and unusable at the school level.</li>
 <li>Led direct user discovery with teachers and administrators to define success criteria centered on zero-friction note logging, psychological safety around raw observations, and multilingual access for regional teachers.</li>
 <li>Owned the product end-to-end: problem definition, system architecture, data modeling, AI workflow design, frontend/backend implementation, deployment, and iteration—no handoff points.</li>
-<li>Shipped and maintained a production system used daily by ~100 teachers logging ~2,000 notes/month across 4 branches in 2 states in India, operating under real constraints of reliability, latency, cost, and user trust.</li>
+<li>Shipped and maintained a production system operating under real constraints of reliability, latency, cost, and user trust.</li>
 </ul>
-<p><strong>Section 2: AI-Native System Design & Execution</strong></p>
+<p><strong>AI-Native System Design & Execution</strong></p>
 <ul>
+<li>Built a React frontend with a Firebase backend, optimized for fast iteration, real-time updates, and operational simplicity in a non-technical user environment.</li>
 <li>Designed an agentic chatbot interface capable of answering complex, cross-cutting queries (e.g., student progress trends, targeted parent-meeting prep) rather than single-turn Q&A.</li>
 <li>Orchestrated multi-step AI workflows using tools to fetch relevant context, route requests to task-specific agents, and assemble structured responses from heterogeneous data sources.</li>
 <li>Added an evaluation and grounding layer to validate outputs before user delivery, prioritizing trust, explainability, and safe failure modes over raw model capability.</li>
@@ -132,7 +135,7 @@ const projectsData = [
         tags: ["PyTorch", "Linux", "Distributed Data Parallel (DDP)", "Deployment for inference"],
         projectLink: null,
         projectLinkText: null,
-        githubLink: null,
+        githubLink: "https://github.com/Thilak-cm/GPT2-Stripped-Comparative-Insights",
         badge: "Course Project",
         instructor: {
             name: "Jia Bin Huang",
