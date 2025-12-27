@@ -107,7 +107,6 @@ const projectsData = [
 </ul>
 <p><strong>AI-Native System Design & Execution</strong></p>
 <ul>
-<li>Built a React frontend with a Firebase backend, optimized for fast iteration, real-time updates, and operational simplicity in a non-technical user environment.</li>
 <li>Designed an agentic chatbot interface capable of answering complex, cross-cutting queries (e.g., student progress trends, targeted parent-meeting prep) rather than single-turn Q&A.</li>
 <li>Orchestrated multi-step AI workflows using tools to fetch relevant context, route requests to task-specific agents, and assemble structured responses from heterogeneous data sources.</li>
 <li>Added an evaluation and grounding layer to validate outputs before user delivery, prioritizing trust, explainability, and safe failure modes over raw model capability.</li>
