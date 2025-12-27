@@ -197,20 +197,13 @@ const projectsData = [
         title: "Financial Compliance & TDS Reconciliation",
         date: "Aug 2025 – Nov 2025",
         summary: "Turned a painful Excel-heavy TDS/GST reconciliation workflow into an AI-assisted product with generative UI, embedding-based matching, and automated data pipelines.",
-        description: `<p><strong>What I built</strong></p>
-<ul>
-<li>A generative UI system where the LLM can propose UI mutations (insert/move/delete/update components) via structured JSON tool-calls—turning TDS reconciliation into an AI-assisted workflow rather than a static dashboard</li>
-<li>Embedding-based matching pipelines for reconciling TDS/GST records across books vs. government data, with RAG-style ledger investigation helpers</li>
-<li>Automated data-cleaning + consolidation pipelines to preprocess messy enterprise financial data</li>
-<li>Multi-pass matching logic (perfect match → consolidation → semantic clustering) wrapped in a FastAPI backend with AWS Bedrock for model inference</li>
-</ul>
-<p><strong>Why it matters</strong></p>
-<ul>
-<li>Showcases AI-native product thinking: instead of a human clicking UI, the LLM helps design and adjust the UI itself, accelerating analyst workflows</li>
-<li>Transforms a traditionally painful, Excel-heavy, multi-hour reconciliation process into a minutes-long, semi-automated flow</li>
-<li>Demonstrates ability to architect systems combining tool-calling agents + deterministic pipelines + enterprise constraints</li>
-<li>Proves strong ML-ops thinking: ingestion → cleaning → multi-pass matching → human-in-loop review → generative UI suggestions</li>
-<li>Solved a real enterprise problem with messy, high-stakes, compliance-driven data—something few candidates have experience with</li>
+        description: `<ul>
+<li>Rebuilt a manual, Excel-heavy TDS/GST reconciliation workflow into an AI-assisted system designed for correctness, auditability, and speed in a financial compliance setting.</li>
+<li>Explicitly separated deterministic logic from LLM intelligence, using rules for correctness-critical operations and LLMs only where ambiguity existed (matching, investigation, summarization).</li>
+<li>Designed the UI around transparency and control, clearly surfacing when AI was involved, maintaining paper trails, and requiring explicit user approval for any LLM-powered destructive or irreversible action.</li>
+<li>Implemented a generative UI layer, where the LLM proposes UI mutations and investigative paths instead of directly modifying data—keeping humans firmly in the loop.</li>
+<li>Built embedding-based reconciliation pipelines to match records across books and government data, handling partial matches, consolidation, and semantic clustering.</li>
+<li>Delivered an AI-native enterprise workflow, accelerating reconciliation from hours to minutes without compromising explainability or compliance requirements.</li>
 </ul>`,
         tags: ["Bedrock", "FastAPI", "AWS Lambda/EC2", "S3", "Python"],
         projectLink: null,
