@@ -176,19 +176,13 @@ const projectsData = [
         title: "NYC Taxi Demand Forecasting CICD Pipeline",
         date: "Jan 2025 - May 2025",
         summary: "Built a production CI/CD pipeline orchestrating ETL, ML training, weekly retraining, version control, and web app deployment using AWS CodePipeline and Docker.",
-        description: `<p><strong>What I built</strong></p>
-<ul>
-<li>End-to-end CI/CD pipeline orchestrating ETL → ML training → model versioning → web application deployment</li>
-<li>ETL pipeline pulling from multiple data sources: decompression, merging, feature transformation, and data validation</li>
-<li>Automated weekly retraining workflow with data validation, model evaluation, and rollback capabilities</li>
-<li>Containerized ML training and web application services using Docker with multi-stage AWS CodePipeline deployment</li>
-</ul>
-<p><strong>Why it matters</strong></p>
-<ul>
-<li>Demonstrates production MLOps skills: automated retraining, version control, and deployment orchestration</li>
-<li>Shows infrastructure-as-code thinking: building reproducible, scalable pipeline architecture</li>
-<li>Highlights observability-first approach: ClearML logging for debugging, monitoring, and performance tracking</li>
-<li>Proves ability to build reliable ML systems that run autonomously without manual intervention</li>
+        description: `<ul>
+<li>Built an end-to-end ML pipeline spanning ETL, feature engineering, model training, evaluation, versioning, and web app deployment.</li>
+<li>Designed a robust ETL system ingesting and validating data from multiple sources, handling decompression, schema drift, and data quality checks.</li>
+<li>Automated weekly retraining and deployment with CI/CD, including evaluation gates and rollback mechanisms to manage data and concept drift.</li>
+<li>Containerized training and serving workflows using Docker, enabling reproducible experiments and environment parity across stages.</li>
+<li>Implemented observability-first MLOps practices, with centralized logging and experiment tracking to diagnose failures and performance regressions.</li>
+<li>Optimized for unattended operation, prioritizing reliability, reproducibility, and safe degradation over model novelty.</li>
 </ul>`,
         tags: ["AWS CodePipeline", "Docker", "ClearML", "MLOps", "CI/CD", "ETL"],
         projectLink: null,
@@ -226,8 +220,13 @@ const projectsData = [
     {
         title: "Agentic Trading Pattern System",
         date: "Sep 2023 - Dec 2023",
-        summary: "CLI system for extracting metrics and generating actionable trade plans with ML hybrid signals.",
-        description: "A CLI-based system that extracts daily metrics, maps them to next-day timeframes, and outputs actionable trade plans (direction, entry/exit, TP/SL). Features streaming minute-level data processing and rule-based + ML hybrid signals.",
+        summary: "Reliability-first trading decision system with robust ETL/inference pipelines, hybrid ML + rule-based logic, and time-series feature engineering for live market operations.",
+        description: `<ul>
+<li>Built a reliability-first trading decision system, where real traders depend on uninterrupted data and inference pipelines to act during live market windows.</li>
+<li>Designed highly robust ETL and inference pipelines with validation checks, fallback data paths, and graceful degradation to prevent single-point failures from blocking trading.</li>
+<li>Implemented hybrid ML + rule-based logic, using ML models for pattern detection and probabilistic signals while enforcing deterministic rules for execution constraints and risk controls.</li>
+<li>Engineered time-series feature pipelines that map prior-day and intraday signals into next-day, time-bounded trade plans.</li>
+</ul>`,
         tags: ["ETL", "Python", "pandas", "ML", "time-series forecasting", "market pattern recognition"],
         projectLink: null,
         githubLink: null,
@@ -346,7 +345,7 @@ function renderProjects() {
     }
     
     projectsGrid.innerHTML = projectsData.map((project, index) => `
-        <div class="project-card-item" data-project-index="${index}">
+        <div class="project-card-item ${index < 2 ? 'featured' : ''}" data-project-index="${index}">
             <div class="project-card">
                 ${project.badge ? `<span class="project-badge">${project.badge}</span>` : ''}
                 <div class="project-date">${project.date}</div>

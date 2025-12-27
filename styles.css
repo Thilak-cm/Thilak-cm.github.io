@@ -1076,6 +1076,61 @@ section {
     flex-direction: column;
 }
 
+/* Featured project cards with animated golden border */
+.project-card-item.featured .project-card {
+    position: relative;
+    overflow: visible;
+}
+
+.project-card-item.featured .project-card::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 1rem;
+    padding: 3px;
+    background: conic-gradient(
+        from 0deg,
+        #fbbf24,
+        #f59e0b,
+        #d97706,
+        #f59e0b,
+        #fbbf24,
+        #f59e0b,
+        #d97706,
+        #f59e0b,
+        #fbbf24
+    );
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: golden-border-rotate 3s linear infinite;
+    z-index: -1;
+}
+
+.project-card-item.featured .project-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: calc(1rem - 3px);
+    background: white;
+    z-index: -1;
+}
+
+[data-theme="dark"] .project-card-item.featured .project-card::after {
+    background: var(--bg-primary);
+}
+
+@keyframes golden-border-rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 [data-theme="dark"] .project-card-item .project-card {
     background: var(--bg-primary);
 }
