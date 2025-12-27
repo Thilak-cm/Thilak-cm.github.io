@@ -1082,81 +1082,30 @@ section {
     flex-direction: column;
 }
 
-/* Featured project cards with golden snake border animation */
-.project-card-item.featured .project-card {
-    position: relative;
-    overflow: hidden;
-    border: 2px solid var(--border-color);
-    background-image: 
-        radial-gradient(circle at 20% 30%, rgba(251, 191, 36, 0.4) 2px, transparent 2px),
-        radial-gradient(circle at 80% 70%, rgba(245, 158, 11, 0.4) 1.5px, transparent 1.5px),
-        radial-gradient(circle at 50% 20%, rgba(251, 191, 36, 0.3) 1px, transparent 1px),
-        radial-gradient(circle at 30% 80%, rgba(245, 158, 11, 0.3) 1.5px, transparent 1.5px),
-        radial-gradient(circle at 70% 40%, rgba(251, 191, 36, 0.35) 1px, transparent 1px),
-        radial-gradient(circle at 15% 60%, rgba(245, 158, 11, 0.25) 1px, transparent 1px);
-    background-size: 100% 100%;
-    animation: sparkle-twinkle 4s ease-in-out infinite;
-}
-
-/* Golden snake border - travels around the perimeter */
+/* Featured project cards - gold star */
 .project-card-item.featured .project-card::before {
-    content: '';
+    content: '★';
     position: absolute;
-    inset: -2px;
-    border-radius: 1rem;
-    padding: 2px;
-    background: conic-gradient(
-        from 0deg,
-        transparent 0deg,
-        transparent 300deg,
-        #fbbf24 310deg,
-        #f59e0b 320deg,
-        #fbbf24 330deg,
-        transparent 340deg,
-        transparent 360deg
-    );
-    -webkit-mask: 
-        linear-gradient(#fff 0 0) content-box, 
-        linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask: 
-        linear-gradient(#fff 0 0) content-box, 
-        linear-gradient(#fff 0 0);
-    mask-composite: exclude;
-    animation: golden-snake-border 4s linear infinite;
-    z-index: 1;
-}
-
-.project-card-item.featured .project-card::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: calc(1rem - 2px);
+    top: -8px;
+    left: -8px;
+    font-size: 2rem;
+    color: #fbbf24;
     background: white;
-    z-index: -1;
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    z-index: 2;
+    box-shadow: var(--shadow-sm);
 }
 
-[data-theme="dark"] .project-card-item.featured .project-card::after {
+[data-theme="dark"] .project-card-item.featured .project-card::before {
     background: var(--bg-primary);
 }
 
-@keyframes golden-snake-border {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-@keyframes sparkle-twinkle {
-    0%, 100% {
-        opacity: 0.3;
-    }
-    50% {
-        opacity: 0.6;
-    }
-}
 
 [data-theme="dark"] .project-card-item .project-card {
     background: var(--bg-primary);
