@@ -196,7 +196,7 @@ const projectsData = [
 </ul>`,
         tags: ["AWS CodePipeline", "Docker", "ClearML", "MLOps", "CI/CD", "ETL"],
         projectLink: null,
-        githubLink: null,
+        githubLink: "https://github.com/Thilak-cm/ML605-Project",
         badge: "Course Project",
         instructor: {
             name: "Samet Ayhan",
