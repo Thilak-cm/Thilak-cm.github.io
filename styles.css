@@ -917,12 +917,18 @@ section {
 }
 
 [data-theme="dark"] .skills-tools-grid .tag-logo {
-    background: var(--bg-primary);
+    background: var(--bg-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .skills-tools-grid .tag-logo img {
     filter: none !important;
     opacity: 1 !important;
+}
+
+[data-theme="dark"] .skills-tools-grid .tag-logo img {
+    filter: invert(1) brightness(1.2);
+    opacity: 0.9 !important;
 }
 
 .skills-tools-grid .tag-logo:hover {
@@ -1076,44 +1082,56 @@ section {
     flex-direction: column;
 }
 
-/* Featured project cards with animated golden border */
+/* Featured project cards with golden snake border animation */
 .project-card-item.featured .project-card {
     position: relative;
-    overflow: visible;
+    overflow: hidden;
+    border: 2px solid var(--border-color);
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(251, 191, 36, 0.4) 2px, transparent 2px),
+        radial-gradient(circle at 80% 70%, rgba(245, 158, 11, 0.4) 1.5px, transparent 1.5px),
+        radial-gradient(circle at 50% 20%, rgba(251, 191, 36, 0.3) 1px, transparent 1px),
+        radial-gradient(circle at 30% 80%, rgba(245, 158, 11, 0.3) 1.5px, transparent 1.5px),
+        radial-gradient(circle at 70% 40%, rgba(251, 191, 36, 0.35) 1px, transparent 1px),
+        radial-gradient(circle at 15% 60%, rgba(245, 158, 11, 0.25) 1px, transparent 1px);
+    background-size: 100% 100%;
+    animation: sparkle-twinkle 4s ease-in-out infinite;
 }
 
+/* Golden snake border - travels around the perimeter */
 .project-card-item.featured .project-card::before {
     content: '';
     position: absolute;
-    inset: -3px;
+    inset: -2px;
     border-radius: 1rem;
-    padding: 3px;
+    padding: 2px;
     background: conic-gradient(
         from 0deg,
-        #fbbf24,
-        #f59e0b,
-        #d97706,
-        #f59e0b,
-        #fbbf24,
-        #f59e0b,
-        #d97706,
-        #f59e0b,
-        #fbbf24
+        transparent 0deg,
+        transparent 300deg,
+        #fbbf24 310deg,
+        #f59e0b 320deg,
+        #fbbf24 330deg,
+        transparent 340deg,
+        transparent 360deg
     );
     -webkit-mask: 
         linear-gradient(#fff 0 0) content-box, 
         linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
+    mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
     mask-composite: exclude;
-    animation: golden-border-rotate 3s linear infinite;
-    z-index: -1;
+    animation: golden-snake-border 4s linear infinite;
+    z-index: 1;
 }
 
 .project-card-item.featured .project-card::after {
     content: '';
     position: absolute;
     inset: 0;
-    border-radius: calc(1rem - 3px);
+    border-radius: calc(1rem - 2px);
     background: white;
     z-index: -1;
 }
@@ -1122,12 +1140,21 @@ section {
     background: var(--bg-primary);
 }
 
-@keyframes golden-border-rotate {
+@keyframes golden-snake-border {
     0% {
         transform: rotate(0deg);
     }
     100% {
         transform: rotate(360deg);
+    }
+}
+
+@keyframes sparkle-twinkle {
+    0%, 100% {
+        opacity: 0.3;
+    }
+    50% {
+        opacity: 0.6;
     }
 }
 
@@ -1151,6 +1178,7 @@ section {
     font-size: 0.75rem;
     font-weight: 600;
     white-space: nowrap;
+    z-index: 2;
 }
 
 .project-date {
@@ -1271,6 +1299,11 @@ section {
     height: 100%;
     object-fit: contain;
     transition: var(--transition);
+}
+
+[data-theme="dark"] .tag-logo img {
+    filter: invert(1) brightness(1.1);
+    opacity: 0.85;
 }
 
 /* Tooltip */
