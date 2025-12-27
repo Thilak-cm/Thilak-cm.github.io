@@ -109,20 +109,20 @@ const projectsData = [
 <p><strong>Try it live</strong></p>
 <p>→ <a href="https://848k-project-gpt2.streamlit.app/" class="overlay-link-inline" target="_blank" rel="noopener noreferrer">Chat with the models I trained here</a>.</p>`,
         tags: ["PyTorch", "Linux", "Distributed Data Parallel (DDP)", "Deployment for inference"],
-        projectLink: "https://848k-project-gpt2.streamlit.app/",
-        projectLinkText: "Chat with the models I trained here!",
+        projectLink: null,
+        projectLinkText: null,
         githubLink: null,
         badge: "Course Project",
         instructor: {
             name: "Jia Bin Huang",
             link: "https://scholar.google.com/citations?user=pp848fYAAAAJ&hl=en"
-        },
-        disclaimer: "⚠️ Each model is ~500MB. Installing multiple models may crash the app; reboot required. Actively working on a fix."
+        }
     },
     {
         title: "AI-Powered Campus Parking System",
-        date: "Mar 2025 (We built this near-MVP product in under a week—sheesh!)",
+        date: "Mar 2025",
         summary: "Dual-interface parking assistant: conversational UX for students plus admin dashboard + rule engine that UMD DOTS wants to fund and scale.",
+        disclaimer: "We built this near-MVP product in under a week—sheesh!",
         description: `<p><strong>What I built</strong></p>
 <ul>
 <li>An AI-powered parking system with a dual interface
@@ -408,7 +408,7 @@ function showProjectOverlay(project) {
         ${project.disclaimer ? `<div class="overlay-disclaimer">${project.disclaimer}</div>` : ''}
         ${project.tags && project.tags.length > 0 ? `
         <div class="overlay-tags">
-            ${project.tags.map(tag => renderTagLogo(tag)).join('')}
+            ${project.tags.map(tag => renderTagText(tag)).join('')}
         </div>
         ` : ''}
         ${project.projectLink ? `
