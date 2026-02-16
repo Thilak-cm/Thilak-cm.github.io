@@ -81,52 +81,6 @@ function initReveal() {
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 }
 
-// ============================================
-// CAROUSEL
-// ============================================
-let currentIndex = 0;
-let carouselTimer;
-
-function initCarousel() {
-    const images = document.querySelectorAll('.carousel-image');
-    const dots = document.querySelectorAll('.dot');
-    const frame = document.querySelector('.carousel-frame');
-    if (!images.length) return;
-
-    function show(index) {
-        images.forEach((img, i) => img.classList.toggle('active', i === index));
-        dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
-        currentIndex = index;
-    }
-
-    function next() {
-        show((currentIndex + 1) % images.length);
-    }
-
-    function startAuto() {
-        stopAuto();
-        carouselTimer = setInterval(next, 5000);
-    }
-
-    function stopAuto() {
-        if (carouselTimer) clearInterval(carouselTimer);
-    }
-
-    dots.forEach(dot => {
-        dot.addEventListener('click', () => {
-            show(parseInt(dot.dataset.index));
-            startAuto();
-        });
-    });
-
-    if (frame) {
-        frame.addEventListener('mouseenter', stopAuto);
-        frame.addEventListener('mouseleave', startAuto);
-    }
-
-    show(0);
-    startAuto();
-}
 
 // ============================================
 // PROJECT DATA
@@ -482,7 +436,6 @@ function renderSkills() {
 document.addEventListener('DOMContentLoaded', () => {
     initTheme();
     initNav();
-    initCarousel();
     initProjectOverlay();
     initResumeOverlay();
     renderProjects();

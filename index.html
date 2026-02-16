@@ -72,61 +72,68 @@
     <section id="home" class="hero">
         <div class="hero-glow"></div>
         <div class="hero-inner">
-            <div class="hero-content">
-                <div class="hero-status" style="--delay: 0">
-                    <span class="status-pulse"></span>
-                    Seeking AI/ML Engineer &amp; Forward Deployed roles
-                </div>
-                <h1 class="hero-name" style="--delay: 1">
+            <!-- Row 1: Status -->
+            <div class="hero-status" style="--delay: 0">
+                <span class="status-pulse"></span>
+                Seeking AI/ML Engineer &amp; Forward Deployed roles
+            </div>
+
+            <!-- Row 2: Name + Photo side by side -->
+            <div class="hero-namerow" style="--delay: 1">
+                <h1 class="hero-name">
                     Thilak<br><span class="hero-name-last">Mohan</span>
                 </h1>
-                <p class="hero-role" style="--delay: 2">AI Engineer</p>
-                <p class="hero-pitch" style="--delay: 3">
-                    Just graduated from UMD with a focus in ML. I build zero-to-one AI-native
-                    SaaS products with tight user feedback loops&mdash;and write foundational models
-                    from scratch to deeply understand what's under the hood.
-                </p>
-                <div class="hero-metrics-wrap" style="--delay: 4">
-                    <span class="metrics-label">My SaaS &mdash; Live in Production</span>
-                    <div class="hero-metrics">
-                        <div class="metric">
-                            <span class="metric-value">4</span>
-                            <span class="metric-label">Schools</span>
-                        </div>
-                        <div class="metric">
-                            <span class="metric-value">100+</span>
-                            <span class="metric-label">Teachers</span>
-                        </div>
-                        <div class="metric">
-                            <span class="metric-value">4K+</span>
-                            <span class="metric-label">Notes / Month</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="hero-actions" style="--delay: 5">
-                    <button class="btn-primary" id="resume-btn">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                            <polyline points="7 10 12 15 17 10"></polyline>
-                            <line x1="12" y1="15" x2="12" y2="3"></line>
-                        </svg>
-                        Download Resume
-                    </button>
-                    <a href="#projects" class="btn-outline">View Projects</a>
+                <div class="hero-photo">
+                    <img src="IMG_7989.JPG" alt="Thilak Mohan">
                 </div>
             </div>
-            <div class="hero-visual" style="--delay: 3">
-                <div class="carousel-frame">
-                    <img src="IMG_7989.JPG" alt="Thilak Mohan" class="carousel-image active">
-                    <img src="IMG_4384.JPG" alt="Thilak Mohan" class="carousel-image">
-                    <img src="IMG_1925.jpg" alt="Thilak Mohan" class="carousel-image">
-                    <img src="IMG_4633.jpg" alt="Thilak Mohan" class="carousel-image">
+
+            <!-- Row 3: Two-column body -->
+            <div class="hero-body">
+                <div class="hero-left">
+                    <p class="hero-role" style="--delay: 2">AI Engineer</p>
+                    <p class="hero-pitch" style="--delay: 3">
+                        Just graduated from UMD with a focus in ML. I build zero-to-one AI-native
+                        SaaS products with tight user feedback loops&mdash;and write foundational models
+                        from scratch to deeply understand what's under the hood.
+                    </p>
+                    <div class="hero-actions" style="--delay: 4">
+                        <button class="btn-primary" id="resume-btn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            Download Resume
+                        </button>
+                        <a href="#projects" class="btn-outline">View Projects</a>
+                    </div>
                 </div>
-                <div class="carousel-dots" id="carousel-dots">
-                    <button class="dot active" data-index="0" aria-label="Image 1"></button>
-                    <button class="dot" data-index="1" aria-label="Image 2"></button>
-                    <button class="dot" data-index="2" aria-label="Image 3"></button>
-                    <button class="dot" data-index="3" aria-label="Image 4"></button>
+                <div class="hero-right">
+                    <p class="saas-intro" style="--delay: 4">What began as a side project for my mom's Montessori school is now used daily across 4 branches in 2 states.</p>
+                    <div class="saas-card" style="--delay: 5">
+                        <div class="saas-card-header">
+                            <h3 class="saas-card-name">Montessori AI Platform</h3>
+                            <span class="saas-card-live">
+                                <span class="status-pulse"></span>
+                                Live
+                            </span>
+                        </div>
+                        <div class="saas-card-stats">
+                            <div class="saas-stat">
+                                <span class="saas-stat-value">4</span>
+                                <span class="saas-stat-label">Schools</span>
+                            </div>
+                            <div class="saas-stat">
+                                <span class="saas-stat-value">100+</span>
+                                <span class="saas-stat-label">Teachers</span>
+                            </div>
+                            <div class="saas-stat">
+                                <span class="saas-stat-value">4K+</span>
+                                <span class="saas-stat-label">Notes / Month</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
