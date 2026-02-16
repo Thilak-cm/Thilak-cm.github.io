@@ -271,6 +271,11 @@ section {
     gap: 0.25rem;
 }
 
+/* Hide mobile menu extras on desktop */
+.mobile-menu-extras {
+    display: none;
+}
+
 .nav-icon {
     display: inline-flex;
     align-items: center;
@@ -296,8 +301,8 @@ section {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 34px;
-    height: 34px;
+    width: 44px;
+    height: 44px;
     border-radius: var(--radius-sm);
     color: var(--text-muted);
     transition: color var(--transition), background var(--transition);
@@ -339,7 +344,11 @@ section {
     display: none;
     flex-direction: column;
     gap: 5px;
-    padding: 4px;
+    padding: 10px;
+    min-width: 44px;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
 }
 
 .hamburger span {
@@ -1026,10 +1035,10 @@ section {
 
 .overlay-close {
     position: absolute;
-    top: 1rem;
-    right: 1rem;
-    width: 36px;
-    height: 36px;
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 44px;
+    height: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1288,6 +1297,7 @@ section {
         max-width: 420px;
         margin-left: auto;
         margin-right: auto;
+        text-align: center;
     }
 
     .skills-grid {
@@ -1326,6 +1336,11 @@ section {
         pointer-events: auto;
     }
 
+    .nav-link {
+        font-size: 1rem;
+        padding: 0.5rem 0;
+    }
+
     .status-chip {
         display: none;
     }
@@ -1334,9 +1349,56 @@ section {
         display: none;
     }
 
+    /* Mobile menu social links & status (injected by JS) */
+    .mobile-menu-extras {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid var(--border);
+    }
+
+    .mobile-status-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: var(--success);
+    }
+
+    .mobile-socials {
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    .mobile-socials a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        border-radius: var(--radius-sm);
+        color: var(--text-secondary);
+        background: var(--bg-elevated);
+        border: 1px solid var(--border);
+        transition: color var(--transition), border-color var(--transition);
+    }
+
+    .mobile-socials a:hover {
+        color: var(--text-primary);
+        border-color: var(--accent-border);
+    }
+
+    /* Hero mobile */
+    .hero {
+        min-height: auto;
+        padding-top: 64px;
+        padding-bottom: 2rem;
+    }
+
     .hero-inner {
-        padding: 2.5rem 1.25rem;
-        gap: 2.5rem;
+        padding: 2rem 1.25rem;
     }
 
     .hero-name {
@@ -1344,20 +1406,36 @@ section {
     }
 
     .hero-namerow {
-        gap: 1.5rem;
-        flex-wrap: wrap;
+        gap: 1.25rem;
         justify-content: center;
     }
 
     .hero-photo {
-        width: 100px;
-        height: 100px;
+        width: 90px;
+        height: 90px;
+    }
+
+    .hero-status {
+        margin-bottom: 1rem;
+        font-size: 0.75rem;
     }
 
     .hero-body {
         text-align: center;
+        gap: 2rem;
     }
 
+    .hero-role {
+        margin-bottom: 1.25rem;
+        font-size: 1rem;
+    }
+
+    .hero-pitch {
+        font-size: 0.95rem;
+        margin-bottom: 2rem;
+    }
+
+    /* SaaS card mobile */
     .saas-card {
         padding: 1.25rem;
     }
@@ -1367,13 +1445,18 @@ section {
     }
 
     .saas-stat {
-        padding: 0.9rem 0.5rem;
+        padding: 0.85rem 0.4rem;
     }
 
     .saas-stat-value {
         font-size: 1.35rem;
     }
 
+    .saas-stat-label {
+        font-size: 0.6rem;
+    }
+
+    /* Buttons stack on mobile */
     .hero-actions {
         flex-direction: column;
         align-items: center;
@@ -1384,29 +1467,51 @@ section {
         width: 100%;
         max-width: 280px;
         justify-content: center;
+        min-height: 48px;
     }
 
+    /* Projects */
     .projects-grid {
         grid-template-columns: 1fr;
     }
 
+    .project-card {
+        padding: 1.5rem;
+    }
+
+    .project-title {
+        font-size: 1.2rem;
+    }
+
+    /* Skills */
     .skills-grid {
         grid-template-columns: repeat(3, 1fr);
         gap: 0.75rem;
     }
 
+    .skill-item {
+        padding: 1rem 0.4rem;
+    }
+
+    /* About */
     .about-grid {
         grid-template-columns: 1fr;
     }
 
+    /* Sections */
     .section {
-        padding: 5rem 0;
+        padding: 4rem 0;
+    }
+
+    .section-header {
+        margin-bottom: 2.5rem;
     }
 
     .container {
         padding: 0 1.25rem;
     }
 
+    /* Footer */
     .footer-inner {
         flex-direction: column;
         align-items: flex-start;
@@ -1418,9 +1523,40 @@ section {
         gap: 0.75rem;
     }
 
+    .footer-links a {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+    }
+
+    /* Overlays — near fullscreen on mobile */
+    .overlay {
+        padding: 0.5rem;
+    }
+
     .overlay-panel {
-        padding: 1.5rem;
-        max-height: 95vh;
+        padding: 1.25rem;
+        max-height: 96vh;
+        border-radius: var(--radius-md);
+    }
+
+    .ov-title {
+        font-size: 1.4rem;
+        padding-right: 2rem;
+    }
+
+    .ov-description {
+        font-size: 0.85rem;
+    }
+
+    .ov-description li {
+        padding-left: 0.5rem;
+    }
+
+    /* Resume overlay mobile */
+    .overlay-panel-wide {
+        max-height: 96vh;
+        border-radius: var(--radius-md);
     }
 
     .resume-header {
@@ -1430,21 +1566,87 @@ section {
     }
 
     .resume-iframe {
-        min-height: 420px;
+        min-height: 400px;
+    }
+
+    /* Mobile resume fallback (shown by JS when iframe fails) */
+    .resume-mobile-fallback {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1.25rem;
+        padding: 3rem 1.5rem;
+        text-align: center;
+    }
+
+    .resume-mobile-fallback p {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        line-height: 1.6;
     }
 }
 
+/* ============================================
+   RESPONSIVE — Small Mobile
+   ============================================ */
 @media (max-width: 400px) {
     .hero-name {
-        font-size: 2.5rem;
+        font-size: 2.4rem;
     }
 
-    .metric-value {
-        font-size: 1.3rem;
+    .hero-namerow {
+        gap: 1rem;
+    }
+
+    .hero-photo {
+        width: 75px;
+        height: 75px;
+    }
+
+    .hero-pitch {
+        font-size: 0.9rem;
+    }
+
+    .saas-card {
+        padding: 1rem;
+    }
+
+    .saas-stat {
+        padding: 0.75rem 0.25rem;
+    }
+
+    .saas-stat-value {
+        font-size: 1.15rem;
+    }
+
+    .saas-stat-label {
+        font-size: 0.55rem;
+    }
+
+    .saas-card-name {
+        font-size: 1rem;
     }
 
     .skills-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .project-card {
+        padding: 1.25rem;
+    }
+
+    .project-tags {
+        gap: 0.3rem;
+    }
+
+    .tag {
+        font-size: 0.65rem;
+        padding: 0.15rem 0.4rem;
+    }
+
+    .section {
+        padding: 3.5rem 0;
     }
 }
 
