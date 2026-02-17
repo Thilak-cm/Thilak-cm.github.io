@@ -72,65 +72,69 @@
     <section id="home" class="hero">
         <div class="hero-glow"></div>
         <div class="hero-inner">
-            <!-- Row 1: Status -->
-            <div class="hero-status" style="--delay: 0">
-                <span class="status-pulse"></span>
-                Seeking AI/ML Engineer &amp; Forward Deployed roles
-            </div>
-
-            <!-- Row 2: Name + Photo side by side -->
-            <div class="hero-namerow" style="--delay: 1">
-                <h1 class="hero-name">
-                    Thilak<br><span class="hero-name-last">Mohan</span>
-                </h1>
-                <div class="hero-photo">
-                    <img src="IMG_7989.JPG" alt="Thilak Mohan">
+            <div class="hero-left">
+                <!-- Status -->
+                <div class="hero-status" style="--delay: 0">
+                    <span class="status-pulse"></span>
+                    Seeking AI/ML Engineer &amp; Forward Deployed roles
                 </div>
-            </div>
 
-            <!-- Row 3: Two-column body -->
-            <div class="hero-body">
-                <div class="hero-left">
-                    <p class="hero-role" style="--delay: 2">AI Engineer</p>
-                    <p class="hero-pitch" style="--delay: 3">
-                        Just graduated from UMD with a focus in ML. I build zero-to-one AI-native
-                        SaaS products with tight user feedback loops&mdash;and write foundational models
-                        from scratch to deeply understand what's under the hood.
-                    </p>
-                    <div class="hero-actions" style="--delay: 4">
-                        <button class="btn-primary" id="resume-btn">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                                <polyline points="7 10 12 15 17 10"></polyline>
-                                <line x1="12" y1="15" x2="12" y2="3"></line>
-                            </svg>
-                            Download Resume
-                        </button>
-                        <a href="#projects" class="btn-outline">View Projects</a>
+                <!-- Name + Photo -->
+                <div class="hero-namerow" style="--delay: 1">
+                    <h1 class="hero-name">
+                        Thilak<br><span class="hero-name-last">Mohan</span>
+                    </h1>
+                    <div class="hero-photo">
+                        <img src="IMG_7989.JPG" alt="Thilak Mohan">
                     </div>
                 </div>
-                <div class="hero-right">
-                    <p class="saas-intro" style="--delay: 4">What began as a side project for my mom's Montessori school is now used daily across 4 branches in 2 states.</p>
-                    <div class="saas-card" style="--delay: 5">
-                        <div class="saas-card-header">
-                            <h3 class="saas-card-name">Montessori AI Platform</h3>
-                            <span class="saas-card-live">
-                                <span class="status-pulse"></span>
-                                Live
-                            </span>
+
+                <p class="hero-role" style="--delay: 2">AI Engineer</p>
+                <p class="hero-pitch" style="--delay: 3">
+                    Just graduated from UMD with a focus in ML. I build zero-to-one AI-native
+                    SaaS products with tight user feedback loops&mdash;and write foundational models
+                    from scratch to deeply understand what's under the hood.
+                </p>
+                <div class="hero-actions" style="--delay: 4">
+                    <button class="btn-primary" id="resume-btn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                        View Resume
+                    </button>
+                    <a href="#projects" class="btn-outline">View Projects</a>
+                </div>
+            </div>
+            <div class="hero-right">
+                    <p class="hero-right-label" style="--delay: 4">My Best Work</p>
+                    <div class="highlight-stack" style="--delay: 4">
+                        <div class="highlight-card">
+                            <div class="highlight-content">
+                                <span class="highlight-name">Montessori Teacher Copilot</span>
+                                <span class="highlight-proof">SaaS live in production across 4 schools with 100+ daily teachers logging 4k notes/month</span>
+                            </div>
+                            <div class="highlight-actions">
+                                <button class="highlight-cta highlight-cta--outline" data-project="0">View details</button>
+                            </div>
                         </div>
-                        <div class="saas-card-stats">
-                            <div class="saas-stat">
-                                <span class="saas-stat-value">4</span>
-                                <span class="saas-stat-label">Schools</span>
+                        <div class="highlight-card" style="--delay: 5">
+                            <div class="highlight-content">
+                                <span class="highlight-name">Self-Built and Hosted LLM From Scratch</span>
+                                <span class="highlight-proof">128M-param transformer, 4×A100s GPUs, 10B training tokens, ~20 hours of training</span>
                             </div>
-                            <div class="saas-stat">
-                                <span class="saas-stat-value">100+</span>
-                                <span class="saas-stat-label">Teachers</span>
+                            <div class="highlight-actions">
+                                <a href="https://848k-project-gpt2.streamlit.app/" target="_blank" rel="noopener noreferrer" class="highlight-cta">Chat with it!</a>
+                                <button class="highlight-cta highlight-cta--outline" data-project="1">View details</button>
                             </div>
-                            <div class="saas-stat">
-                                <span class="saas-stat-value">4K+</span>
-                                <span class="saas-stat-label">Notes / Month</span>
+                        </div>
+                        <div class="highlight-card" style="--delay: 5">
+                            <div class="highlight-content">
+                                <span class="highlight-name">Campus Parking AI</span>
+                                <span class="highlight-proof">EY hosted hackathon winner — UMD wants to fund &amp; scale</span>
+                            </div>
+                            <div class="highlight-actions">
+                                <button class="highlight-cta highlight-cta--outline" data-project="2">View details</button>
                             </div>
                         </div>
                     </div>

@@ -344,6 +344,14 @@ function initProjectOverlay() {
             if (resumeOverlay?.classList.contains('active')) hideResumeOverlay();
         }
     });
+
+    // Highlight card "View details" button handlers
+    document.querySelectorAll('.highlight-cta[data-project]').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const idx = parseInt(btn.dataset.project);
+            showProjectOverlay(projectsData[idx]);
+        });
+    });
 }
 
 function showProjectOverlay(project) {
