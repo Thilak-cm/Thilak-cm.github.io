@@ -990,6 +990,49 @@ section {
     letter-spacing: 0.01em;
 }
 
+/* --- GitHub Analytics --- */
+.github-analytics {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+}
+
+.analytics-title {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--text-primary);
+    margin-bottom: 1.75rem;
+    letter-spacing: -0.01em;
+}
+
+.analytics-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.analytics-badge {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-md);
+    display: block;
+}
+
+.contribution-graph {
+    display: flex;
+    justify-content: center;
+}
+
+.streak-badge {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius-md);
+    display: block;
+}
+
 /* ============================================
    ABOUT
    ============================================ */
@@ -1720,6 +1763,10 @@ section {
 
     .skill-item {
         padding: 1rem 0.4rem;
+    }
+
+    .analytics-grid {
+        grid-template-columns: 1fr;
     }
 
     /* About */
