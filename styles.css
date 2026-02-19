@@ -1024,6 +1024,16 @@ section {
     line-height: 1;
 }
 
+.about-image {
+    width: 100%;
+    max-width: 280px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+    display: block;
+    margin-bottom: 1rem;
+}
+
 .about-card p {
     font-size: 0.925rem;
     line-height: 1.7;
