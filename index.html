@@ -59,6 +59,13 @@
                         <path class="icon-moon" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
                 </button>
+                <button class="nav-resume-btn" id="nav-resume-btn" style="display: none;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                    Resume
+                </button>
                 <button class="hamburger" id="hamburger" aria-label="Toggle menu">
                     <span></span>
                     <span></span>
@@ -67,6 +74,16 @@
             </div>
         </div>
     </nav>
+
+    <!-- Page Navigation Sidebar -->
+    <aside class="page-nav" id="page-nav">
+        <nav class="page-nav-menu">
+            <a href="#home" class="page-nav-link" data-section="home">Home</a>
+            <a href="#projects" class="page-nav-link" data-section="projects">Projects</a>
+            <a href="#skills" class="page-nav-link" data-section="skills">Skills</a>
+            <a href="#about" class="page-nav-link" data-section="about">About</a>
+        </nav>
+    </aside>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
@@ -111,7 +128,11 @@
                     <div class="highlight-stack" style="--delay: 4">
                         <div class="highlight-card">
                             <div class="highlight-content">
-                                <span class="highlight-name">Montessori Teacher Copilot</span>
+                                <span class="highlight-name">
+                                    <span class="highlight-icon">📚</span>
+                                    Montessori Teacher Copilot
+                                </span>
+                                <span class="highlight-impact">Reduced observation logging time from ~5 minutes to ~15 seconds (~95% reduction)</span>
                                 <span class="highlight-proof">SaaS live in production across 4 schools with 100+ daily teachers logging 4k notes/month</span>
                             </div>
                             <div class="highlight-actions">
@@ -120,8 +141,12 @@
                         </div>
                         <div class="highlight-card" style="--delay: 5">
                             <div class="highlight-content">
-                                <span class="highlight-name">Self-Built and Hosted LLM From Scratch</span>
-                                <span class="highlight-proof">128M-param transformer, 4×A100s GPUs, 10B training tokens, ~20 hours of training</span>
+                                <span class="highlight-name">
+                                    <span class="highlight-icon">🧠</span>
+                                    My Own LLM From Scratch
+                                </span>
+                                <span class="highlight-impact">Implemented latest research papers in PyTorch with comprehensive training infrastructure</span>
+                                <span class="highlight-proof">128M-param transformer, 4 GPUs, 10B training tokens</span>
                             </div>
                             <div class="highlight-actions">
                                 <a href="https://848k-project-gpt2.streamlit.app/" target="_blank" rel="noopener noreferrer" class="highlight-cta">Chat with it!</a>
@@ -130,7 +155,11 @@
                         </div>
                         <div class="highlight-card" style="--delay: 5">
                             <div class="highlight-content">
-                                <span class="highlight-name">Campus Parking AI</span>
+                                <span class="highlight-name">
+                                    <span class="highlight-icon">🎯</span>
+                                    Campus Parking AI
+                                </span>
+                                <span class="highlight-impact">Identified core pain point and delivered a well-directed product ready to scale</span>
                                 <span class="highlight-proof">EY hosted hackathon winner — UMD wants to fund &amp; scale</span>
                             </div>
                             <div class="highlight-actions">

@@ -29,10 +29,76 @@ function initNav() {
     const navbar = document.getElementById('navbar');
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('nav-menu');
+    const navResumeBtn = document.getElementById('nav-resume-btn');
+    const pageNav = document.getElementById('page-nav');
+    const hero = document.getElementById('home');
 
     window.addEventListener('scroll', () => {
         navbar.classList.toggle('scrolled', window.scrollY > 30);
+
+        // Show nav resume button when hero is out of view
+        if (navResumeBtn && hero) {
+            const heroBottom = hero.offsetTop + hero.offsetHeight;
+            const shouldShow = window.scrollY > heroBottom - 100;
+            if (shouldShow && navResumeBtn.style.display === 'none') {
+                navResumeBtn.style.display = 'inline-flex';
+            } else if (!shouldShow && navResumeBtn.style.display !== 'none') {
+                navResumeBtn.style.display = 'none';
+            }
+        }
     });
+
+    // Wire up nav resume button
+    if (navResumeBtn) {
+        navResumeBtn.addEventListener('click', showResumeOverlay);
+    }
+
+    // Wire up page nav links
+    if (pageNav) {
+        const pageNavLinks = pageNav.querySelectorAll('.page-nav-link');
+        pageNavLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const section = link.dataset.section;
+                const target = document.getElementById(section);
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+                // Update active state
+                pageNavLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+            });
+        });
+
+        // Update active page nav link on scroll
+        window.addEventListener('scroll', () => {
+            if (window.innerWidth <= 900) return;
+
+            const sections = ['home', 'projects', 'skills', 'about'];
+            let currentSection = 'home';
+
+            for (let section of sections) {
+                const el = document.getElementById(section);
+                if (el && window.scrollY >= el.offsetTop - 150) {
+                    currentSection = section;
+                }
+            }
+
+            pageNavLinks.forEach(link => {
+                if (link.dataset.section === currentSection) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        });
+
+        // Set initial active state for home
+        pageNavLinks[0]?.classList.add('active');
+    }
 
     if (hamburger && navMenu) {
         // Inject social links + status into mobile menu
