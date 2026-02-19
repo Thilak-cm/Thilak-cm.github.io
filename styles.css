@@ -924,7 +924,7 @@ section {
    SKILLS
    ============================================ */
 .skills-content {
-    max-width: 700px;
+    max-width: 900px;
     margin: 0 auto;
     text-align: center;
 }
@@ -1029,6 +1029,149 @@ section {
     width: 100%;
     height: auto;
     display: block;
+}
+
+/* ============================================
+   GITHUB ANALYTICS
+   ============================================ */
+.github-analytics {
+    margin-top: 4rem;
+    padding-top: 3rem;
+    border-top: 1px solid var(--border);
+}
+
+.github-analytics-title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+    letter-spacing: -0.01em;
+}
+
+.github-stats-card {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem 2rem;
+    margin-bottom: 3rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    align-items: center;
+}
+
+[data-theme="light"] .github-stats-card {
+    background: var(--bg-surface);
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 1.5rem;
+}
+
+.stat-number {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+}
+
+.stat-number-accent {
+    color: var(--accent);
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.stat-range {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+.stat-divider {
+    width: 1px;
+    height: 80px;
+    background: var(--border);
+    margin: 0 auto;
+}
+
+.contribution-graph-container {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    overflow-x: auto;
+}
+
+[data-theme="light"] .contribution-graph-container {
+    background: var(--bg-surface);
+}
+
+.graph-title {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.01em;
+}
+
+.contribution-graph {
+    width: 100%;
+    height: auto;
+    min-height: 300px;
+}
+
+.contribution-graph .y-axis-labels,
+.contribution-graph .x-axis-labels {
+    font-size: 12px;
+    fill: var(--text-muted);
+    font-family: var(--font-body);
+    font-weight: 400;
+}
+
+.contribution-graph .axis-label {
+    font-size: 11px;
+    fill: var(--text-muted);
+}
+
+.contribution-graph .chart-fill {
+    fill: url(#lineGradient);
+    stroke: none;
+}
+
+.contribution-graph .chart-line {
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.contribution-graph .data-point {
+    fill: var(--accent);
+    stroke: var(--bg-elevated);
+    stroke-width: 1.5;
+    opacity: 0;
+    animation: dotAppear 0.4s var(--ease-out) forwards;
+}
+
+@keyframes dotAppear {
+    to {
+        opacity: 1;
+    }
 }
 
 /* ============================================
@@ -1594,6 +1737,16 @@ section {
     .skills-grid {
         grid-template-columns: repeat(5, 1fr);
     }
+
+    /* GitHub Analytics tablet */
+    .github-stats-card {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0;
+    }
+
+    .stat-divider {
+        display: block;
+    }
 }
 
 /* ============================================
@@ -1763,8 +1916,25 @@ section {
         padding: 1rem 0.4rem;
     }
 
-    .analytics-container {
-        grid-template-columns: 1fr;
+    /* GitHub Analytics mobile */
+    .github-stats-card {
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 1.5rem 1.25rem;
+    }
+
+    .stat-item {
+        padding: 0;
+        border-left: none !important;
+        border-right: none !important;
+    }
+
+    .contribution-graph-container {
+        padding: 1.5rem 1rem;
+    }
+
+    .contribution-graph {
+        min-height: 280px;
     }
 
     /* About */

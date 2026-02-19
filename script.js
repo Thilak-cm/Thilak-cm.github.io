@@ -600,6 +600,22 @@ function renderSkills() {
         'Django', 'C++', 'SQL', 'React', 'Docker'
     ];
 
+    const githubStats = {
+        contributions: '2,674',
+        contributionsRange: 'Mar 31, 2020 - Present',
+        currentStreak: '5',
+        currentStreakDates: 'Feb 14 - Feb 18',
+        longestStreak: '40',
+        longestStreakDates: 'Jun 2, 2025 - Jul 11, 2025'
+    };
+
+    // Contribution graph data (daily contributions for ~30 days)
+    const contributionData = [
+        0, 1, 3, 10, 9, 5, 12, 8, 6, 3,
+        5, 2, 6, 10, 9, 2, 10, 9, 19, 14,
+        15, 12, 8, 10, 5, 4, 8, 6, 10, 7
+    ];
+
     container.innerHTML = `
         <p class="skills-intro reveal">
             With development costs at an all-time low, I'm not limited by tools or languages—the only limit is curiosity and drive. But here's what I reach for first:
@@ -614,7 +630,106 @@ function renderSkills() {
                 </div>
             `).join('')}
         </div>
+
+        <div class="github-analytics reveal" style="transition-delay: 0.5s">
+            <h3 class="github-analytics-title">GitHub Activity</h3>
+
+            <div class="github-stats-card">
+                <div class="stat-item">
+                    <div class="stat-number">${githubStats.contributions}</div>
+                    <div class="stat-label">Total Contributions</div>
+                    <div class="stat-range">${githubStats.contributionsRange}</div>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <div class="stat-number stat-number-accent">${githubStats.currentStreak}</div>
+                    <div class="stat-label">Current Streak</div>
+                    <div class="stat-range">${githubStats.currentStreakDates}</div>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <div class="stat-number">${githubStats.longestStreak}</div>
+                    <div class="stat-label">Longest Streak</div>
+                    <div class="stat-range">${githubStats.longestStreakDates}</div>
+                </div>
+            </div>
+
+            <div class="contribution-graph-container">
+                <h4 class="graph-title">Contribution Trend</h4>
+                <svg viewBox="0 0 1200 400" class="contribution-graph" width="1200" height="400">
+                    <defs>
+                        <linearGradient id="lineGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:var(--accent);stop-opacity:0.3" />
+                            <stop offset="100%" style="stop-color:var(--accent);stop-opacity:0.05" />
+                        </linearGradient>
+                        <pattern id="gridPattern" x="40" y="40" width="40" height="40" patternUnits="userSpaceOnUse">
+                            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="var(--border)" stroke-width="0.5"/>
+                        </pattern>
+                    </defs>
+
+                    <!-- Background grid -->
+                    <rect width="1200" height="400" fill="url(#gridPattern)" />
+
+                    <!-- Y-axis labels -->
+                    <g class="y-axis-labels">
+                        <text x="30" y="370" text-anchor="end" class="axis-label">0</text>
+                        <text x="30" y="280" text-anchor="end" class="axis-label">10</text>
+                        <text x="30" y="190" text-anchor="end" class="axis-label">20</text>
+                    </g>
+
+                    <!-- Axes -->
+                    <line x1="40" y1="30" x2="40" y2="370" stroke="var(--border-strong)" stroke-width="1"/>
+                    <line x1="40" y1="370" x2="1180" y2="370" stroke="var(--border-strong)" stroke-width="1"/>
+
+                    <!-- Line chart fill -->
+                    <polyline class="chart-fill" points="${generateChartPoints(contributionData, 1200, 40, 20).join(' ')}"/>
+
+                    <!-- Line chart line -->
+                    <polyline class="chart-line" points="${generateLinePoints(contributionData, 1200, 40, 20).join(' ')}"/>
+
+                    <!-- Data points -->
+                    <g class="data-points">
+                        ${contributionData.map((val, i) => {
+                            const x = 40 + (i * (1140 / contributionData.length));
+                            const y = 370 - ((val / 20) * 340);
+                            return `<circle cx="${x}" cy="${y}" r="4" class="data-point" style="transition-delay: ${i * 15}ms"/>`;
+                        }).join('')}
+                    </g>
+
+                    <!-- X-axis labels (day numbers) -->
+                    <g class="x-axis-labels">
+                        ${contributionData.map((_, i) => {
+                            if (i % 5 === 0) {
+                                const x = 40 + (i * (1140 / contributionData.length));
+                                return `<text x="${x}" y="395" text-anchor="middle" class="axis-label">${i}</text>`;
+                            }
+                            return '';
+                        }).join('')}
+                    </g>
+                </svg>
+            </div>
+        </div>
     `;
+}
+
+// Helper functions for generating chart points
+function generateLinePoints(data, width, startX, maxVal) {
+    const spacing = (width - startX - 40) / (data.length - 1);
+    return data.map((val, i) => {
+        const x = startX + (i * spacing);
+        const y = 370 - ((val / maxVal) * 340);
+        return `${x},${y}`;
+    });
+}
+
+function generateChartPoints(data, width, startX, maxVal) {
+    const linePoints = generateLinePoints(data, width, startX, maxVal);
+    const points = [
+        `${startX},370`,
+        ...linePoints,
+        `${startX + ((width - startX - 40) * data.length / data.length)},370`
+    ];
+    return points;
 }
 
 // ============================================
