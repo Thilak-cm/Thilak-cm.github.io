@@ -640,13 +640,11 @@ function renderSkills() {
                     <div class="stat-label">Total Contributions</div>
                     <div class="stat-range">${githubStats.contributionsRange}</div>
                 </div>
-                <div class="stat-divider"></div>
-                <div class="stat-item">
+                <div class="stat-item stat-item-accent">
                     <div class="stat-number stat-number-accent">${githubStats.currentStreak}</div>
                     <div class="stat-label">Current Streak</div>
                     <div class="stat-range">${githubStats.currentStreakDates}</div>
                 </div>
-                <div class="stat-divider"></div>
                 <div class="stat-item">
                     <div class="stat-number">${githubStats.longestStreak}</div>
                     <div class="stat-label">Longest Streak</div>

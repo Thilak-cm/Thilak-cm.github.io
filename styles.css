@@ -1055,10 +1055,10 @@ section {
     border-radius: var(--radius-lg);
     padding: 2.5rem 2rem;
     margin-bottom: 3rem;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0;
+    display: flex;
+    justify-content: space-around;
     align-items: center;
+    gap: 0;
 }
 
 [data-theme="light"] .github-stats-card {
@@ -1071,6 +1071,13 @@ section {
     align-items: center;
     text-align: center;
     padding: 0 1.5rem;
+    flex: 1;
+    min-width: 0;
+}
+
+.stat-item-accent {
+    border-left: 1px solid var(--border);
+    border-right: 1px solid var(--border);
 }
 
 .stat-number {
@@ -1099,13 +1106,6 @@ section {
     font-size: 0.7rem;
     color: var(--text-muted);
     line-height: 1.4;
-}
-
-.stat-divider {
-    width: 1px;
-    height: 80px;
-    background: var(--border);
-    margin: 0 auto;
 }
 
 .contribution-graph-container {
@@ -1738,15 +1738,6 @@ section {
         grid-template-columns: repeat(5, 1fr);
     }
 
-    /* GitHub Analytics tablet */
-    .github-stats-card {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 0;
-    }
-
-    .stat-divider {
-        display: block;
-    }
 }
 
 /* ============================================
