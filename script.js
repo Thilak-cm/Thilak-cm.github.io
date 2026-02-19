@@ -438,6 +438,9 @@ function showProjectOverlay(index) {
     currentProjectIndex = index;
     const project = projectsData[index];
 
+    // Update carousel indicators
+    updateCarouselIndicators();
+
     const githubHtml = project.githubLink ? `
         <a href="${project.githubLink}" class="ov-meta-github" target="_blank" rel="noopener noreferrer" title="GitHub">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -491,6 +494,31 @@ function navigateProject(direction) {
         showProjectOverlay(newIndex);
         overlayBody.scrollTop = 0;
     }
+}
+
+function updateCarouselIndicators() {
+    const dotsContainer = document.getElementById('carousel-dots');
+    const counterContainer = document.getElementById('carousel-counter');
+
+    if (!dotsContainer || !counterContainer) return;
+
+    // Clear existing dots
+    dotsContainer.innerHTML = '';
+
+    // Create dots for each project
+    projectsData.forEach((_, idx) => {
+        const dot = document.createElement('button');
+        dot.className = `carousel-dot ${idx === currentProjectIndex ? 'active' : ''}`;
+        dot.setAttribute('aria-label', `Go to project ${idx + 1}`);
+        dot.addEventListener('click', () => {
+            showProjectOverlay(idx);
+            overlayBody.scrollTop = 0;
+        });
+        dotsContainer.appendChild(dot);
+    });
+
+    // Update counter
+    counterContainer.textContent = `${currentProjectIndex + 1} / ${projectsData.length}`;
 }
 
 function hideProjectOverlay() {

@@ -1205,6 +1205,67 @@ section {
     .overlay-nav {
         display: none;
     }
+
+    .carousel-footer {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .carousel-dots {
+        order: 1;
+    }
+
+    .carousel-counter {
+        order: 0;
+    }
+}
+
+/* --- Carousel Footer --- */
+.carousel-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+}
+
+.carousel-dots {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.carousel-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--border-strong);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background var(--transition), transform var(--transition), width var(--transition);
+}
+
+.carousel-dot:hover {
+    background: var(--text-muted);
+    transform: scale(1.2);
+}
+
+.carousel-dot.active {
+    background: var(--accent);
+    width: 28px;
+    border-radius: 6px;
+}
+
+.carousel-counter {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    letter-spacing: 0.02em;
+    min-width: 40px;
+    text-align: center;
 }
 
 /* --- Project Overlay Content --- */
