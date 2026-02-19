@@ -389,6 +389,7 @@ section {
     letter-spacing: 0.01em;
     opacity: 0;
     pointer-events: none;
+    order: -1;
 }
 
 .nav-resume-btn:not([style*="display: none"]) {
@@ -398,11 +399,11 @@ section {
 @keyframes slideInResume {
     from {
         opacity: 0;
-        transform: translateY(-8px);
+        transform: translateX(-12px);
     }
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateX(0);
     }
 }
 
