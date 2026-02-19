@@ -382,7 +382,8 @@ function renderProjects() {
     grid.querySelectorAll('.project-card').forEach(card => {
         card.addEventListener('click', () => {
             const idx = parseInt(card.dataset.index);
-            showProjectOverlay(projectsData[idx]);
+            currentProjectIndex = idx;
+            showProjectOverlay(idx);
         });
     });
 }
@@ -391,13 +392,19 @@ function renderProjects() {
 // PROJECT OVERLAY
 // ============================================
 let projectOverlay, overlayBody, overlayCloseBtn;
+let currentProjectIndex = -1;
 
 function initProjectOverlay() {
     projectOverlay = document.getElementById('project-overlay');
     overlayBody = document.getElementById('overlay-body');
     overlayCloseBtn = document.getElementById('overlay-close');
+    const navPrev = document.getElementById('overlay-nav-prev');
+    const navNext = document.getElementById('overlay-nav-next');
 
     if (overlayCloseBtn) overlayCloseBtn.addEventListener('click', hideProjectOverlay);
+    if (navPrev) navPrev.addEventListener('click', () => navigateProject(-1));
+    if (navNext) navNext.addEventListener('click', () => navigateProject(1));
+
     if (projectOverlay) {
         projectOverlay.addEventListener('click', (e) => {
             if (e.target === projectOverlay) hideProjectOverlay();
@@ -408,6 +415,9 @@ function initProjectOverlay() {
         if (e.key === 'Escape') {
             if (projectOverlay?.classList.contains('active')) hideProjectOverlay();
             if (resumeOverlay?.classList.contains('active')) hideResumeOverlay();
+        } else if (projectOverlay?.classList.contains('active')) {
+            if (e.key === 'ArrowLeft') navigateProject(-1);
+            if (e.key === 'ArrowRight') navigateProject(1);
         }
     });
 
@@ -415,13 +425,18 @@ function initProjectOverlay() {
     document.querySelectorAll('.highlight-cta[data-project]').forEach(btn => {
         btn.addEventListener('click', () => {
             const idx = parseInt(btn.dataset.project);
-            showProjectOverlay(projectsData[idx]);
+            currentProjectIndex = idx;
+            showProjectOverlay(idx);
         });
     });
 }
 
-function showProjectOverlay(project) {
+function showProjectOverlay(index) {
     if (!overlayBody || !projectOverlay) return;
+    if (index < 0 || index >= projectsData.length) return;
+
+    currentProjectIndex = index;
+    const project = projectsData[index];
 
     const githubHtml = project.githubLink ? `
         <a href="${project.githubLink}" class="ov-meta-github" target="_blank" rel="noopener noreferrer" title="GitHub">
@@ -468,6 +483,14 @@ function showProjectOverlay(project) {
 
     projectOverlay.classList.add('active');
     document.body.style.overflow = 'hidden';
+}
+
+function navigateProject(direction) {
+    const newIndex = currentProjectIndex + direction;
+    if (newIndex >= 0 && newIndex < projectsData.length) {
+        showProjectOverlay(newIndex);
+        overlayBody.scrollTop = 0;
+    }
 }
 
 function hideProjectOverlay() {
