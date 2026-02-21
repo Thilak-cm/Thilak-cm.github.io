@@ -359,7 +359,6 @@ function renderProjects() {
         <div class="project-card ${i < 2 ? 'featured' : ''} reveal" data-index="${i}" style="transition-delay: ${i * 0.06}s">
             <div class="project-card-top">
                 <span class="project-date">${p.date}</span>
-                ${p.badge ? `<span class="project-badge">${p.badge}</span>` : ''}
             </div>
             <h3 class="project-title">${p.title}</h3>
             <p class="project-summary">${p.summary}</p>

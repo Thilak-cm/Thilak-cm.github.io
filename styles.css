@@ -424,7 +424,7 @@ section {
    ============================================ */
 .page-nav {
     position: fixed;
-    right: calc((100vw - 1080px) / 2 - 4rem);
+    right: calc((100vw - 1080px) / 2 - 8rem);
     top: 50%;
     transform: translateY(-50%);
     z-index: 500;
