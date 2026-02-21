@@ -188,9 +188,8 @@ const projectsData = [
         title: "Montessori AI SaaS Platform",
         date: "July 2025 – Current",
         summary: "A production SaaS used daily by 100+ teachers (4,000+ notes/month) across 4 schools in 2 states in India. Built end-to-end: architecture, coding, deployment, monitoring, iteration.",
-        description: `<p><strong>Adoption</strong></p>
-<p>Deployed across 4 schools, 2 states in India, currently in use by 100+ teachers logging 4,000+ notes/month.</p>
-<p><strong>Product Ownership & User Discovery</strong></p>
+        why: "So my mum's a Montessori teacher. She'd spend most of her time at home catching up on logging and structuring notes. I built her a low friction note-taking app enhanced with AI and necessary montessori pedagogy to streamline this workflow. Little did I know other teachers would ask for it, let alone it expanding to where its at now, which is 4 schools across 3 states with 100+ teachers logging 4000 notes a month, sheesh!",
+        description: `<p><strong>Product Ownership & User Discovery</strong></p>
 <ul>
 <li>Identified and scoped an ambiguous real-world problem: Montessori teachers generate high-quality qualitative insight through daily micro-observations, but friction-heavy workflows cause most of it to be lost and unusable at the school level.</li>
 <li>Led direct user discovery with teachers and administrators to define success criteria centered on zero-friction note logging, psychological safety around raw observations, and multilingual access for regional teachers.</li>
@@ -212,17 +211,9 @@ const projectsData = [
         title: "GPT-2 From Scratch",
         date: "Aug 2024 – Dec 2024",
         summary: "Rebuilt a 128M-parameter GPT-2 from scratch in PyTorch to deeply understand transformer internals. Implemented the full stack: tokenizer → embeddings → multi-head attention → decoder blocks → LM head → inference pipeline.",
+        why: `First i challenged myself to sit through <a href="https://www.youtube.com/watch?v=l8pRSuU81PU&t=2s" target="_blank" rel="noopener noreferrer">4 hours of Andrej Karpathy nerding out</a> and building an LLM FROM THE GROUND UP. Accomplished - this was a good base. I didn't wanna settle for a rote implementation though, so I challenged myself to read research papers and actually implement them on top of this foundation. Accomplished! Then I wanted to show people the sheer learning from this undertaking so i served it as a live chatbot; setting it up for inference (esp the KV caching part) was very rewarding. → <a href="https://848k-project-gpt2.streamlit.app/" class="ov-link-inline" target="_blank" rel="noopener noreferrer">Chat with the models I trained here</a>.`,
         description: `<p><strong>What I built</strong></p>
-<p>Rebuilt a 128M-parameter GPT-2 from scratch in PyTorch to deeply understand transformer internals. Implemented the full stack: tokenizer → embeddings (ALiBi, KERPLE, FIRE, learned + sinusoidal) → multi-head attention → decoder blocks → LM head → inference pipeline.</p>
-<p><strong>Why it matters</strong></p>
-<ul>
-<li>Shows I can build foundational model components instead of only calling APIs</li>
-<li>Internalized transformer mechanics by implementing them end-to-end</li>
-<li>Debugged stability issues, KV-cache performance, and positional encoding tradeoffs</li>
-<li>Trained at scale: 2 days on 4×A100s (~20k epochs) on a 10B-token FineWeb-Edu corpus</li>
-</ul>
-<p><strong>Try it live</strong></p>
-<p>→ <a href="https://848k-project-gpt2.streamlit.app/" class="ov-link-inline" target="_blank" rel="noopener noreferrer">Chat with the models I trained here</a>.</p>`,
+<p>128M-parameter GPT-2 rebuilt from scratch in PyTorch. Full stack: tokenizer → embeddings → multi-head attention → decoder blocks → LM head → inference pipeline. Trained for 2 days on 4×A100s over a 10B-token FineWeb-Edu corpus.</p>`,
         tags: ["PyTorch", "Linux", "Distributed Data Parallel (DDP)", "Deployment for inference"],
         projectLink: null,
         githubLink: "https://github.com/Thilak-cm/GPT2-Stripped-Comparative-Insights",
@@ -477,6 +468,7 @@ function showProjectOverlay(index) {
         ${companyHtml}
         ${awardHtml}
         <div class="ov-divider"></div>
+        ${project.why ? `<div class="ov-why"><span class="ov-why-label">Why I built this</span><p>${project.why}</p></div>` : ''}
         <div class="ov-description">${project.description}</div>
         ${project.disclaimer ? `<div class="ov-disclaimer">${project.disclaimer}</div>` : ''}
         <div class="ov-tags">
