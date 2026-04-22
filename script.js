@@ -8,13 +8,19 @@ function initTheme() {
 
     if (saved) {
         html.setAttribute('data-theme', saved);
+    } else {
+        html.removeAttribute('data-theme');
     }
 
     if (toggle) {
         toggle.addEventListener('click', () => {
             const current = html.getAttribute('data-theme');
-            const next = current === 'light' ? 'dark' : 'light';
-            html.setAttribute('data-theme', next);
+            const next = current === 'dark' ? 'light' : 'dark';
+            if (next === 'light') {
+                html.removeAttribute('data-theme');
+            } else {
+                html.setAttribute('data-theme', next);
+            }
             localStorage.setItem('theme', next);
         });
     }
@@ -229,24 +235,23 @@ function renderTimeline() {
     if (!container) return;
 
     container.innerHTML = timelineItems.map((item, i) => {
-        let linkHtml = '';
-        if (item.link) {
-            linkHtml = `<a href="${item.link.url}" target="_blank" rel="noopener noreferrer">${item.link.text}</a>`;
+        const actions = [];
+        if (item.hasModal) {
+            actions.push(`<button class="timeline-more" data-modal="${item.modalIndex}">Learn more →</button>`);
         }
-
-        let descContent = item.desc;
-        if (linkHtml) {
-            descContent += ` ${linkHtml}`;
+        if (item.link) {
+            actions.push(`<a href="${item.link.url}" target="_blank" rel="noopener noreferrer" class="timeline-cta">${item.link.text} ↗</a>`);
         }
 
         return `
-        <div class="timeline-item ${item.current ? 'current' : ''} reveal" style="transition-delay: ${i * 0.1}s">
+        <div class="timeline-item ${item.current ? 'current' : ''}">
             <div class="timeline-dot"></div>
             <div class="timeline-date">${item.date}</div>
             <h3 class="timeline-title">${item.titleLink ? `<a href="${item.titleLink}" target="_blank" rel="noopener noreferrer">${item.title}</a>` : item.title}</h3>
             <div class="timeline-role">${item.role}</div>
-            <p class="timeline-desc">${descContent}${item.hasModal ? ` <button class="timeline-more" data-modal="${item.modalIndex}">Learn more</button>` : ''}</p>
+            <p class="timeline-desc">${item.desc}</p>
             ${item.stats ? `<div class="timeline-stats comet-border"><span>${item.stats}</span></div>` : ''}
+            ${actions.length ? `<div class="timeline-actions">${actions.join('')}</div>` : ''}
             ${item.tags ? `<div class="timeline-tags">${item.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>` : ''}
         </div>
     `}).join('');
@@ -379,7 +384,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initResumeOverlay();
     renderTimeline();
 
-    requestAnimationFrame(() => {
-        initReveal();
-    });
+    // Scroll reveal disabled — all items visible immediately
 });

@@ -8,33 +8,33 @@
 }
 
 :root {
-    --bg: #ffffff;
-    --text: #111111;
-    --text-muted: #666666;
-    --border: #e0e0e0;
-    --accent: #111111;
-    --nav-bg: rgba(255, 255, 255, 0.95);
-    --card-bg: #fafafa;
-    --overlay-bg: rgba(0, 0, 0, 0.5);
-    --tag-bg: #f0f0f0;
-    --tag-text: #444;
-    --dot-color: #111111;
-    --line-color: #d0d0d0;
+    --bg: #f5f0e8;
+    --text: #1a1a1a;
+    --text-muted: #6b6560;
+    --border: #ddd5c8;
+    --accent: #c03e2d;
+    --nav-bg: rgba(245, 240, 232, 0.95);
+    --card-bg: #ece7df;
+    --overlay-bg: rgba(0, 0, 0, 0.45);
+    --tag-bg: #e8e2d8;
+    --tag-text: #5a5550;
+    --dot-color: #c03e2d;
+    --line-color: #d0c8bb;
 }
 
 [data-theme="dark"] {
-    --bg: #0a0a0a;
-    --text: #e8e8e8;
-    --text-muted: #999999;
-    --border: #222222;
-    --accent: #e8e8e8;
-    --nav-bg: rgba(10, 10, 10, 0.95);
-    --card-bg: #111111;
-    --overlay-bg: rgba(0, 0, 0, 0.7);
-    --tag-bg: #1a1a1a;
-    --tag-text: #aaa;
-    --dot-color: #e8e8e8;
-    --line-color: #333333;
+    --bg: #1a1714;
+    --text: #e8e2d8;
+    --text-muted: #9a938a;
+    --border: #2e2a25;
+    --accent: #d4503f;
+    --nav-bg: #8a2b23;
+    --card-bg: #242019;
+    --overlay-bg: rgba(0, 0, 0, 0.65);
+    --tag-bg: #2e2a25;
+    --tag-text: #a89e94;
+    --dot-color: #d4503f;
+    --line-color: #3a3530;
 }
 
 html {
@@ -59,9 +59,9 @@ body {
     left: 0;
     right: 0;
     z-index: 100;
-    background: var(--nav-bg);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
+    background: #b5342a;
+    backdrop-filter: none;
+    border-bottom: none;
 }
 
 .nav-inner {
@@ -83,7 +83,7 @@ body {
 .nav-logo {
     font-weight: 600;
     font-size: 1.1rem;
-    color: var(--text);
+    color: #fff;
     text-decoration: none;
     letter-spacing: -0.02em;
 }
@@ -95,14 +95,14 @@ body {
 }
 
 .nav-socials a {
-    color: var(--text-muted);
+    color: rgba(255, 255, 255, 0.7);
     display: flex;
     align-items: center;
     transition: color 0.2s;
 }
 
 .nav-socials a:hover {
-    color: var(--text);
+    color: #fff;
 }
 
 .nav-right {
@@ -115,7 +115,7 @@ body {
     font-size: 0.8rem;
     font-weight: 500;
     letter-spacing: 0.08em;
-    color: var(--text);
+    color: rgba(255, 255, 255, 0.85);
     text-decoration: none;
     background: none;
     border: none;
@@ -125,12 +125,12 @@ body {
 }
 
 .nav-link:hover {
-    color: var(--text-muted);
+    color: #fff;
 }
 
 .theme-toggle {
     background: none;
-    border: 1px solid var(--border);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 50%;
     width: 36px;
     height: 36px;
@@ -138,15 +138,16 @@ body {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    color: var(--text);
-    transition: border-color 0.2s;
+    color: rgba(255, 255, 255, 0.85);
+    transition: border-color 0.2s, color 0.2s;
 }
 
 .theme-toggle:hover {
-    border-color: var(--text-muted);
+    border-color: #fff;
+    color: #fff;
 }
 
-/* Theme icon toggle */
+/* Theme icon toggle — light is default (no attribute), dark via [data-theme="dark"] */
 .icon-sun { display: none; }
 .icon-moon { display: block; }
 
@@ -251,7 +252,8 @@ body {
 }
 
 .timeline-title a:hover {
-    border-color: var(--text);
+    border-color: var(--accent);
+    color: var(--accent);
 }
 
 .timeline-role {
@@ -300,11 +302,11 @@ body {
         from var(--comet-angle, 0deg),
         transparent 0%,
         transparent 40%,
-        #c9a84c22 55%,
-        #c9a84c66 70%,
-        #c9a84c 80%,
-        #dab44d 85%,
-        #c9a84c 90%,
+        rgba(192, 62, 45, 0.13) 55%,
+        rgba(192, 62, 45, 0.4) 70%,
+        #c03e2d 80%,
+        #d4503f 85%,
+        #c03e2d 90%,
         transparent 100%
     );
     -webkit-mask:
@@ -327,23 +329,49 @@ body {
     inherits: false;
 }
 
-.timeline-more {
-    display: inline-block;
+.timeline-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
     margin-top: 0.75rem;
-    font-size: 0.85rem;
-    color: var(--text);
+}
+
+.timeline-more,
+.timeline-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.8rem;
     font-weight: 500;
     cursor: pointer;
-    background: none;
-    border: none;
     font-family: inherit;
-    padding: 0;
-    border-bottom: 1px solid var(--border);
-    transition: border-color 0.2s;
+    padding: 0.45rem 1rem;
+    border-radius: 4px;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+    text-decoration: none;
+}
+
+.timeline-more {
+    background: var(--text);
+    color: var(--bg);
+    border: 1px solid var(--text);
 }
 
 .timeline-more:hover {
-    border-color: var(--text);
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+}
+
+.timeline-cta {
+    background: none;
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+.timeline-cta:hover {
+    border-color: var(--accent);
+    color: var(--accent);
 }
 
 .timeline-tags {
@@ -586,17 +614,11 @@ body {
 }
 
 /* ============================================
-   SCROLL REVEAL
+   SCROLL REVEAL (disabled — everything visible)
    ============================================ */
 .reveal {
-    opacity: 0;
-    transform: translateY(16px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.reveal.visible {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
 }
 
 /* ============================================
