@@ -5,9 +5,9 @@ const projectsData = [
     {
         id: "montessori",
         title: "Montessori OS",
-        year: "2025 —",
-        role: "Founder, Product, Eng",
-        badge: "Freelance",
+        year: "Jun 2025 —",
+        role: "Forward Deployed Engineer",
+        badge: "Convinced to make this my life's work",
         blurb: "Zero-friction observation logging for Montessori teachers, powered by AI.",
         long: "A production SaaS used daily by 100+ teachers across 4 schools in 2 states in India. Started as a tool for my mum. Built end-to-end — architecture, coding, deployment, monitoring, iteration.",
         why: "Mum would spend most of her evenings at home catching up on logging and structuring notes. Built her a low-friction note-taking app enhanced with AI + Montessori pedagogy. Other teachers asked for it. It grew into what it is now.",
@@ -31,7 +31,7 @@ const projectsData = [
     {
         id: "promptli",
         title: "Promptli AI",
-        year: "2026 —",
+        year: "Mar 2026 —",
         role: "Applied AI Engineer",
         badge: "Full-time",
         blurb: "AI-native products at an early-stage startup.",
@@ -95,18 +95,6 @@ const projectsData = [
         preview: "nyc",
         icon: "\uD83D\uDE96"
     },
-    {
-        id: "trading",
-        title: "Agentic Trading",
-        year: "2023",
-        role: "Pattern system + ETL",
-        badge: "Internship \u00B7 CDUS Trading",
-        blurb: "Reliability-first decision system for live market windows. ML + rules hybrid.",
-        long: "Real traders depend on uninterrupted pipelines during market windows. Built ETL with validation, fallbacks, graceful degradation. ML for pattern detection, deterministic rules for execution constraints.",
-        stack: ["Python", "pandas", "Time-series", "ETL"],
-        preview: "trading",
-        icon: "\uD83D\uDCC8"
-    }
 ];
 
 const principles = [
@@ -309,6 +297,55 @@ function initAvatarExpand() {
 }
 
 // ============================================
+// WORK SIDEBAR TREE
+// ============================================
+function initWorkTree() {
+    const tree = document.getElementById('work-tree');
+    const toggle = document.getElementById('work-toggle');
+    if (!tree || !toggle) return;
+
+    // Render project items
+    tree.innerHTML = projectsData.map((p, i) =>
+        `<a class="side-tree-item" data-idx="${i}" href="#project-${p.id}">
+            <span class="side-tree-ico">${p.icon || '\u25CE'}</span>
+            <span class="side-tree-name">${p.title}</span>
+        </a>`
+    ).join('');
+
+    // Toggle expand/collapse
+    toggle.addEventListener('click', () => {
+        toggle.classList.toggle('collapsed');
+        tree.classList.toggle('on');
+    });
+
+    // Click to open project page
+    tree.querySelectorAll('.side-tree-item').forEach(item => {
+        item.addEventListener('click', (e) => {
+            e.preventDefault();
+            showProjectPage(parseInt(item.dataset.idx));
+            closeMobileMenu();
+        });
+    });
+}
+
+function highlightSidebarProject(idx) {
+    // Clear all tree item highlights
+    document.querySelectorAll('.side-tree-item').forEach(item => {
+        item.classList.toggle('active', parseInt(item.dataset.idx) === idx);
+    });
+    // Clear section link highlights
+    document.querySelectorAll('.side-link[href^="#"]').forEach(link => {
+        link.classList.remove('active');
+    });
+}
+
+function clearSidebarProjectHighlight() {
+    document.querySelectorAll('.side-tree-item').forEach(item => {
+        item.classList.remove('active');
+    });
+}
+
+// ============================================
 // NAVIGATION
 // ============================================
 function initNav() {
@@ -388,7 +425,7 @@ function renderWork() {
             </div>
             <div class="db-year">${p.year}</div>
             <div class="db-role">${p.role}</div>
-            <div><span class="pill">${p.badge}</span></div>
+            <div class="db-context">${p.badge}</div>
             <div class="db-arrow">\u2192</div>
         </a>
     `).join('');
@@ -488,7 +525,7 @@ function showProjectPage(i, pushState = true) {
         <h1 class="proj-title">${p.title}</h1>
 
         <div class="proj-props">
-            <div class="proj-prop"><div class="proj-prop-k"><span class="proj-prop-k-ico">\u25C9</span>Context</div><div><span class="pill">${p.badge}</span></div></div>
+            <div class="proj-prop"><div class="proj-prop-k"><span class="proj-prop-k-ico">\u25C9</span>Context</div><div>${p.badge}</div></div>
             <div class="proj-prop"><div class="proj-prop-k"><span class="proj-prop-k-ico">\u2316</span>Year</div><div>${p.year}</div></div>
             <div class="proj-prop"><div class="proj-prop-k"><span class="proj-prop-k-ico">\u26AC</span>Role</div><div>${p.role}</div></div>
             ${p.link ? `<div class="proj-prop"><div class="proj-prop-k"><span class="proj-prop-k-ico">\u2197</span>Link</div><div><a href="${p.link}" target="_blank" style="color:var(--accent-ink)">${p.link} \u2197</a></div></div>` : ''}
@@ -526,10 +563,8 @@ function showProjectPage(i, pushState = true) {
         history.pushState({ project: i }, '', '#project-' + p.id);
     }
 
-    // Highlight Work in sidebar
-    document.querySelectorAll('.side-link[href^="#"]').forEach(link => {
-        link.classList.toggle('active', link.getAttribute('href') === '#work');
-    });
+    // Highlight project in sidebar tree
+    highlightSidebarProject(i);
 }
 
 function closeProjectPage(pushState = true) {
@@ -540,8 +575,9 @@ function closeProjectPage(pushState = true) {
     mainDoc.style.display = 'block';
     projectPage.style.display = 'none';
 
-    // Reset breadcrumbs
+    // Reset breadcrumbs and sidebar
     updateBreadcrumbs(null);
+    clearSidebarProjectHighlight();
 
     if (pushState) {
         history.pushState(null, '', window.location.pathname);
@@ -717,6 +753,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initTheme();
     initSettings();
     initAvatarExpand();
+    initWorkTree();
     initNav();
     initMobileMenu();
     renderWork();
