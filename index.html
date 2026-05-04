@@ -8,94 +8,224 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,500;8..60,600&family=IBM+Plex+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-inner">
-            <div class="nav-left">
-                <a href="#" class="nav-logo">TM</a>
-                <div class="nav-socials">
-                    <a href="https://www.linkedin.com/in/thilak-mohan/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                    </a>
-                    <a href="https://x.com/" target="_blank" rel="noopener noreferrer" title="X">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                    </a>
-                    <a href="https://github.com/Thilak-cm" target="_blank" rel="noopener noreferrer" title="GitHub">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                    </a>
-                </div>
-            </div>
-            <div class="nav-right">
-                <a href="#work" class="nav-link">WORK</a>
-                <button class="nav-link" id="resume-btn">RESUME</button>
-                <button class="theme-toggle" id="theme-toggle" title="Toggle theme" aria-label="Toggle theme">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path class="icon-moon" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                        <circle class="icon-sun" cx="12" cy="12" r="5"></circle>
-                        <line class="icon-sun" x1="12" y1="1" x2="12" y2="3"></line>
-                        <line class="icon-sun" x1="12" y1="21" x2="12" y2="23"></line>
-                        <line class="icon-sun" x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line class="icon-sun" x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line class="icon-sun" x1="1" y1="12" x2="3" y2="12"></line>
-                        <line class="icon-sun" x1="21" y1="12" x2="23" y2="12"></line>
-                        <line class="icon-sun" x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line class="icon-sun" x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </button>
-            </div>
-        </div>
-    </nav>
 
-    <!-- Hero -->
-    <section class="hero">
-        <div class="hero-header">
+<div class="shell">
+
+    <!-- SIDEBAR -->
+    <aside class="side" id="sidebar">
+        <div class="side-brand">
+            <img src="profile.jpg" alt="Thilak Mohan" class="side-avatar-img" id="side-avatar" title="Click to expand">
             <div>
-                <h1 class="hero-name">Thilak Mohan</h1>
-                <p class="hero-tagline">0 → 1 builder. talk to users first, build second.</p>
+                <div class="side-name">Thilak Mohan</div>
+                <div class="side-role">Applied AI Engineer</div>
             </div>
-            <img src="profile.jpg" alt="Thilak Mohan" class="hero-avatar">
         </div>
-    </section>
+        <!-- Expanded photo overlay -->
+        <div class="avatar-expand" id="avatar-expand">
+            <img src="profile.jpg" alt="Thilak Mohan" class="avatar-expand-img">
+        </div>
+        <div class="side-status">
+            <span class="side-dot"></span>
+            <span>San Francisco · Open to work</span>
+        </div>
 
-    <!-- Timeline -->
-    <section id="work" class="timeline-section">
-        <div class="timeline" id="timeline"></div>
-    </section>
+        <div class="side-section">
+            <div class="side-section-label">Workspace</div>
+            <a class="side-link active" href="#origin"><span class="side-link-ico">&#x2726;</span><span>Origin story</span></a>
+            <a class="side-link" href="#work"><span class="side-link-ico">&#x25A4;</span><span>Work</span><span class="side-link-count">7</span></a>
+            <a class="side-link" href="#principles"><span class="side-link-ico">&#x25C7;</span><span>Principles</span><span class="side-link-count">3</span></a>
+            <a class="side-link" href="#lab"><span class="side-link-ico">&#x2318;</span><span>Lab</span></a>
+        </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <span>Thilak Mohan</span>
-        <a href="mailto:thilak.cm212@gmail.com">thilak.cm212@gmail.com</a>
-    </footer>
+        <div class="side-section">
+            <div class="side-section-label">Links</div>
+            <a class="side-link" href="mailto:thilak.cm212@gmail.com"><span class="side-link-ico">@</span><span>Email</span></a>
+            <button class="side-link" id="resume-btn"><span class="side-link-ico">&#x21E3;</span><span>Resume.pdf</span></button>
+            <a class="side-link" href="https://github.com/Thilak-cm" target="_blank"><span class="side-link-ico">&#x27C1;</span><span>GitHub</span></a>
+            <a class="side-link" href="https://www.linkedin.com/in/thilak-mohan/" target="_blank"><span class="side-link-ico">in</span><span>LinkedIn</span></a>
+        </div>
 
-    <!-- Project Modal -->
-    <div id="project-overlay" class="overlay">
-        <div class="overlay-panel">
-            <button class="overlay-close" id="overlay-close">&times;</button>
-            <div id="overlay-body"></div>
+        <div class="side-foot">
+            <span>v4.0</span>
+        </div>
+    </aside>
+
+    <!-- MOBILE HEADER -->
+    <div class="mobile-header" id="mobile-header">
+        <div class="mobile-brand">
+            <div class="side-avatar">TM</div>
+            <span class="mobile-brand-name">Thilak Mohan</span>
+        </div>
+        <div class="mobile-actions">
+            <button class="settings-btn" id="settings-btn-mobile" title="Settings" aria-label="Settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button>
+            <button class="menu-btn" id="menu-btn" aria-label="Open menu">&#9776;</button>
         </div>
     </div>
 
-    <!-- Resume Overlay -->
-    <div id="resume-overlay" class="overlay">
-        <div class="overlay-panel overlay-panel-wide">
-            <div class="resume-header">
-                <h2 class="resume-title">Resume</h2>
-                <div class="resume-actions">
-                    <a href="resume_Thilak_ML_v2.pdf" download="Thilak_Mohan_Resume.pdf" class="btn-download">Download PDF</a>
-                    <button class="overlay-close" id="resume-close">&times;</button>
+    <!-- MAIN -->
+    <main class="main">
+        <div class="topbar">
+            <div class="crumbs">
+                <span>Workspace</span>
+                <span class="sep">/</span>
+                <span>Thilak Mohan</span>
+                <span class="sep">/</span>
+                <span style="color:var(--ink)">About</span>
+            </div>
+            <div class="settings-wrap">
+                <button class="settings-btn" id="settings-btn" title="Accent color" aria-label="Change accent color"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button>
+                <div class="settings-dropdown" id="settings-dropdown">
+                    <div class="settings-group">
+                        <div class="settings-label">Mode</div>
+                        <div class="mode-toggle" id="mode-toggle">
+                            <button class="mode-btn active" data-mode="light">Light</button>
+                            <button class="mode-btn" data-mode="dark">Dark</button>
+                        </div>
+                    </div>
+                    <div class="settings-divider"></div>
+                    <div class="settings-group">
+                        <div class="settings-label">Accent</div>
+                        <div class="swatch-row" id="swatch-row"></div>
+                    </div>
+                    <div class="settings-divider"></div>
+                    <div class="settings-group">
+                        <div class="settings-label">Font</div>
+                        <div class="font-row" id="font-row"></div>
+                    </div>
                 </div>
             </div>
-            <div class="resume-body">
-                <iframe src="resume_Thilak_ML_v2.pdf#zoom=125" class="resume-iframe" title="Resume"></iframe>
+        </div>
+
+        <article class="doc" id="top">
+
+            <h1 class="title">Thilak Mohan</h1>
+            <p class="tagline">0&#x2192;1 builder. I <em>talk to users first, build second</em> &#x2014; because first-principles thinking from the start is the only way to avoid reworking everything later.</p>
+
+            <div class="props">
+                <div class="prop"><div class="prop-k"><span class="prop-k-ico">&#x25C9;</span>Status</div><div class="prop-v"><span class="pill green"><span class="pill-dot"></span>Working at Promptli AI</span></div></div>
+                <div class="prop"><div class="prop-k"><span class="prop-k-ico">&#x2316;</span>Location</div><div class="prop-v">San Francisco, CA</div></div>
+                <div class="prop"><div class="prop-k"><span class="prop-k-ico">&#x26AC;</span>Role</div><div class="prop-v">Applied AI Engineer</div></div>
+                <div class="prop"><div class="prop-k"><span class="prop-k-ico">&#x25A4;</span>Stack</div><div class="prop-v" style="display:flex;gap:5px;flex-wrap:wrap"><span class="chip">Python</span><span class="chip">PyTorch</span><span class="chip">TypeScript</span><span class="chip">React</span><span class="chip">LangChain</span><span class="chip">AWS</span></div></div>
+                <div class="prop"><div class="prop-k"><span class="prop-k-ico">&#x2709;</span>Contact</div><div class="prop-v"><a href="mailto:thilak.cm212@gmail.com" style="color:var(--accent-ink)">thilak.cm212@gmail.com</a></div></div>
+            </div>
+
+            <div class="cal">
+                <div class="cal-ico">&#x1F4A1;</div>
+                <div class="cal-body"><b>A note on builder-orientation:</b> the clearest signal I give hiring managers isn't my resume &#x2014; it's that a tool I built for my mum is now used by 100+ teachers across 4 schools. The section below is the short version.</div>
+            </div>
+
+            <!-- ORIGIN -->
+            <h2 class="h" id="origin"><span class="h-ico">&#x2726;</span>Origin &#x2014; a tool for my mum</h2>
+            <p class="h-sub">How I learned that the shortest path to product-market fit is being one call away from a real user.</p>
+
+            <div class="mum-block">
+                <div class="mum-quote">
+                    <p>My mum's a Montessori teacher. She'd spend every evening at home catching up on logging and structuring notes.</p>
+                    <p>I built her a low-friction note-taking app enhanced with AI and Montessori pedagogy. <em>She showed a colleague. Now it's used by 100+ teachers across 4 schools, logging 6,000+ notes a month.</em></p>
+                </div>
+                <div class="mum-stats">
+                    <div class="mum-stat"><div class="mum-stat-n">4</div><div class="mum-stat-l">Schools &middot; 2 states</div></div>
+                    <div class="mum-stat"><div class="mum-stat-n">100+</div><div class="mum-stat-l">Active teachers</div></div>
+                    <div class="mum-stat"><div class="mum-stat-n">6,000+</div><div class="mum-stat-l">Notes / month</div></div>
+                </div>
+            </div>
+
+            <!-- WORK -->
+            <h2 class="h" id="work"><span class="h-ico">&#x25A4;</span>Selected work</h2>
+            <p class="h-sub">Filtered: shipped. Hover for a preview, click for details.</p>
+
+            <div class="db">
+                <div class="db-head">
+                    <div></div>
+                    <div>Project</div>
+                    <div>Year</div>
+                    <div>Role</div>
+                    <div>Context</div>
+                    <div></div>
+                </div>
+                <div id="db-rows"></div>
+            </div>
+
+            <!-- PRINCIPLES -->
+            <h2 class="h" id="principles"><span class="h-ico">&#x25C7;</span>How I work</h2>
+            <p class="h-sub">Three things I believe strongly enough to shape every project.</p>
+
+            <div class="toggles" id="toggles"></div>
+
+            <!-- LAB -->
+            <h2 class="h" id="lab"><span class="h-ico">&#x2318;</span>Lab &#x2014; GPT-2, live</h2>
+            <p class="h-sub">A tiny demo of the 128M-param transformer I built from scratch. Prompt it below.</p>
+
+            <div class="lab-card">
+                <div class="lab-head">
+                    <div class="lab-head-l">
+                        <div class="lab-ico">&#x1F9E0;</div>
+                        <div>
+                            <div class="lab-title">thilak/gpt2-small</div>
+                            <div class="lab-sub">128M params &middot; 10B tokens &middot; 4&times;A100</div>
+                        </div>
+                    </div>
+                    <span class="lab-tag"><span class="pill-dot"></span>live</span>
+                </div>
+                <div class="lab-body">
+                    <div class="chat" id="lab-chat">
+                        <div class="msg bot">
+                            <div class="msg-avatar">&#x1F9E0;</div>
+                            <div>
+                                <div class="msg-bubble sys">model.eval() &middot; 128.2M params loaded &middot; awaiting prompt</div>
+                                <div class="msg-meta">gpt2-small &middot; just now</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lab-input">
+                        <input type="text" id="lab-prompt" placeholder="Message gpt2-small..." value="The best way to learn transformers is">
+                        <button id="lab-go">Send &#x2191;</button>
+                    </div>
+                </div>
+            </div>
+
+        </article>
+
+        <!-- Project page (replaces main doc when viewing a project) -->
+        <article class="doc project-doc" id="project-page" style="display:none">
+            <button class="proj-back" id="project-back">&#x2190; Back</button>
+            <div id="project-content"></div>
+        </article>
+    </main>
+</div>
+
+<!-- Hover preview -->
+<div class="hp" id="hp">
+    <div class="hp-img" id="hp-img"></div>
+    <div class="hp-body">
+        <div class="hp-title" id="hp-title"></div>
+        <div class="hp-desc" id="hp-desc"></div>
+    </div>
+</div>
+
+<!-- Mobile sidebar overlay -->
+<div class="side-overlay" id="side-overlay"></div>
+
+<!-- Resume overlay -->
+<div id="resume-overlay" class="overlay">
+    <div class="overlay-panel">
+        <div class="resume-header">
+            <h2 class="resume-title">Resume</h2>
+            <div class="resume-actions">
+                <a href="resume_Thilak_ML_v2.pdf" download="Thilak_Mohan_Resume.pdf" class="btn-download">Download PDF</a>
+                <button class="overlay-close" id="resume-close">&times;</button>
             </div>
         </div>
+        <div class="resume-body">
+            <iframe src="resume_Thilak_ML_v2.pdf#zoom=125" class="resume-iframe" title="Resume"></iframe>
+        </div>
     </div>
+</div>
 
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

@@ -1,332 +1,576 @@
 // ============================================
-// THEME
+// PROJECT DATA
 // ============================================
-function initTheme() {
-    const toggle = document.getElementById('theme-toggle');
-    const html = document.documentElement;
-    const saved = localStorage.getItem('theme');
+const projectsData = [
+    {
+        id: "montessori",
+        title: "Montessori OS",
+        year: "2025 —",
+        role: "Founder, Product, Eng",
+        badge: "Freelance",
+        blurb: "Zero-friction observation logging for Montessori teachers, powered by AI.",
+        long: "A production SaaS used daily by 100+ teachers across 4 schools in 2 states in India. Started as a tool for my mum. Built end-to-end — architecture, coding, deployment, monitoring, iteration.",
+        why: "Mum would spend most of her evenings at home catching up on logging and structuring notes. Built her a low-friction note-taking app enhanced with AI + Montessori pedagogy. Other teachers asked for it. It grew into what it is now.",
+        stack: ["LangChain", "Firebase", "MCP", "RAG", "React"],
+        stats: ["4 schools", "100+ teachers", "6,000+ notes/month"],
+        preview: "montessori",
+        icon: "\uD83E\uDEB5",
+        description: `<p><strong>Product Ownership & User Discovery</strong></p>
+<ul>
+<li>Identified and scoped an ambiguous real-world problem: Montessori teachers generate high-quality qualitative insight through daily micro-observations, but friction-heavy workflows cause most of it to be lost.</li>
+<li>Led direct user discovery with teachers and administrators to define success criteria.</li>
+<li>Owned the product end-to-end: problem definition, system architecture, data modeling, AI workflow design, frontend/backend implementation, deployment, and iteration.</li>
+</ul>
+<p><strong>AI-Native System Design</strong></p>
+<ul>
+<li>Designed an agentic chatbot interface for complex, cross-cutting queries (student progress trends, parent-meeting prep).</li>
+<li>Orchestrated multi-step AI workflows using tools to fetch context, route to task-specific agents, and assemble structured responses.</li>
+<li>Added evaluation and grounding layers to validate outputs before delivery, prioritizing trust and safe failure modes.</li>
+</ul>`
+    },
+    {
+        id: "promptli",
+        title: "Promptli AI",
+        year: "2026 —",
+        role: "Applied AI Engineer",
+        badge: "Full-time",
+        blurb: "AI-native products at an early-stage startup.",
+        long: "Building production AI features end-to-end — from eval harnesses to UX to deployment.",
+        stack: ["TypeScript", "Python", "LLMs", "Evals"],
+        link: "https://www.promptliai.com/",
+        preview: "promptli",
+        icon: "\u26A1"
+    },
+    {
+        id: "gpt2",
+        title: "GPT-2 from scratch",
+        year: "2024",
+        role: "128M-param transformer",
+        badge: "Course project",
+        blurb: "Rebuilt GPT-2 from the ground up in PyTorch. Tokenizer \u2192 attention \u2192 KV-cache \u2192 inference.",
+        long: "Sat through Karpathy's 4-hour \"build an LLM from scratch\" marathon. Wasn't satisfied with a rote impl \u2014 read the papers, added my own implementations on top, then served it live as a chatbot so I'd actually understand KV caching in inference.",
+        stack: ["PyTorch", "DDP", "Linux", "4\u00D7A100s"],
+        stats: ["128M params", "10B tokens", "2 days training"],
+        link: "https://848k-project-gpt2.streamlit.app/",
+        github: "https://github.com/Thilak-cm/GPT2-Stripped-Comparative-Insights",
+        preview: "gpt2",
+        icon: "\uD83E\uDDE0"
+    },
+    {
+        id: "parking",
+        title: "Campus Parking AI",
+        year: "2025",
+        role: "Full-stack + rule engine",
+        badge: "Hackathon \u00B7 Award",
+        blurb: "Conversational parking assistant + admin rule engine. UMD Parking wanted to fund it.",
+        long: "Translated messy, human-written parking policies into a deterministic rule engine. LLM as reasoning interface, not authority. Shipped near-MVP in under a week. UMD Parking Department expressed interest in funding it.",
+        stack: ["Python", "JS", "C++", "Rule Engine"],
+        award: "Outstanding AI and Machine Learning Project",
+        github: "https://github.com/Thilak-cm/IC25-hackathon",
+        preview: "parking",
+        icon: "\uD83C\uDD7F\uFE0F"
+    },
+    {
+        id: "tds",
+        title: "TDS Reconciliation",
+        year: "2025",
+        role: "AI-assisted financial workflow",
+        badge: "Freelance",
+        blurb: "Turned a painful Excel-heavy TDS/GST reconciliation into an AI-assisted product.",
+        long: "Explicitly separated deterministic logic from LLM intelligence. Generative UI \u2014 LLM proposes mutations, humans approve. Embedding-based reconciliation across books and govt data.",
+        stack: ["Bedrock", "FastAPI", "AWS", "Embeddings"],
+        preview: "tds",
+        icon: "\u25A6"
+    },
+    {
+        id: "nyc",
+        title: "NYC Taxi CI/CD",
+        year: "2025",
+        role: "MLOps pipeline",
+        badge: "Course project",
+        blurb: "Production ML pipeline: ETL \u2192 training \u2192 weekly retrain \u2192 deploy, with rollback gates.",
+        long: "End-to-end ML pipeline spanning ETL, feature engineering, model training, versioning, deployment. Automated weekly retraining with evaluation gates and rollback.",
+        stack: ["AWS CodePipeline", "Docker", "ClearML", "MLOps"],
+        github: "https://github.com/Thilak-cm/ML605-Project",
+        preview: "nyc",
+        icon: "\uD83D\uDE96"
+    },
+    {
+        id: "trading",
+        title: "Agentic Trading",
+        year: "2023",
+        role: "Pattern system + ETL",
+        badge: "Internship \u00B7 CDUS Trading",
+        blurb: "Reliability-first decision system for live market windows. ML + rules hybrid.",
+        long: "Real traders depend on uninterrupted pipelines during market windows. Built ETL with validation, fallbacks, graceful degradation. ML for pattern detection, deterministic rules for execution constraints.",
+        stack: ["Python", "pandas", "Time-series", "ETL"],
+        preview: "trading",
+        icon: "\uD83D\uDCC8"
+    }
+];
 
-    if (saved) {
-        html.setAttribute('data-theme', saved);
+const principles = [
+    { n: "01", t: "Talk to users first", d: "The cost of shipping code is at an all-time low. Building features is the easy part. The hard part is knowing which features to build. That\u2019s why I talk to users first \u2014 they tell you what matters before you write a line of code." },
+    { n: "02", t: "First principles, relentlessly", d: "The deeper you dig into why you\u2019re building something, the less likely you are to redo it later. Being intentional during planning and architecture saves you from expensive rework down the road." },
+    { n: "03", t: "Ship first, then iterate", d: "4 schools didn\u2019t happen at the get-go. It started with one teacher \u2014 my mum. Ship something real, learn from it, then grow." },
+];
+
+// ============================================
+// SVG PREVIEWS FOR HOVER CARDS
+// ============================================
+const previews = {
+    montessori: `<svg viewBox="0 0 300 160" width="100%" height="100%"><rect width="300" height="160" fill="var(--accent-soft,#f9f0ee)"/><g font-family="Inter,sans-serif" font-size="10"><rect x="20" y="20" width="260" height="22" fill="var(--paper,#fff)" stroke="var(--rule,#e8e4de)" rx="4"/><text x="28" y="35" fill="var(--accent-ink,#5c1a2a)">\u25C8 Aarav, 4y \u2014 Observation</text><rect x="20" y="50" width="260" height="70" fill="var(--paper,#fff)" stroke="var(--rule,#e8e4de)" rx="4"/><line x1="30" y1="66" x2="270" y2="66" stroke="var(--rule-soft,#f0ece6)"/><line x1="30" y1="82" x2="240" y2="82" stroke="var(--rule-soft,#f0ece6)"/><line x1="30" y1="98" x2="220" y2="98" stroke="var(--rule-soft,#f0ece6)"/><rect x="20" y="128" width="56" height="20" fill="var(--accent,#7c2d3e)" rx="4"/><text x="31" y="141" fill="#fff" font-size="10">Save \u21B5</text></g></svg>`,
+    promptli: `<svg viewBox="0 0 300 160" width="100%" height="100%"><rect width="300" height="160" fill="var(--accent-soft,#f9f0ee)"/><g font-family="JetBrains Mono,monospace" font-size="11" fill="var(--accent-ink,#5c1a2a)"><text x="20" y="36">prompt.compile()</text><text x="20" y="60">eval.run()</text><text x="20" y="84">ship.deploy()</text><rect x="20" y="100" width="80" height="22" fill="var(--green-bg,#edf8f0)" rx="4"/><text x="30" y="115" fill="var(--green-ink,#1a6b3a)" font-size="10">\u25CF live</text></g></svg>`,
+    gpt2: `<svg viewBox="0 0 300 160" width="100%" height="100%"><rect width="300" height="160" fill="var(--accent-soft,#f9f0ee)"/><g stroke="var(--accent,#7c2d3e)" fill="none"><rect x="20" y="30" width="52" height="100" rx="4" fill="var(--paper,#fff)"/><rect x="82" y="30" width="52" height="100" rx="4" fill="var(--paper,#fff)"/><rect x="144" y="30" width="52" height="100" rx="4" fill="var(--paper,#fff)"/><rect x="206" y="30" width="52" height="100" rx="4" fill="var(--accent,#7c2d3e)"/><text x="28" y="85" fill="var(--accent-ink,#5c1a2a)" stroke="none" font-family="JetBrains Mono,monospace" font-size="10">emb</text><text x="90" y="85" fill="var(--accent-ink,#5c1a2a)" stroke="none" font-family="JetBrains Mono,monospace" font-size="10">attn</text><text x="152" y="85" fill="var(--accent-ink,#5c1a2a)" stroke="none" font-family="JetBrains Mono,monospace" font-size="10">mlp</text><text x="214" y="85" fill="#fff" stroke="none" font-family="JetBrains Mono,monospace" font-size="10">out</text></g></svg>`,
+    parking: `<svg viewBox="0 0 300 160" width="100%" height="100%"><rect width="300" height="160" fill="var(--accent-soft,#f9f0ee)"/><g font-family="Inter,sans-serif" font-size="10"><rect x="20" y="20" width="50" height="26" fill="var(--accent,#7c2d3e)" rx="4"/><text x="32" y="37" fill="#fff">P1 \u2713</text><rect x="76" y="20" width="50" height="26" fill="var(--paper,#fff)" stroke="var(--rule,#e8e4de)" rx="4"/><text x="90" y="37" fill="var(--ink-mute,#6b6560)">P2</text><rect x="132" y="20" width="50" height="26" fill="var(--paper,#fff)" stroke="var(--rule,#e8e4de)" rx="4"/><text x="146" y="37" fill="var(--ink-mute,#6b6560)">P3</text><rect x="20" y="60" width="260" height="28" fill="var(--paper,#fff)" stroke="var(--accent,#7c2d3e)" rx="4"/><text x="30" y="78" fill="var(--accent-ink,#5c1a2a)" font-size="11">"can i park here right now?"</text><rect x="20" y="95" width="260" height="28" fill="var(--green-bg,#edf8f0)" rx="4"/><text x="30" y="113" fill="var(--green-ink,#1a6b3a)" font-size="10">\u2713 permit A, valid until 4pm</text></g></svg>`,
+    tds: `<svg viewBox="0 0 300 160" width="100%" height="100%"><rect width="300" height="160" fill="var(--accent-soft,#f9f0ee)"/><g font-family="JetBrains Mono,monospace" font-size="9"><rect x="20" y="20" width="110" height="120" fill="var(--paper,#fff)" stroke="var(--rule,#e8e4de)" rx="4"/><text x="28" y="36" fill="var(--accent-ink,#5c1a2a)">books.xlsx</text><text x="28" y="58" fill="var(--ink-mute,#6b6560)">12,000 rows</text><rect x="136" y="66" width="26" height="28" fill="var(--accent,#7c2d3e)" rx="4"/><text x="143" y="84" fill="#fff">ai</text><rect x="170" y="20" width="110" height="120" fill="var(--paper,#fff)" stroke="var(--accent,#7c2d3e)" rx="4"/><text x="178" y="36" fill="var(--accent-ink,#5c1a2a)">reconciled</text><text x="178" y="62" fill="var(--green-ink,#1a6b3a)">\u2713 11,842</text><text x="178" y="80" fill="var(--amber-ink,#7a5a1f)">? 158 flag</text></g></svg>`,
+    nyc: `<svg viewBox="0 0 300 160" width="100%" height="100%"><rect width="300" height="160" fill="var(--accent-soft,#f9f0ee)"/><g fill="none" stroke="var(--accent,#7c2d3e)" font-family="Inter,sans-serif" font-size="10"><circle cx="40" cy="80" r="16" fill="var(--paper,#fff)"/><circle cx="110" cy="80" r="16" fill="var(--paper,#fff)"/><circle cx="180" cy="80" r="16" fill="var(--paper,#fff)"/><circle cx="250" cy="80" r="16" fill="var(--accent,#7c2d3e)"/><line x1="56" y1="80" x2="94" y2="80" stroke-dasharray="3 3"/><line x1="126" y1="80" x2="164" y2="80" stroke-dasharray="3 3"/><line x1="196" y1="80" x2="234" y2="80" stroke-dasharray="3 3"/><text x="29" y="84" fill="var(--accent-ink,#5c1a2a)" stroke="none">etl</text><text x="96" y="84" fill="var(--accent-ink,#5c1a2a)" stroke="none">train</text><text x="167" y="84" fill="var(--accent-ink,#5c1a2a)" stroke="none">eval</text><text x="240" y="84" fill="#fff" stroke="none">prod</text></g></svg>`,
+    trading: `<svg viewBox="0 0 300 160" width="100%" height="100%"><rect width="300" height="160" fill="var(--accent-soft,#f9f0ee)"/><g><polyline points="20,110 50,90 80,100 110,70 140,80 170,50 200,60 230,35 260,50 285,25" fill="none" stroke="var(--accent,#7c2d3e)" stroke-width="2"/><line x1="20" y1="130" x2="285" y2="130" stroke="var(--rule,#e8e4de)" stroke-dasharray="3 3"/><circle cx="170" cy="50" r="4" fill="var(--accent,#7c2d3e)"/><text x="178" y="48" font-family="Inter,sans-serif" font-size="10" fill="var(--accent-ink,#5c1a2a)">signal</text></g></svg>`
+};
+
+// ============================================
+// GPT-2 SIMULATED RESPONSES
+// ============================================
+const gpt2Responses = [
+    "to build one yourself. Reading papers is one thing, but writing the attention mechanism from scratch forces you to confront every assumption about how information flows through layers. Start with the tokenizer.",
+    "through implementation. I spent two days training on A100s and learned more about gradient flow, numerical stability, and memory management than any course could teach. The KV cache alone was worth the effort.",
+    "by starting from first principles. Don't just copy code \u2014 understand why each component exists. The embedding layer isn't just a lookup table; it's learning a continuous representation of discrete tokens.",
+    "to trace the data flow end-to-end. From raw text to tokens to embeddings to attention scores to logits to predictions. Each step has subtle design choices that compound into emergent behavior.",
+    "to break things intentionally. Remove the positional encoding and watch the model lose all sense of order. Disable layer normalization and observe the training collapse. Understanding failure modes teaches more than success.",
+    "hands-on experimentation. Theoretical understanding of self-attention is necessary but insufficient. The real learning happens when you debug why your loss plateaus at 4.2 and discover your learning rate schedule was wrong.",
+    "to read the original papers, then implement without looking at reference code. When your implementation finally matches the paper's reported perplexity, you'll understand transformers at a level that reading alone never provides."
+];
+let gpt2ResponseIdx = 0;
+
+// ============================================
+// ACCENT COLOR THEMES
+// ============================================
+const accentThemes = [
+    { id: 'blue',     name: 'Blue', color: '#2d5a7c', soft: '#eef3f9', ink: '#1a3a5c', darkColor: '#70a0c0', darkSoft: '#1e2530', darkInk: '#90b8d4' },
+    { id: 'burgundy', name: 'Burgundy',    color: '#7c2d3e', soft: '#f9f0ee', ink: '#5c1a2a', darkColor: '#c07080', darkSoft: '#2e2025', darkInk: '#d4909a' },
+    { id: 'forest',   name: 'Forest',      color: '#2d6b4f', soft: '#eef6f2', ink: '#1a4a35', darkColor: '#60b090', darkSoft: '#1e2e25', darkInk: '#80d4a8' },
+    { id: 'amber',    name: 'Amber',       color: '#8b6914', soft: '#faf5ea', ink: '#5c4a0a', darkColor: '#c0a050', darkSoft: '#2a2518', darkInk: '#d4b870' },
+    { id: 'slate',    name: 'Slate',       color: '#4a5568', soft: '#f0f2f5', ink: '#2d3748', darkColor: '#90a0b4', darkSoft: '#22252a', darkInk: '#a8b8cc' },
+    { id: 'violet',   name: 'Violet',      color: '#6b3fa0', soft: '#f3eefa', ink: '#4a2878', darkColor: '#a080d0', darkSoft: '#25202e', darkInk: '#b898e0' },
+];
+
+function applyAccentTheme(themeId) {
+    const theme = accentThemes.find(t => t.id === themeId) || accentThemes[0];
+    const root = document.documentElement;
+    root.style.setProperty('--accent', theme.color);
+    root.style.setProperty('--accent-soft', theme.soft);
+    root.style.setProperty('--accent-ink', theme.ink);
+    // Store dark-mode accent values as separate properties
+    root.style.setProperty('--accent-dark', theme.darkColor);
+    root.style.setProperty('--accent-soft-dark', theme.darkSoft);
+    root.style.setProperty('--accent-ink-dark', theme.darkInk);
+    // If currently in dark mode, apply dark variants
+    if (root.getAttribute('data-theme') === 'dark') {
+        root.style.setProperty('--accent', theme.darkColor);
+        root.style.setProperty('--accent-soft', theme.darkSoft);
+        root.style.setProperty('--accent-ink', theme.darkInk);
+    }
+    localStorage.setItem('accent-theme', themeId);
+    // Update swatch active state
+    document.querySelectorAll('.swatch-option').forEach(s => {
+        s.classList.toggle('active', s.dataset.theme === themeId);
+    });
+}
+
+function getCurrentAccentTheme() {
+    return localStorage.getItem('accent-theme') || 'blue';
+}
+
+// ============================================
+// FONT THEMES
+// ============================================
+const fontThemes = [
+    { id: 'sans', name: 'Sans', preview: 'Ag', family: '"Inter", -apple-system, BlinkMacSystemFont, sans-serif' },
+    { id: 'serif', name: 'Serif', preview: 'Ag', family: '"Source Serif 4", Georgia, serif' },
+    { id: 'mono', name: 'Mono', preview: 'Ag', family: '"IBM Plex Mono", "JetBrains Mono", ui-monospace, monospace' },
+];
+
+function applyFontTheme(fontId) {
+    const font = fontThemes.find(f => f.id === fontId) || fontThemes[0];
+    document.documentElement.style.setProperty('--sans', font.family);
+    localStorage.setItem('font-theme', fontId);
+    document.querySelectorAll('.font-option').forEach(f => {
+        f.classList.toggle('active', f.dataset.font === fontId);
+    });
+}
+
+function getCurrentFontTheme() {
+    return localStorage.getItem('font-theme') || 'sans';
+}
+
+// ============================================
+// THEME (dark/light + accent + font)
+// ============================================
+function setMode(mode) {
+    const html = document.documentElement;
+    if (mode === 'dark') {
+        html.setAttribute('data-theme', 'dark');
     } else {
         html.removeAttribute('data-theme');
     }
+    localStorage.setItem('theme', mode);
+    applyAccentTheme(getCurrentAccentTheme());
+    // Update mode toggle buttons
+    document.querySelectorAll('.mode-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.mode === mode);
+    });
+}
 
-    if (toggle) {
-        toggle.addEventListener('click', () => {
-            const current = html.getAttribute('data-theme');
-            const next = current === 'dark' ? 'light' : 'dark';
-            if (next === 'light') {
-                html.removeAttribute('data-theme');
-            } else {
-                html.setAttribute('data-theme', next);
-            }
-            localStorage.setItem('theme', next);
+function getCurrentMode() {
+    return localStorage.getItem('theme') || 'light';
+}
+
+function initTheme() {
+    const saved = getCurrentMode();
+    if (saved === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+    }
+    applyAccentTheme(getCurrentAccentTheme());
+    applyFontTheme(getCurrentFontTheme());
+}
+
+// ============================================
+// SETTINGS DROPDOWN
+// ============================================
+function initSettings() {
+    const swatchRow = document.getElementById('swatch-row');
+    const fontRow = document.getElementById('font-row');
+    const dropdown = document.getElementById('settings-dropdown');
+    if (!dropdown) return;
+
+    // --- Mode toggle ---
+    const currentMode = getCurrentMode();
+    document.querySelectorAll('.mode-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.mode === currentMode);
+        btn.addEventListener('click', () => setMode(btn.dataset.mode));
+    });
+
+    // --- Accent swatches ---
+    if (swatchRow) {
+        const currentAccent = getCurrentAccentTheme();
+        swatchRow.innerHTML = accentThemes.map(t =>
+            `<button class="swatch-option${t.id === currentAccent ? ' active' : ''}" data-theme="${t.id}">
+                <span class="swatch-dot" style="background:${t.color}"></span>
+                <span class="swatch-name">${t.name}</span>
+            </button>`
+        ).join('');
+
+        swatchRow.querySelectorAll('.swatch-option').forEach(s => {
+            s.addEventListener('click', () => applyAccentTheme(s.dataset.theme));
         });
     }
+
+    // --- Font picker ---
+    if (fontRow) {
+        const currentFont = getCurrentFontTheme();
+        fontRow.innerHTML = fontThemes.map(f =>
+            `<button class="font-option${f.id === currentFont ? ' active' : ''}" data-font="${f.id}">
+                <span class="font-preview" style="font-family:${f.family}">${f.preview}</span>
+                <span class="font-name">${f.name}</span>
+            </button>`
+        ).join('');
+
+        fontRow.querySelectorAll('.font-option').forEach(f => {
+            f.addEventListener('click', () => applyFontTheme(f.dataset.font));
+        });
+    }
+
+    // --- Toggle dropdown ---
+    const settingsBtn = document.getElementById('settings-btn');
+    const settingsBtnMobile = document.getElementById('settings-btn-mobile');
+
+    function toggleDropdown(e) {
+        e.stopPropagation();
+        dropdown.classList.toggle('on');
+    }
+
+    if (settingsBtn) settingsBtn.addEventListener('click', toggleDropdown);
+    if (settingsBtnMobile) settingsBtnMobile.addEventListener('click', toggleDropdown);
+
+    document.addEventListener('click', () => dropdown.classList.remove('on'));
+    dropdown.addEventListener('click', e => e.stopPropagation());
+}
+
+// ============================================
+// AVATAR EXPAND
+// ============================================
+function initAvatarExpand() {
+    const avatar = document.getElementById('side-avatar');
+    const expand = document.getElementById('avatar-expand');
+    if (!avatar || !expand) return;
+
+    avatar.addEventListener('click', () => expand.classList.add('on'));
+    expand.addEventListener('click', () => expand.classList.remove('on'));
 }
 
 // ============================================
 // NAVIGATION
 // ============================================
 function initNav() {
+    // Smooth scroll for sidebar links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
-                window.scrollTo({
-                    top: target.offsetTop - 80,
-                    behavior: 'smooth'
-                });
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
+            // Close mobile menu if open
+            closeMobileMenu();
         });
     });
-}
 
-// ============================================
-// SCROLL REVEAL
-// ============================================
-function initReveal() {
+    // Active link tracking via IntersectionObserver
+    const sections = ['origin', 'work', 'principles', 'lab'];
+    const sideLinks = document.querySelectorAll('.side-link[href^="#"]');
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
+                const id = entry.target.id;
+                sideLinks.forEach(link => {
+                    link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+                });
             }
         });
-    }, {
-        threshold: 0.08,
-        rootMargin: '0px 0px -40px 0px'
-    });
+    }, { rootMargin: '-20% 0px -70% 0px' });
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    sections.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) observer.observe(el);
+    });
 }
 
 // ============================================
-// PROJECT DATA (all projects preserved)
+// MOBILE MENU
 // ============================================
-const projectsData = [
-    {
-        title: "Montessori AI SaaS Platform",
-        date: "July 2025 – Current",
-        summary: "A production SaaS used daily by 100+ teachers (6,000+ notes/month) across 4 schools in 2 states in India. Built end-to-end: architecture, coding, deployment, monitoring, iteration.",
-        why: "So my mum's a Montessori teacher. She'd spend most of her time at home catching up on logging and structuring notes. I built her a low friction note-taking app enhanced with AI and necessary montessori pedagogy to streamline this workflow. Little did I know other teachers would ask for it, let alone it expanding to where its at now, which is 4 schools across 3 states with 100+ teachers logging 6000 notes a month, sheesh!",
-        description: `<p><strong>Product Ownership & User Discovery</strong></p>
-<ul>
-<li>Identified and scoped an ambiguous real-world problem: Montessori teachers generate high-quality qualitative insight through daily micro-observations, but friction-heavy workflows cause most of it to be lost and unusable at the school level.</li>
-<li>Led direct user discovery with teachers and administrators to define success criteria centered on zero-friction note logging, psychological safety around raw observations, and multilingual access for regional teachers.</li>
-<li>Owned the product end-to-end: problem definition, system architecture, data modeling, AI workflow design, frontend/backend implementation, deployment, and iteration—no handoff points.</li>
-<li>Shipped and maintained a production system operating under real constraints of reliability, latency, cost, and user trust.</li>
-</ul>
-<p><strong>AI-Native System Design & Execution</strong></p>
-<ul>
-<li>Designed an agentic chatbot interface capable of answering complex, cross-cutting queries (e.g., student progress trends, targeted parent-meeting prep) rather than single-turn Q&A.</li>
-<li>Orchestrated multi-step AI workflows using tools to fetch relevant context, route requests to task-specific agents, and assemble structured responses from heterogeneous data sources.</li>
-<li>Added an evaluation and grounding layer to validate outputs before user delivery, prioritizing trust, explainability, and safe failure modes over raw model capability.</li>
-</ul>`,
-        tags: ["LangChain", "Firebase", "MCP", "RAG", "React"],
-        projectLink: null,
-        githubLink: null,
-        badge: "Freelance"
-    },
-    {
-        title: "GPT-2 From Scratch",
-        date: "Aug 2024 – Dec 2024",
-        summary: "Rebuilt a 128M-parameter GPT-2 from scratch in PyTorch to deeply understand transformer internals. Implemented the full stack: tokenizer → embeddings → multi-head attention → decoder blocks → LM head → inference pipeline.",
-        why: `First i challenged myself to sit through <a href="https://www.youtube.com/watch?v=l8pRSuU81PU&t=2s" target="_blank" rel="noopener noreferrer">4 hours of Andrej Karpathy nerding out</a> and building an LLM FROM THE GROUND UP. Accomplished - this was a good base. I didn't wanna settle for a rote implementation though, so I challenged myself to read research papers and actually implement them on top of this foundation. Accomplished! Then I wanted to show people the sheer learning from this undertaking so i served it as a live chatbot; setting it up for inference (esp the KV caching part) was very rewarding. → <a href="https://848k-project-gpt2.streamlit.app/" class="ov-link-inline" target="_blank" rel="noopener noreferrer">Chat with the models I trained here</a>.`,
-        description: `<p><strong>What I built</strong></p>
-<p>128M-parameter GPT-2 rebuilt from scratch in PyTorch. Full stack: tokenizer → embeddings → multi-head attention → decoder blocks → LM head → inference pipeline. Trained for 2 days on 4×A100s over a 10B-token FineWeb-Edu corpus.</p>`,
-        tags: ["PyTorch", "Linux", "Distributed Data Parallel (DDP)", "Deployment for inference"],
-        projectLink: "https://848k-project-gpt2.streamlit.app/",
-        githubLink: "https://github.com/Thilak-cm/GPT2-Stripped-Comparative-Insights",
-        badge: "Course Project",
-        instructor: {
-            name: "Jia Bin Huang",
-            link: "https://scholar.google.com/citations?user=pp848fYAAAAJ&hl=en"
-        }
-    },
-    {
-        title: "AI-Powered Campus Parking System",
-        date: "Mar 2025",
-        summary: "Dual-interface parking assistant: conversational UX for students plus admin dashboard + rule engine that UMD Parking Department wants to fund and scale.",
-        disclaimer: "We built this near-MVP product in under a week—sheesh!",
-        description: `<p><strong>Section 1: Problem Framing & System Design</strong></p>
-<ul>
-<li>Tackled a highly rule-dense, real-world problem: campus parking policies span permits, time windows, events, construction overrides, and exceptions—making correct decisions hard for both students and administrators.</li>
-<li>Translated messy, human-written policies into a deterministic rule engine, explicitly modeling precedence, overrides, and edge cases instead of relying on probabilistic LLM behavior.</li>
-<li>Designed the system under extreme time constraints, shipping a near-MVP in under a week by ruthlessly scoping to the smallest architecture that could still handle real policy complexity.</li>
-</ul>
-<p><strong>Section 2: Multi-Interface AI Execution</strong></p>
-<ul>
-<li>Built a dual-interface product:
-    <ul>
-        <li>a student-facing conversational assistant answering questions like "Can I park here right now?"</li>
-        <li>an admin dashboard for updating rules tied to events, construction, and dynamic restrictions.</li>
-    </ul>
-</li>
-<li>Integrated an AI layer as a reasoning interface, not an authority, using it to interpret user intent and query the rule engine rather than decide outcomes itself.</li>
-<li>Designed for explainability and trust, surfacing why a parking action was allowed or denied, including violations, fines, and alternative lot suggestions.</li>
-<li>Demonstrated system-level product thinking, strong enough that UMD Parking Department expressed interest in funding and scaling the solution beyond the hackathon context.</li>
-</ul>`,
-        projectLink: null,
-        githubLink: "https://github.com/Thilak-cm/IC25-hackathon",
-        badge: "Hackathon",
-        awardLink: "https://ischool.umd.edu/news/info-hosts-8th-annual-info-challenge/",
-        tags: ["Python", "JavaScript", "C++", "CMake", "CSS", "HTML"],
-        award: "Outstanding AI and Machine Learning Project"
-    },
-    {
-        title: "NYC Taxi Demand Forecasting CICD Pipeline",
-        date: "Jan 2025 - May 2025",
-        summary: "Built a production CI/CD pipeline orchestrating ETL, ML training, weekly retraining, version control, and web app deployment using AWS CodePipeline and Docker.",
-        description: `<ul>
-<li>Built an end-to-end ML pipeline spanning ETL, feature engineering, model training, evaluation, versioning, and web app deployment.</li>
-<li>Designed a robust ETL system ingesting and validating data from multiple sources, handling decompression, schema drift, and data quality checks.</li>
-<li>Automated weekly retraining and deployment with CI/CD, including evaluation gates and rollback mechanisms to manage data and concept drift.</li>
-<li>Containerized training and serving workflows using Docker, enabling reproducible experiments and environment parity across stages.</li>
-<li>Implemented observability-first MLOps practices, with centralized logging and experiment tracking to diagnose failures and performance regressions.</li>
-<li>Optimized for unattended operation, prioritizing reliability, reproducibility, and safe degradation over model novelty.</li>
-</ul>`,
-        tags: ["AWS CodePipeline", "Docker", "ClearML", "MLOps", "CI/CD", "ETL"],
-        projectLink: null,
-        githubLink: "https://github.com/Thilak-cm/ML605-Project",
-        badge: "Course Project",
-        instructor: {
-            name: "Samet Ayhan",
-            link: "https://scholar.google.com/citations?user=cPnpZ8IAAAAJ&hl=en"
-        }
-    },
-    {
-        title: "Financial Compliance & TDS Reconciliation",
-        date: "Aug 2025 – Nov 2025",
-        summary: "Turned a painful Excel-heavy TDS/GST reconciliation workflow into an AI-assisted product with generative UI, embedding-based matching, and automated data pipelines.",
-        description: `<ul>
-<li>Rebuilt a manual, Excel-heavy TDS/GST reconciliation workflow into an AI-assisted system designed for correctness, auditability, and speed in a financial compliance setting.</li>
-<li>Explicitly separated deterministic logic from LLM intelligence, using rules for correctness-critical operations and LLMs only where ambiguity existed (matching, investigation, summarization).</li>
-<li>Designed the UI around transparency and control, clearly surfacing when AI was involved, maintaining paper trails, and requiring explicit user approval for any LLM-powered destructive or irreversible action.</li>
-<li>Implemented a generative UI layer, where the LLM proposes UI mutations and investigative paths instead of directly modifying data—keeping humans firmly in the loop.</li>
-<li>Built embedding-based reconciliation pipelines to match records across books and government data, handling partial matches, consolidation, and semantic clustering.</li>
-<li>Delivered an AI-native enterprise workflow, accelerating reconciliation from hours to minutes without compromising explainability or compliance requirements.</li>
-</ul>`,
-        tags: ["Bedrock", "FastAPI", "AWS Lambda/EC2", "S3", "Python"],
-        projectLink: null,
-        githubLink: null,
-        badge: "Freelance"
-    },
-    {
-        title: "Agentic Trading Pattern System",
-        date: "Sep 2023 - Dec 2023",
-        summary: "Reliability-first trading decision system with robust ETL/inference pipelines, hybrid ML + rule-based logic, and time-series feature engineering for live market operations.",
-        description: `<ul>
-<li>Built a reliability-first trading decision system, where real traders depend on uninterrupted data and inference pipelines to act during live market windows.</li>
-<li>Designed highly robust ETL and inference pipelines with validation checks, fallback data paths, and graceful degradation to prevent single-point failures from blocking trading.</li>
-<li>Implemented hybrid ML + rule-based logic, using ML models for pattern detection and probabilistic signals while enforcing deterministic rules for execution constraints and risk controls.</li>
-<li>Engineered time-series feature pipelines that map prior-day and intraday signals into next-day, time-bounded trade plans.</li>
-</ul>`,
-        tags: ["ETL", "Python", "pandas", "ML", "time-series forecasting", "market pattern recognition"],
-        projectLink: null,
-        githubLink: null,
-        badge: "Internship",
-        company: "CDUS Trading LLC"
+function initMobileMenu() {
+    const menuBtn = document.getElementById('menu-btn');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('side-overlay');
+
+    if (menuBtn) {
+        menuBtn.addEventListener('click', () => {
+            sidebar.classList.add('mobile-open');
+            overlay.classList.add('on');
+        });
     }
-];
+    if (overlay) {
+        overlay.addEventListener('click', closeMobileMenu);
+    }
+}
+
+function closeMobileMenu() {
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('side-overlay');
+    if (sidebar) sidebar.classList.remove('mobile-open');
+    if (overlay) overlay.classList.remove('on');
+}
 
 // ============================================
-// TIMELINE ITEMS (visible on page)
+// RENDER WORK DATABASE
 // ============================================
-const timelineItems = [
-    {
-        date: "March 2026 – Present",
-        title: "Promptli AI",
-        titleLink: "https://www.promptliai.com/#how-it-works",
-        role: "Applied AI Engineer",
-        desc: "Building AI-native products at an early-stage startup.",
-        current: true
-    },
-    {
-        date: "July 2025 – Present",
-        title: "Montessori OS",
-        role: "Montessori Teacher Copilot",
-        desc: "A zero-friction observation logging tool for Montessori teachers, powered by AI. What started as a tool for my mum turned into a production SaaS across 4 schools.",
-        stats: "4 schools, 100+ teachers, 6,000+ notes/month",
-        hasModal: true,
-        modalIndex: 0,
-        current: true,
-        tags: ["LangChain", "Firebase", "React", "RAG"]
-    },
-    {
-        date: "Aug 2024 – Dec 2024",
-        title: "GPT-2 From Scratch",
-        role: "128M-param transformer built in PyTorch",
-        desc: "Rebuilt GPT-2 from the ground up to deeply understand transformer internals. Tokenizer, multi-head attention, decoder blocks, KV caching — the full stack. Trained on 4xA100s over 10B tokens.",
-        hasModal: true,
-        modalIndex: 1,
-        current: false,
-        link: { url: "https://848k-project-gpt2.streamlit.app/", text: "Chat with it" },
-        tags: ["PyTorch", "Linux", "DDP"]
-    }
-];
-
-// ============================================
-// RENDER TIMELINE
-// ============================================
-function renderTimeline() {
-    const container = document.getElementById('timeline');
+function renderWork() {
+    const container = document.getElementById('db-rows');
     if (!container) return;
 
-    container.innerHTML = timelineItems.map((item, i) => {
-        const actions = [];
-        if (item.hasModal) {
-            actions.push(`<button class="timeline-more" data-modal="${item.modalIndex}">Learn more →</button>`);
-        }
-        if (item.link) {
-            actions.push(`<a href="${item.link.url}" target="_blank" rel="noopener noreferrer" class="timeline-cta">${item.link.text} ↗</a>`);
-        }
+    container.innerHTML = projectsData.map((p, i) => `
+        <a class="db-row" data-idx="${i}" href="#">
+            <div class="db-row-ico">${p.icon || '\u25CE'}</div>
+            <div>
+                <div class="db-title">${p.title}</div>
+                <div class="db-blurb">${p.blurb}</div>
+            </div>
+            <div class="db-year">${p.year}</div>
+            <div class="db-role">${p.role}</div>
+            <div><span class="pill">${p.badge}</span></div>
+            <div class="db-arrow">\u2192</div>
+        </a>
+    `).join('');
+}
 
-        return `
-        <div class="timeline-item ${item.current ? 'current' : ''}">
-            <div class="timeline-dot"></div>
-            <div class="timeline-date">${item.date}</div>
-            <h3 class="timeline-title">${item.titleLink ? `<a href="${item.titleLink}" target="_blank" rel="noopener noreferrer">${item.title}</a>` : item.title}</h3>
-            <div class="timeline-role">${item.role}</div>
-            <p class="timeline-desc">${item.desc}</p>
-            ${item.stats ? `<div class="timeline-stats comet-border"><span>${item.stats}</span></div>` : ''}
-            ${actions.length ? `<div class="timeline-actions">${actions.join('')}</div>` : ''}
-            ${item.tags ? `<div class="timeline-tags">${item.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>` : ''}
+// ============================================
+// RENDER PRINCIPLES TOGGLES
+// ============================================
+function renderToggles() {
+    const container = document.getElementById('toggles');
+    if (!container) return;
+
+    container.innerHTML = principles.map((p, i) => `
+        <div class="toggle${i === 0 ? ' on' : ''}">
+            <div class="toggle-head">
+                <span class="toggle-caret">\u25B6</span>
+                <span class="toggle-n">${p.n}</span>
+                <span class="toggle-t">${p.t}</span>
+            </div>
+            <div class="toggle-body">${p.d}</div>
         </div>
-    `}).join('');
+    `).join('');
 
-    // Wire up modal buttons
-    container.querySelectorAll('.timeline-more').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const idx = parseInt(btn.dataset.modal);
-            showProjectOverlay(idx);
+    container.querySelectorAll('.toggle-head').forEach(h => {
+        h.addEventListener('click', () => h.parentElement.classList.toggle('on'));
+    });
+}
+
+// ============================================
+// HOVER PREVIEW
+// ============================================
+function initHoverPreview() {
+    const hp = document.getElementById('hp');
+    const hpImg = document.getElementById('hp-img');
+    const hpTitle = document.getElementById('hp-title');
+    const hpDesc = document.getElementById('hp-desc');
+    if (!hp) return;
+
+    document.querySelectorAll('.db-row').forEach(row => {
+        row.addEventListener('mouseenter', () => {
+            const p = projectsData[parseInt(row.dataset.idx)];
+            hpImg.innerHTML = previews[p.preview] || '';
+            hpTitle.textContent = p.title;
+            hpDesc.textContent = p.long;
+            hp.classList.add('on');
+        });
+        row.addEventListener('mousemove', e => {
+            const x = Math.min(e.clientX + 20, window.innerWidth - 320);
+            const y = Math.min(e.clientY + 20, window.innerHeight - 320);
+            hp.style.left = x + 'px';
+            hp.style.top = y + 'px';
+        });
+        row.addEventListener('mouseleave', () => hp.classList.remove('on'));
+        row.addEventListener('click', e => {
+            e.preventDefault();
+            showProjectPage(parseInt(row.dataset.idx));
         });
     });
 }
 
 // ============================================
-// PROJECT OVERLAY
+// PROJECT PAGE
 // ============================================
-let projectOverlay, overlayBody, overlayCloseBtn;
+function initProjectPage() {
+    const backBtn = document.getElementById('project-back');
+    if (backBtn) backBtn.addEventListener('click', closeProjectPage);
 
-function initProjectOverlay() {
-    projectOverlay = document.getElementById('project-overlay');
-    overlayBody = document.getElementById('overlay-body');
-    overlayCloseBtn = document.getElementById('overlay-close');
-
-    if (overlayCloseBtn) overlayCloseBtn.addEventListener('click', hideProjectOverlay);
-
-    if (projectOverlay) {
-        projectOverlay.addEventListener('click', (e) => {
-            if (e.target === projectOverlay) hideProjectOverlay();
-        });
-    }
-
-    document.addEventListener('keydown', (e) => {
+    document.addEventListener('keydown', e => {
         if (e.key === 'Escape') {
-            if (projectOverlay?.classList.contains('active')) hideProjectOverlay();
-            if (resumeOverlay?.classList.contains('active')) hideResumeOverlay();
+            if (document.getElementById('project-page').style.display !== 'none') {
+                closeProjectPage();
+            }
+            hideResumeOverlay();
+        }
+    });
+
+    // Handle browser back button
+    window.addEventListener('popstate', (e) => {
+        if (e.state && e.state.project !== undefined) {
+            showProjectPage(e.state.project, false);
+        } else {
+            closeProjectPage(false);
         }
     });
 }
 
-function showProjectOverlay(index) {
-    if (!overlayBody || !projectOverlay) return;
-    if (index < 0 || index >= projectsData.length) return;
+function showProjectPage(i, pushState = true) {
+    const mainDoc = document.getElementById('top');
+    const projectPage = document.getElementById('project-page');
+    const projectContent = document.getElementById('project-content');
+    if (!mainDoc || !projectPage || !projectContent) return;
 
-    const project = projectsData[index];
+    const p = projectsData[i];
 
-    const githubHtml = project.githubLink ? `
-        <a href="${project.githubLink}" target="_blank" rel="noopener noreferrer" title="GitHub">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 0C5.373 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.565 21.8 24 17.303 24 12c0-6.627-5.373-12-12-12z"/>
-            </svg>
-        </a>` : '';
+    projectContent.innerHTML = `
+        <div class="proj-icon">${p.icon || '\u25CE'}</div>
+        <h1 class="proj-title">${p.title}</h1>
 
-    overlayBody.innerHTML = `
-        <h2 class="ov-title">${project.title}</h2>
-        <div class="ov-meta">
-            <span>${project.date}</span>
-            ${project.badge ? `<span>${project.badge}</span>` : ''}
-            ${githubHtml}
+        <div class="proj-props">
+            <div class="proj-prop"><div class="proj-prop-k"><span class="proj-prop-k-ico">\u25C9</span>Context</div><div><span class="pill">${p.badge}</span></div></div>
+            <div class="proj-prop"><div class="proj-prop-k"><span class="proj-prop-k-ico">\u2316</span>Year</div><div>${p.year}</div></div>
+            <div class="proj-prop"><div class="proj-prop-k"><span class="proj-prop-k-ico">\u26AC</span>Role</div><div>${p.role}</div></div>
+            ${p.link ? `<div class="proj-prop"><div class="proj-prop-k"><span class="proj-prop-k-ico">\u2197</span>Link</div><div><a href="${p.link}" target="_blank" style="color:var(--accent-ink)">${p.link} \u2197</a></div></div>` : ''}
+            ${p.github ? `<div class="proj-prop"><div class="proj-prop-k"><span class="proj-prop-k-ico">\u27C1</span>GitHub</div><div><a href="${p.github}" target="_blank" style="color:var(--accent-ink)">Repository \u2197</a></div></div>` : ''}
+            ${p.award ? `<div class="proj-prop"><div class="proj-prop-k"><span class="proj-prop-k-ico">\uD83C\uDFC6</span>Recognition</div><div>${p.award}</div></div>` : ''}
         </div>
-        <div class="ov-divider"></div>
-        ${project.why ? `<div class="ov-why"><span class="ov-why-label">Why I built this</span><p>${project.why}</p></div>` : ''}
-        <div class="ov-description">${project.description}</div>
-        <div class="ov-tags">
-            ${project.tags.map(t => `<span class="tag">${t}</span>`).join('')}
+
+        ${p.why ? `<div class="proj-why">"${p.why}"</div>` : ''}
+
+        <div class="proj-sec">
+            <div class="proj-sec-l"><span class="proj-sec-l-ico">\u25C9</span>What I built</div>
+            ${p.description ? p.description : `<p>${p.long}</p>`}
         </div>
+
+        ${p.stats ? `<div class="proj-stats">${p.stats.map(s => {
+            const parts = s.split(' '); const n = parts[0]; const l = parts.slice(1).join(' ');
+            return `<div class="proj-stat"><b>${n}</b><span>${l}</span></div>`;
+        }).join('')}</div>` : ''}
+
+        <div class="proj-stack">${p.stack.map(s => `<span class="chip">${s}</span>`).join('')}</div>
     `;
 
-    projectOverlay.classList.add('active');
-    document.body.style.overflow = 'hidden';
+    // Swap views
+    mainDoc.style.display = 'none';
+    projectPage.style.display = 'block';
+
+    // Update breadcrumbs
+    updateBreadcrumbs(p.title);
+
+    // Scroll to top
+    window.scrollTo(0, 0);
+
+    // Push browser history
+    if (pushState) {
+        history.pushState({ project: i }, '', '#project-' + p.id);
+    }
+
+    // Highlight Work in sidebar
+    document.querySelectorAll('.side-link[href^="#"]').forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#work');
+    });
 }
 
-function hideProjectOverlay() {
-    if (!projectOverlay) return;
-    projectOverlay.classList.remove('active');
-    document.body.style.overflow = '';
+function closeProjectPage(pushState = true) {
+    const mainDoc = document.getElementById('top');
+    const projectPage = document.getElementById('project-page');
+    if (!mainDoc || !projectPage) return;
+
+    mainDoc.style.display = 'block';
+    projectPage.style.display = 'none';
+
+    // Reset breadcrumbs
+    updateBreadcrumbs(null);
+
+    if (pushState) {
+        history.pushState(null, '', window.location.pathname);
+    }
+}
+
+function updateBreadcrumbs(projectTitle) {
+    const crumbs = document.querySelector('.crumbs');
+    if (!crumbs) return;
+
+    if (projectTitle) {
+        crumbs.innerHTML = `
+            <span>Workspace</span>
+            <span class="sep">/</span>
+            <span>Thilak Mohan</span>
+            <span class="sep">/</span>
+            <span>Work</span>
+            <span class="sep">/</span>
+            <span style="color:var(--ink)">${projectTitle}</span>
+        `;
+    } else {
+        crumbs.innerHTML = `
+            <span>Workspace</span>
+            <span class="sep">/</span>
+            <span>Thilak Mohan</span>
+            <span class="sep">/</span>
+            <span style="color:var(--ink)">About</span>
+        `;
+    }
 }
 
 // ============================================
@@ -360,8 +604,6 @@ function showResumeOverlay() {
                 <p>PDF preview isn't supported on mobile browsers.<br>Tap below to download.</p>
                 <a href="resume_Thilak_ML_v2.pdf" download="Thilak_Mohan_Resume.pdf" class="btn-download">Download PDF</a>
             </div>`;
-    } else if (resumeBody && !resumeBody.querySelector('.resume-iframe')) {
-        resumeBody.innerHTML = `<iframe src="resume_Thilak_ML_v2.pdf#zoom=125" class="resume-iframe" title="Resume"></iframe>`;
     }
 
     resumeOverlay.classList.add('active');
@@ -369,9 +611,103 @@ function showResumeOverlay() {
 }
 
 function hideResumeOverlay() {
-    if (!resumeOverlay) return;
+    if (!resumeOverlay || !resumeOverlay.classList.contains('active')) return;
     resumeOverlay.classList.remove('active');
     document.body.style.overflow = '';
+}
+
+// ============================================
+// LAB — GPT-2 CHAT DEMO
+// ============================================
+function initLab() {
+    const labBtn = document.getElementById('lab-go');
+    const labInput = document.getElementById('lab-prompt');
+    if (!labBtn || !labInput) return;
+
+    labBtn.addEventListener('click', runLab);
+    labInput.addEventListener('keydown', e => { if (e.key === 'Enter') runLab(); });
+}
+
+function escapeHtml(s) {
+    return s.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+
+function nowStamp() {
+    return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+}
+
+function scrollChat() {
+    const chat = document.getElementById('lab-chat');
+    if (chat) chat.scrollTop = chat.scrollHeight;
+}
+
+function addUserMsg(text) {
+    const chat = document.getElementById('lab-chat');
+    const el = document.createElement('div');
+    el.className = 'msg user';
+    el.innerHTML = `
+        <div class="msg-avatar">TM</div>
+        <div>
+            <div class="msg-bubble">${escapeHtml(text)}</div>
+            <div class="msg-meta">you \u00B7 ${nowStamp()}</div>
+        </div>`;
+    chat.appendChild(el);
+    scrollChat();
+}
+
+function addBotTyping() {
+    const chat = document.getElementById('lab-chat');
+    const el = document.createElement('div');
+    el.className = 'msg bot';
+    el.innerHTML = `
+        <div class="msg-avatar">\uD83E\uDDE0</div>
+        <div>
+            <div class="msg-bubble"><span class="typing"><span></span><span></span><span></span></span></div>
+            <div class="msg-meta">gpt2-small \u00B7 generating\u2026</div>
+        </div>`;
+    chat.appendChild(el);
+    scrollChat();
+    return el;
+}
+
+async function runLab() {
+    const labBtn = document.getElementById('lab-go');
+    const labInput = document.getElementById('lab-prompt');
+    const p = labInput.value.trim();
+    if (!p) return;
+
+    labInput.value = '';
+    labBtn.disabled = true;
+    labBtn.textContent = '\u2026';
+
+    addUserMsg(p);
+    const typingEl = addBotTyping();
+
+    // Simulate generation delay
+    await new Promise(res => setTimeout(res, 800 + Math.random() * 600));
+
+    const text = gpt2Responses[gpt2ResponseIdx % gpt2Responses.length];
+    gpt2ResponseIdx++;
+
+    const bubble = typingEl.querySelector('.msg-bubble');
+    const meta = typingEl.querySelector('.msg-meta');
+    bubble.innerHTML = '<span class="stream-text"></span><span class="cursor"></span>';
+    const stream = bubble.querySelector('.stream-text');
+
+    for (let i = 0; i < text.length; i++) {
+        stream.textContent = text.slice(0, i + 1);
+        if (i % 4 === 0) scrollChat();
+        await new Promise(res => setTimeout(res, 12));
+    }
+
+    const cur = bubble.querySelector('.cursor');
+    if (cur) cur.remove();
+    meta.textContent = `gpt2-small \u00B7 ${nowStamp()}`;
+
+    scrollChat();
+    labBtn.disabled = false;
+    labBtn.textContent = 'Send \u2191';
+    labInput.focus();
 }
 
 // ============================================
@@ -379,10 +715,14 @@ function hideResumeOverlay() {
 // ============================================
 document.addEventListener('DOMContentLoaded', () => {
     initTheme();
+    initSettings();
+    initAvatarExpand();
     initNav();
-    initProjectOverlay();
+    initMobileMenu();
+    renderWork();
+    renderToggles();
+    initHoverPreview();
+    initProjectPage();
     initResumeOverlay();
-    renderTimeline();
-
-    // Scroll reveal disabled — all items visible immediately
+    initLab();
 });
