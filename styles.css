@@ -308,6 +308,14 @@ h2.h .h-ico { font-size: 18px; color: var(--ink-dim) }
 .mum-stats { display: grid; grid-template-columns: repeat(4, 1fr); background: var(--bg) }
 .mum-link { color: var(--accent-ink); text-decoration: none; font-weight: 450 }
 .mum-link:hover { text-decoration: underline }
+.btn-cta {
+    display: inline-block; margin-top: 12px; padding: 10px 22px;
+    background: var(--accent); color: #fff; font-family: var(--sans);
+    font-size: 13px; font-weight: 500; letter-spacing: 0.02em;
+    border-radius: 6px; text-decoration: none; cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+}
+.btn-cta:hover { background: var(--accent-ink); transform: translateY(-1px) }
 .mum-stat { padding: 20px 24px; text-align: left; border-right: 1px solid var(--rule-soft) }
 .mum-stat:last-child { border-right: 0 }
 .mum-stat-n { font-weight: 600; font-size: 28px; letter-spacing: -0.02em; color: var(--accent-ink) }
@@ -381,11 +389,9 @@ h2.h .h-ico { font-size: 18px; color: var(--ink-dim) }
 }
 .toggle-head {
     padding: 14px 18px; display: flex; align-items: center; gap: 12px;
-    cursor: pointer; user-select: none;
+    cursor: default; user-select: none;
 }
-.toggle-head:hover { background: var(--rule-soft) }
-.toggle-caret { color: var(--ink-dim); font-size: 10px; transition: transform .15s; width: 14px; text-align: center }
-.toggle.on .toggle-caret { transform: rotate(90deg) }
+.toggle:hover { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 4%, var(--paper)) }
 .toggle-n {
     font-family: var(--mono); font-size: 11px;
     color: var(--accent-ink); background: var(--accent-soft);
@@ -393,10 +399,11 @@ h2.h .h-ico { font-size: 18px; color: var(--ink-dim) }
 }
 .toggle-t { font-weight: 500; font-size: 15px; letter-spacing: -0.005em }
 .toggle-body {
-    display: none; padding: 0 18px 16px 50px;
+    max-height: 0; overflow: hidden; padding: 0 18px 0 50px;
     font-size: 14px; color: var(--ink-mute); line-height: 1.65;
+    transition: max-height 0.3s ease, padding 0.3s ease;
 }
-.toggle.on .toggle-body { display: block }
+.toggle:hover .toggle-body { max-height: 300px; padding: 0 18px 16px 50px }
 
 /* ============================================
    LAB — CHAT UI

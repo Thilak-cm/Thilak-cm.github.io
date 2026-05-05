@@ -100,9 +100,9 @@ const projectsData = [
 ];
 
 const principles = [
-    { n: "01", t: "Talk to users first", d: "The cost of shipping code is at an all-time low. Building features is the easy part. The hard part is knowing which features to build. That\u2019s why I talk to users first \u2014 they tell you what matters before you write a line of code." },
-    { n: "02", t: "First principles, relentlessly", d: "The deeper you dig into why you\u2019re building something, the less likely you are to redo it later. Being intentional during planning and architecture saves you from expensive rework down the road." },
-    { n: "03", t: "Ship first, then iterate", d: "4 schools didn\u2019t happen at the get-go. It started with one teacher \u2014 my mum. Ship something real, learn from it, then grow." },
+    { n: "01", t: "Talk to users first", d: "Anyone can write code now. But shipping something that real users depend on daily \u2014 to the point where it becomes the lifeline workflow at their org \u2014 that\u2019s a different game. My Montessori teacher copilot is used by 100+ teachers across 4 schools, and the only reason it got there is because I mixed fundamental engineering skills with talking closely to SMEs and daily users. They set the direction of what you build. Use AI coding tools responsibly and adeptly, but know what to build. As YC says: make something people want." },
+    { n: "02", t: "First principles, relentlessly", d: "If you\u2019re outsourcing thinking and letting go of understanding to the agents \u2014 it just will never have enough dynamic context as you, the human, does. When something is in production with real users depending on it, you can\u2019t afford rework. It starts from seeking clarity: dig into why you\u2019re building something before you write a line. Being intentional during planning and architecture saves you from expensive mistakes down the road." },
+    { n: "03", t: "Ship first, then iterate", d: "I understood the pain point I\u2019m solving only as I spent more time with users. I started with a simple problem \u2014 extract latent knowledge from teachers\u2019 heads before it\u2019s lost. Now it\u2019s growing into a genuine AI-native Montessori OS, clearly much bigger. Taking careful steps in ambiguity lets you see more, and clarity grows with each step. 4 schools didn\u2019t happen at the get-go. It started with one teacher \u2014 my mum." },
 ];
 
 // ============================================
@@ -433,20 +433,15 @@ function renderToggles() {
     const container = document.getElementById('toggles');
     if (!container) return;
 
-    container.innerHTML = principles.map((p, i) => `
-        <div class="toggle${i === 0 ? ' on' : ''}">
+    container.innerHTML = principles.map(p => `
+        <div class="toggle">
             <div class="toggle-head">
-                <span class="toggle-caret">\u25B6</span>
                 <span class="toggle-n">${p.n}</span>
                 <span class="toggle-t">${p.t}</span>
             </div>
             <div class="toggle-body">${p.d}</div>
         </div>
     `).join('');
-
-    container.querySelectorAll('.toggle-head').forEach(h => {
-        h.addEventListener('click', () => h.parentElement.classList.toggle('on'));
-    });
 }
 
 // ============================================
