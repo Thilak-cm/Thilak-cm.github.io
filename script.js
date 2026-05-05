@@ -119,18 +119,11 @@ const previews = {
 };
 
 // ============================================
-// GPT-2 SIMULATED RESPONSES
+// GPT-2 LIVE BACKEND
 // ============================================
-const gpt2Responses = [
-    "to build one yourself. Reading papers is one thing, but writing the attention mechanism from scratch forces you to confront every assumption about how information flows through layers. Start with the tokenizer.",
-    "through implementation. I spent two days training on A100s and learned more about gradient flow, numerical stability, and memory management than any course could teach. The KV cache alone was worth the effort.",
-    "by starting from first principles. Don't just copy code \u2014 understand why each component exists. The embedding layer isn't just a lookup table; it's learning a continuous representation of discrete tokens.",
-    "to trace the data flow end-to-end. From raw text to tokens to embeddings to attention scores to logits to predictions. Each step has subtle design choices that compound into emergent behavior.",
-    "to break things intentionally. Remove the positional encoding and watch the model lose all sense of order. Disable layer normalization and observe the training collapse. Understanding failure modes teaches more than success.",
-    "hands-on experimentation. Theoretical understanding of self-attention is necessary but insufficient. The real learning happens when you debug why your loss plateaus at 4.2 and discover your learning rate schedule was wrong.",
-    "to read the original papers, then implement without looking at reference code. When your implementation finally matches the paper's reported perplexity, you'll understand transformers at a level that reading alone never provides."
-];
-let gpt2ResponseIdx = 0;
+const GPT2_WORKER_URL = "https://gpt2-proxy.thilakcm.workers.dev";
+const GPT2_MODELS = ["Kerple", "ALIBI", "FIRE", "Learned PE", "RoPE", "Sinusoidal"];
+let gpt2SelectedModel = "Kerple";
 
 // ============================================
 // ACCENT COLOR THEMES
@@ -660,8 +653,10 @@ function hideResumeOverlay() {
 function initLab() {
     const labBtn = document.getElementById('lab-go');
     const labInput = document.getElementById('lab-prompt');
+    const labModel = document.getElementById('lab-model');
     if (!labBtn || !labInput) return;
 
+    if (labModel) labModel.addEventListener('change', () => { gpt2SelectedModel = labModel.value; });
     labBtn.addEventListener('click', runLab);
     labInput.addEventListener('keydown', e => { if (e.key === 'Enter') runLab(); });
 }
@@ -721,11 +716,24 @@ async function runLab() {
     addUserMsg(p);
     const typingEl = addBotTyping();
 
-    // Simulate generation delay
-    await new Promise(res => setTimeout(res, 800 + Math.random() * 600));
-
-    const text = gpt2Responses[gpt2ResponseIdx % gpt2Responses.length];
-    gpt2ResponseIdx++;
+    let text;
+    try {
+        const res = await fetch(GPT2_WORKER_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                prompt: p,
+                model_name: gpt2SelectedModel,
+                max_new_tokens: 50,
+                temperature: 1.0,
+            }),
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || "Backend error");
+        text = data.text;
+    } catch (err) {
+        text = "model unavailable right now \u2014 try again later.";
+    }
 
     const bubble = typingEl.querySelector('.msg-bubble');
     const meta = typingEl.querySelector('.msg-meta');
@@ -740,7 +748,7 @@ async function runLab() {
 
     const cur = bubble.querySelector('.cursor');
     if (cur) cur.remove();
-    meta.textContent = `gpt2-small \u00B7 ${nowStamp()}`;
+    meta.textContent = `gpt2-small (${gpt2SelectedModel}) \u00B7 ${nowStamp()}`;
 
     scrollChat();
     labBtn.disabled = false;

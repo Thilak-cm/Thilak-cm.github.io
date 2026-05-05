@@ -497,6 +497,13 @@ h2.h .h-ico { font-size: 18px; color: var(--ink-dim) }
 }
 .lab-input button:hover { background: var(--accent-ink) }
 .lab-input button:disabled { opacity: .5; cursor: wait }
+.lab-input select {
+    border: 1px solid var(--rule); background: var(--bg); color: var(--ink);
+    padding: 8px 10px; border-radius: 12px; font-family: var(--sans);
+    font-size: 12px; outline: none; cursor: pointer;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+.lab-input select:focus { border-color: var(--accent) }
 
 /* ============================================
    PROJECT PAGE

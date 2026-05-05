@@ -58,7 +58,7 @@
         </div>
 
         <div class="side-foot">
-            <span>v4.2</span>
+            <span>v4.3</span>
         </div>
     </aside>
 
@@ -190,6 +190,14 @@
                         </div>
                     </div>
                     <div class="lab-input">
+                        <select id="lab-model" title="Positional encoding variant">
+                            <option value="Kerple" selected>Kerple</option>
+                            <option value="ALIBI">ALIBI</option>
+                            <option value="FIRE">FIRE</option>
+                            <option value="Learned PE">Learned PE</option>
+                            <option value="RoPE">RoPE</option>
+                            <option value="Sinusoidal">Sinusoidal</option>
+                        </select>
                         <input type="text" id="lab-prompt" placeholder="Message gpt2-small..." value="The best way to learn transformers is">
                         <button id="lab-go">Send &#x2191;</button>
                     </div>

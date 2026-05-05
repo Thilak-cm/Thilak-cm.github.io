@@ -1,0 +1,6 @@
+name = "gpt2-proxy"
+main = "src/index.js"
+compatibility_date = "2024-01-01"
+
+# After deploying, set your secret:
+#   npx wrangler secret put REPLICATE_API_TOKEN
