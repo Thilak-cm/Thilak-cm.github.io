@@ -305,7 +305,9 @@ h2.h .h-ico { font-size: 18px; color: var(--ink-dim) }
     background: var(--accent-soft); padding: 1px 6px; border-radius: 3px;
     font-style: normal; color: var(--accent-ink); font-weight: 450;
 }
-.mum-stats { display: grid; grid-template-columns: 1fr 1fr 1fr; background: var(--bg) }
+.mum-stats { display: grid; grid-template-columns: repeat(4, 1fr); background: var(--bg) }
+.mum-link { color: var(--accent-ink); text-decoration: none; font-weight: 450 }
+.mum-link:hover { text-decoration: underline }
 .mum-stat { padding: 20px 24px; text-align: left; border-right: 1px solid var(--rule-soft) }
 .mum-stat:last-child { border-right: 0 }
 .mum-stat-n { font-weight: 600; font-size: 28px; letter-spacing: -0.02em; color: var(--accent-ink) }
@@ -550,7 +552,7 @@ h2.h .h-ico { font-size: 18px; color: var(--ink-dim) }
 .proj-sec li { font-size: 14px; line-height: 1.7; color: var(--ink-mute); margin-bottom: 6px }
 .proj-sec strong { color: var(--ink); font-weight: 500 }
 
-.proj-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 24px 0 }
+.proj-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin: 24px 0 }
 .proj-stat {
     background: var(--paper); border: 1px solid var(--rule);
     padding: 18px; border-radius: 8px; transition: background 0.2s, border-color 0.2s;
@@ -720,7 +722,7 @@ h2.h .h-ico { font-size: 18px; color: var(--ink-dim) }
         display: none;
     }
     .prop { grid-template-columns: 120px 1fr; padding: 8px 12px }
-    .mum-stats { grid-template-columns: 1fr }
+    .mum-stats { grid-template-columns: 1fr 1fr }
     .mum-stat { border-right: 0; border-bottom: 1px solid var(--rule-soft); padding: 14px 20px }
     .mum-stat:last-child { border-bottom: 0 }
     .mum-quote { padding: 20px }

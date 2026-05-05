@@ -6,21 +6,23 @@ const projectsData = [
         id: "montessori",
         title: "Montessori OS",
         year: "Jun 2025 —",
-        role: "Forward Deployed Engineer",
+        role: "FDE & Founder",
         badge: "Convinced to make this my life's work",
-        blurb: "Zero-friction observation logging for Montessori teachers, powered by AI.",
-        long: "A production SaaS used daily by 100+ teachers across 4 schools in 2 states in India. Started as a tool for my mum. Built end-to-end — architecture, coding, deployment, monitoring, iteration.",
-        why: "Mum would spend most of her evenings at home catching up on logging and structuring notes. Built her a low-friction note-taking app enhanced with AI + Montessori pedagogy. Other teachers asked for it. It grew into what it is now.",
+        blurb: "AI-native, Montessori pedagogy-aligned SaaS to copilot teachers.",
+        long: "What started as a note-taking tool for one school is now used by 100+ teachers across 4 schools in 2 states.",
+        why: null,
         stack: ["LangChain", "Firebase", "MCP", "RAG", "React"],
-        stats: ["4 schools", "100+ teachers", "6,000+ notes/month"],
+        stats: ["4 schools", "100+ teachers", "6,000+ notes/month", "1hr+ avg session"],
         preview: "montessori",
-        icon: "\uD83E\uDEB5",
-        description: `<p><strong>Product Ownership & User Discovery</strong></p>
-<ul>
-<li>Identified and scoped an ambiguous real-world problem: Montessori teachers generate high-quality qualitative insight through daily micro-observations, but friction-heavy workflows cause most of it to be lost.</li>
-<li>Led direct user discovery with teachers and administrators to define success criteria.</li>
-<li>Owned the product end-to-end: problem definition, system architecture, data modeling, AI workflow design, frontend/backend implementation, deployment, and iteration.</li>
-</ul>
+        icon: "\uD83C\uDFEB",
+        description: `<p><strong>Origin</strong></p>
+<p>Started ideating with the founder of the school.</p>
+<p>The core problem: in Montessori education, teachers build rich mental models of each child through daily micro-observations \u2014 but that knowledge stays trapped in their heads. When they leave, switch classrooms, or just forget, it's gone. There was no lightweight extraction method.</p>
+<p>We built a dead-simple note-taking app \u2014 zero friction, mobile-first \u2014 just to get observations out of teachers' heads and into a system.</p>
+<p>Two months in, we realized we were sitting on a gold mine of structured child development data.</p>
+<p>That's when the app really took shape: AI features to generate weekly curriculum plans, build developmental profiles ("souls") of kids, create evidence-backed progress reports, coaching nudges, and more.</p>
+<p>What started as a note-taking tool for one school is now used by 100+ teachers across 4 schools in 2 states.</p>
+
 <p><strong>AI-Native System Design</strong></p>
 <ul>
 <li>Designed an agentic chatbot interface for complex, cross-cutting queries (student progress trends, parent-meeting prep).</li>
@@ -755,6 +757,14 @@ document.addEventListener('DOMContentLoaded', () => {
     initAvatarExpand();
     initWorkTree();
     initNav();
+    // Origin "Read more" link → Montessori project page
+    const originLink = document.getElementById('origin-link');
+    if (originLink) {
+        originLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            showProjectPage(0);
+        });
+    }
     initMobileMenu();
     renderWork();
     renderToggles();
