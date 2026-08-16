@@ -9,10 +9,10 @@ const projectsData = [
         role: "FDE & Founder",
         badge: "Convinced to make this my life's work",
         blurb: "AI-native, Montessori pedagogy-aligned SaaS to copilot teachers.",
-        long: "What started as a note-taking tool for one school is now used by 100+ teachers across 4 schools in 2 states.",
+        long: "What started as a note-taking tool for one school is now used by 100 teachers across 6 schools, serving 500 kids and capturing 15k notes a month.",
         why: null,
         stack: ["LangChain", "Firebase", "MCP", "RAG", "React"],
-        stats: ["4 schools", "100+ teachers", "6,000+ notes/month", "1hr+ avg session"],
+        stats: ["6 schools", "500 kids", "100 teachers", "15k notes/month"],
         preview: "montessori",
         icon: "\uD83C\uDFEB",
         description: `<p><strong>Origin</strong></p>
@@ -21,7 +21,7 @@ const projectsData = [
 <p>We built a dead-simple note-taking app \u2014 zero friction, mobile-first \u2014 just to get observations out of teachers' heads and into a system.</p>
 <p>Two months in, we realized we were sitting on a gold mine of structured child development data.</p>
 <p>That's when the app really took shape: AI features to generate weekly curriculum plans, build developmental profiles ("souls") of kids, create evidence-backed progress reports, coaching nudges, and more.</p>
-<p>What started as a note-taking tool for one school is now used by 100+ teachers across 4 schools in 2 states.</p>
+<p>What started as a note-taking tool for one school is now used by 100 teachers across 6 schools, serving 500 kids and capturing 15k notes a month.</p>
 
 <p><strong>AI-Native System Design</strong></p>
 <ul>
@@ -100,9 +100,9 @@ const projectsData = [
 ];
 
 const principles = [
-    { n: "01", t: "Talk to users first", d: "Anyone can write code now. But shipping something that real users depend on daily \u2014 to the point where it becomes the lifeline workflow at their org \u2014 that\u2019s a different game. My Montessori teacher copilot is used by 100+ teachers across 4 schools, and the only reason it got there is because I mixed fundamental engineering skills with talking closely to SMEs and daily users. They set the direction of what you build. Use AI coding tools responsibly and adeptly, but know what to build. As YC says: make something people want." },
-    { n: "02", t: "First principles, relentlessly", d: "If you\u2019re outsourcing thinking and letting go of understanding to the agents \u2014 it just will never have enough dynamic context as you, the human, does. When something is in production with real users depending on it, you can\u2019t afford rework. It starts from seeking clarity: dig into why you\u2019re building something before you write a line. Being intentional during planning and architecture saves you from expensive mistakes down the road." },
-    { n: "03", t: "Ship first, then iterate", d: "I understood the pain point I\u2019m solving only as I spent more time with users. I started with a simple problem \u2014 extract latent knowledge from teachers\u2019 heads before it\u2019s lost. Now it\u2019s growing into a genuine AI-native Montessori OS, clearly much bigger. Taking careful steps in ambiguity lets you see more, and clarity grows with each step. 4 schools didn\u2019t happen at the get-go. It started with one teacher \u2014 my mum." },
+    { n: "01", t: "Anyone can write code. Shipping reliability takes more than that though.", d: "If my Montessori teacher copilot app has taught me anything, it\u2019s this: building systems that users can rely on \u2014 and, more importantly, systems that behave the way you expect them to (how else will you meet your SLAs, huh?) \u2014 requires a deep understanding of every small piece of the pipeline. I\u2019ve had the privilege of learning this in production, so my drive to strengthen my engineering fundamentals has never been stronger." },
+    { n: "02", t: "Talk to users first.", d: "If you\u2019re outsourcing thinking, the agents will gladly do it for you. And that\u2019s the perfect recipe for pipe dreams. Doing the thinking yourself and assigning agents pure implementation tasks \u2014 with carefully placed, verifiable mechanisms, of course \u2014 is the way forward. That thinking is part of finding clarity. How do you get there? BY TALKING TO USERS (or, if you\u2019re lucky, being a domain expert yourself because you yourself are the user)." },
+    { n: "03", t: "Ship first, then iterate", d: "I understood the pain point I\u2019m solving only as I spent more time with users. I started with a simple problem \u2014 extract latent knowledge from teachers\u2019 heads before it\u2019s lost. Now it\u2019s growing into a genuine AI-native Montessori OS, clearly much bigger. Taking careful steps in ambiguity lets you see more, and clarity grows with each step. 6 schools didn\u2019t happen at the get-go. It started with one teacher \u2014 my mum." },
 ];
 
 // ============================================
@@ -521,6 +521,7 @@ function showProjectPage(i, pushState = true) {
             ${p.link ? `<div class="proj-prop"><div class="proj-prop-k"><span class="proj-prop-k-ico">\u2197</span>Link</div><div><a href="${p.link}" target="_blank" style="color:var(--accent-ink)">${p.link} \u2197</a></div></div>` : ''}
             ${p.github ? `<div class="proj-prop"><div class="proj-prop-k"><span class="proj-prop-k-ico">\u27C1</span>GitHub</div><div><a href="${p.github}" target="_blank" style="color:var(--accent-ink)">Repository \u2197</a></div></div>` : ''}
             ${p.award ? `<div class="proj-prop"><div class="proj-prop-k"><span class="proj-prop-k-ico">\uD83C\uDFC6</span>Recognition</div><div>${p.award}</div></div>` : ''}
+            <div class="proj-prop"><div class="proj-prop-k"><span class="proj-prop-k-ico">\u25A4</span>Stack</div><div class="proj-prop-stack">${p.stack.map(s => `<span class="chip">${s}</span>`).join('')}</div></div>
         </div>
 
         ${p.why ? `<div class="proj-why">"${p.why}"</div>` : ''}
@@ -535,7 +536,6 @@ function showProjectPage(i, pushState = true) {
             return `<div class="proj-stat"><b>${n}</b><span>${l}</span></div>`;
         }).join('')}</div>` : ''}
 
-        <div class="proj-stack">${p.stack.map(s => `<span class="chip">${s}</span>`).join('')}</div>
     `;
 
     // Swap views
